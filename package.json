@@ -1,0 +1,66 @@
+{
+  "name": "startime-corporate-platform",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.9.0 <27.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "payload generate:types && next build",
+    "audit:ar": "NODE_ENV=production tsx scripts/audit-ar.ts",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "payload": "payload",
+    "payload:generate:types": "payload generate:types",
+    "payload:generate:importmap": "payload generate:importmap",
+    "seed": "tsx scripts/seed.ts",
+    "seed:bilingual-placeholders": "SEED_ARABIC_PLACEHOLDERS=true tsx scripts/seed.ts",
+    "translate:ar": "NODE_ENV=production tsx scripts/translate-ar.ts",
+    "create-admin": "tsx scripts/create-admin.ts",
+    "sync:marketing-seo-map": "tsx scripts/sync-marketing-seo-map.ts",
+    "sync:portfolio-redirects": "tsx scripts/sync-portfolio-and-legacy-redirects.ts",
+    "sync:missing-sections": "tsx scripts/sync-missing-sections.ts",
+    "sync:discover-hero-video": "tsx scripts/sync-discover-hero-video.ts",
+    "sync:home-mobile-hero-video": "NODE_ENV=production node --env-file=.env --import tsx scripts/sync-home-mobile-hero-video.ts",
+    "sync:discover-governance-icons": "tsx scripts/sync-discover-governance-icons.ts",
+    "sync:solutions-counters-and-portfolio-tracks": "tsx scripts/sync-solutions-counters-and-portfolio-tracks.ts",
+    "sync:triple-s-policy": "tsx scripts/sync-triple-s-policy.ts",
+    "sync:home-seo": "tsx scripts/update-home-seo.ts",
+    "sync:insights": "tsx scripts/sync-insights.ts"
+  },
+  "dependencies": {
+    "@payloadcms/db-sqlite": "3.86.0",
+    "@payloadcms/next": "3.86.0",
+    "@payloadcms/richtext-lexical": "3.86.0",
+    "@phosphor-icons/react": "^2.1.10",
+    "@types/nodemailer": "^8.0.1",
+    "graphql": "^16.11.0",
+    "gsap": "^3.15.0",
+    "motion": "12.23.12",
+    "next": "16.2.11",
+    "nodemailer": "^9.0.4",
+    "payload": "3.86.0",
+    "react": "latest",
+    "react-dom": "latest",
+    "sharp": "^0.35.2",
+    "tsx": "^4.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "16.2.10",
+    "prettier": "latest",
+    "typescript": "latest"
+  },
+  "overrides": {
+    "framer-motion": "12.23.12",
+    "motion-dom": "12.23.12",
+    "motion-utils": "12.23.6",
+    "sharp": "$sharp"
+  }
+}

@@ -1,0 +1,662 @@
+/* Last-loaded visual refinements for the public site. */
+:root {
+  --startime-brand: #705394;
+  --violet: #705394;
+  --violet-light: #705394;
+  --futuristic-line: rgba(112, 83, 148, 0.32);
+  --futuristic-glow: rgba(112, 83, 148, 0.28);
+}
+.site .eyebrow { font-size:14px !important; line-height:1.35 !important; color:var(--startime-brand) !important; }
+.site :is(svg, .content-card__icon, .text-link svg, .button svg, .site-footer svg, .project-rail-actions svg, .insights-swiper__controls svg) { color:var(--startime-brand) !important; filter:drop-shadow(0 0 8px rgba(112,83,148,.52)) !important; }
+.site :is(.button, .header-cta) { background:var(--startime-brand) !important; }
+.hero-section__buttons .button:hover,
+.header-cta:hover { box-shadow:0 14px 30px rgba(112,83,148,.34) !important; }
+.site :is(.button, .header-cta) svg { color:#ffffff !important; filter:none !important; }
+.site :is(.button, .header-cta):hover svg { color:#ffffff !important; filter:drop-shadow(0 0 7px rgba(255,255,255,.5)) !important; }
+/* Filled icon tiles use white glyphs for maximum contrast. */
+.site :is(.content-card__icon, .hero-section__detail-icon, .timeline__number) :is(svg, path) { color:#ffffff !important; fill:currentColor; filter:none !important; }
+
+.site::after { position:fixed; z-index:2; inset:0; pointer-events:none; content:""; mix-blend-mode:screen; background:radial-gradient(620px circle at var(--mouse-x) var(--mouse-y),rgba(147,51,234,.16),transparent 68%),radial-gradient(420px circle at calc(var(--mouse-x) - 10vw) calc(var(--mouse-y) + 15vh),rgba(192,132,252,.1),transparent 72%); }
+.site > *, .site-footer > * { position:relative; z-index:3; }
+
+.site-header { position:fixed !important; z-index:1000 !important; display:grid !important; visibility:visible !important; opacity:1 !important; background:transparent !important; border-bottom-color:transparent !important; backdrop-filter:none !important; }
+.site-header--scrolled { position:fixed !important; background:rgba(4,3,10,.9) !important; border-bottom-color:rgba(168,143,255,.22) !important; backdrop-filter:blur(18px) !important; }
+.site-header__nav { background:transparent !important; backdrop-filter:none !important; border-color:transparent !important; }
+
+/* The mobile drawer owns its full viewport and must never inherit the
+   transparent hero header treatment when opened farther down a page. */
+.mobile-menu,
+.mobile-menu--open {
+  position: fixed !important;
+  z-index: 1001 !important;
+  isolation: isolate;
+  background-color: #04030a !important;
+  background-image:
+    radial-gradient(circle at 86% 8%, rgba(112, 83, 148, 0.24), transparent 34%),
+    linear-gradient(145deg, #0d0924 0%, #04030a 72%) !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.mobile-menu--open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.mobile-menu__close {
+  position: absolute;
+  inset-block-start: 22px;
+  inset-inline-end: 22px;
+  z-index: 2;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: var(--startime-brand);
+  color: #fff;
+  cursor: pointer;
+}
+.mobile-menu__close svg {
+  width: 22px;
+  height: 22px;
+  color: #fff !important;
+  filter: none !important;
+}
+.mobile-menu__close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+.mobile-menu nav {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 720px);
+  max-height: calc(100svh - 138px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+[dir="rtl"] .mobile-menu a svg {
+  transform: scaleX(-1);
+}
+
+/* More concise opening composition across every page. */
+.hero-section,
+.hero-section__content { min-height:clamp(560px, 76svh, 720px) !important; }
+.hero-section__content { padding-block:clamp(92px, 9vh, 126px) clamp(38px, 5vh, 68px) !important; }
+.hero-section__details { margin-top:clamp(26px, 3.2vh, 38px) !important; }
+
+.media-feature__grid, .media-feature__grid--reverse, .image-story__grid { align-items:stretch !important; min-height:0 !important; }
+.media-feature__media, .image-story__media { min-height:0 !important; align-self:stretch; }
+.media-feature__media img, .image-story__media img { width:100%; height:100%; object-fit:cover; }
+.image-story .eyebrow::before, .image-story .eyebrow::after, .media-feature .eyebrow::before, .media-feature .eyebrow::after { content:none !important; display:none !important; }
+/* Remove the legacy decorative marker above the home "How We Work" story.
+   Global sharp-corner rules turn its former circle into an unintended square. */
+.image-story::before { content:none !important; display:none !important; }
+
+.content-grid__items, .insights-grid, .news-mosaic { align-items:stretch !important; }
+.content-grid__items > *, .insights-grid > *, .news-mosaic > * { height:100%; }
+.content-card, .insight-card { height:100%; display:flex; flex-direction:column; }
+.content-card__body, .insight-card__content { flex:1 1 auto; display:flex; flex-direction:column; }
+.content-card__body .text-link, .insight-card__content > a { margin-top:auto; }
+
+.hero-section__details { background:rgba(12,10,24,.82) !important; border-color:rgba(192,132,252,.34) !important; }
+.hero-section__details::before { background:#6d28d9 !important; box-shadow:none !important; }
+.hero-section__details { flex-wrap:wrap; }
+.hero-section__details > div, .hero-section__details > div:last-child { flex:1 1 210px; min-width:0 !important; max-width:none !important; }
+.hero-section__detail-icon { background:rgba(112,83,148,.16) !important; color:var(--startime-brand) !important; }
+.hero-section__details :is(small,span,strong) { color:#fff !important; }
+
+/* Icons stay solid at rest and gain their energy only through intentional hover. */
+.site :is(.content-card__icon, .content-card__icon svg, .text-link svg, .button svg, .site-footer svg, .project-rail-actions svg, .insights-swiper__controls svg) { filter:none !important; }
+.site :is(.text-link, .button, .project-rail-actions button, .insights-swiper__controls button, .editorial-swiper__buttons button):hover svg { filter:drop-shadow(0 0 8px rgba(112,83,148,.58)) !important; }
+
+/* The member strip remains deliberately light and compact. */
+.credibility { background:#fff !important; padding-block:clamp(34px,4vw,56px) !important; }
+.site main > .credibility { background:#fff !important; background-image:none !important; }
+
+/* All rails speak the same sharp Startime-violet control language. */
+.project-rail-actions button,
+.insights-swiper__controls button,
+.editorial-swiper__buttons button { border-color:var(--startime-brand) !important; background:transparent !important; color:var(--startime-brand) !important; box-shadow:none !important; }
+.project-rail-actions button:hover,
+.insights-swiper__controls button:hover,
+.editorial-swiper__buttons button:hover { background:var(--startime-brand) !important; border-color:var(--startime-brand) !important; color:#fff !important; }
+.project-rail-actions button:hover svg,
+.insights-swiper__controls button:hover svg,
+.editorial-swiper__buttons button:hover svg { color:#fff !important; filter:none !important; }
+
+.site-footer__socials a { border-color:var(--startime-brand) !important; color:var(--startime-brand) !important; }
+.site-footer__socials a:hover { background:var(--startime-brand) !important; border-color:var(--startime-brand) !important; color:#fff !important; }
+.site-footer__socials a:hover svg { color:#fff !important; filter:none !important; }
+
+@media (max-width:760px) {
+  .site .eyebrow { font-size:11px !important; letter-spacing:.17em !important; color:var(--startime-brand) !important; }
+  .hero-section__details > div, .hero-section__details > div:last-child { flex-basis:100%; }
+  .hero-section,
+  .hero-section__content { min-height:560px !important; }
+  .hero-section__content { padding-block:92px 34px !important; }
+}
+
+.timeline-section, .timeline-section.section-surface--light { background:radial-gradient(circle at 50% 0%,#0d0924,#04030a 82%) !important; }
+.timeline--vertical::before { background:linear-gradient(#9333ea,rgba(192,132,252,.24)) !important; }
+.timeline--vertical .timeline__number { background:#0d0924 !important; color:#fff !important; border:1px solid rgba(192,132,252,.58) !important; box-shadow:0 0 28px rgba(147,51,234,.28) !important; }
+.timeline--vertical .timeline__step > div { background:rgba(12,10,24,.82) !important; border:1px solid rgba(168,143,255,.22) !important; box-shadow:none !important; }
+.timeline--vertical .timeline__step :is(h3,p,small) { color:#fff !important; }
+.timeline--vertical .timeline__step small { color:var(--startime-brand) !important; }
+
+/* Governance SVG uploads are rendered as white glyphs within their violet tiles. */
+.content-card__icon--media img { filter:brightness(0) invert(1) !important; opacity:1 !important; }
+
+/* Solutions: numbers lead the hero metrics, with the label kept directly
+   beneath for an immediately legible at-a-glance summary. */
+.hero-section--solutions .hero-section__details span:last-child {
+  gap: 3px;
+}
+.hero-section--solutions .hero-section__details strong {
+  order: -1;
+  direction: ltr;
+  font-size: clamp(28px, 2.25vw, 38px);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+.hero-section--solutions .hero-section__details strong > span {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Triple S Arena policy: readable institutional typography with a restrained,
+   futuristic document rail rather than a generic legal-text page. */
+.policy-content {
+  background: var(--section-bg, #f4f1ec);
+}
+
+.policy-content__layout {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.34fr) minmax(0, 1fr);
+  gap: clamp(42px, 7vw, 110px);
+  align-items: start;
+}
+
+.policy-content__intro {
+  position: sticky;
+  top: 130px;
+}
+
+.policy-content__intro h2 {
+  max-width: 12ch;
+  color: #191420;
+}
+
+.policy-content__document {
+  position: relative;
+  padding-inline-start: clamp(28px, 4vw, 64px);
+  border-inline-start: 1px solid rgba(91, 66, 128, 0.35);
+}
+
+.policy-content__document::before {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: -3px;
+  width: 5px;
+  height: 88px;
+  content: "";
+  background: #765aa0;
+}
+
+.policy-content__document h2 {
+  margin: clamp(42px, 5vw, 70px) 0 16px;
+  max-width: 24ch;
+  color: #191420;
+  font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+  line-height: 1.18;
+}
+
+.policy-content__document h2:first-child {
+  margin-top: 0;
+}
+
+.policy-content__document p,
+.policy-content__document li {
+  max-width: 76ch;
+  color: #3f3748;
+  font-size: clamp(1rem, 1.15vw, 1.12rem);
+  line-height: 1.85;
+}
+
+.policy-content__document p + p {
+  margin-top: 1.15em;
+}
+
+@media (max-width: 800px) {
+  .policy-content__layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .policy-content__intro {
+    position: static;
+  }
+
+  .policy-content__intro h2 {
+    max-width: 18ch;
+  }
+
+  .policy-content__document {
+    padding-inline-start: 22px;
+  }
+}
+.hero-section--solutions .hero-section__details small {
+  font-size: 10px;
+  letter-spacing: 0.11em;
+}
+
+@media (min-width: 761px) {
+  .hero-section--solutions .hero-section__content > div {
+    width: min(1020px, 78vw);
+  }
+  .hero-section--solutions .hero-section__details {
+    width: min(960px, 100%);
+    flex-wrap: nowrap !important;
+  }
+  .hero-section--solutions .hero-section__details > div,
+  .hero-section--solutions .hero-section__details > div:last-child {
+    flex: 1 1 0;
+    min-width: 0 !important;
+  }
+}
+
+/* The Strategic Tracks animation is a treated background, not a separate
+   visual component. It retains a strong reading field at every viewport. */
+.content-grid--tracks {
+  isolation: isolate;
+  background-position: center !important;
+}
+.content-grid--tracks:not([data-background-media="true"]) {
+  background-image:
+    linear-gradient(90deg, rgba(4, 3, 10, 0.78) 0%, rgba(4, 3, 10, 0.48) 45%, rgba(4, 3, 10, 0.26) 100%),
+    linear-gradient(0deg, rgba(8, 6, 18, 0.48), rgba(91, 66, 128, 0.18)),
+    url("/assets/editorial/portfolio-strategic-tracks.gif") !important;
+}
+[dir="rtl"] .content-grid--tracks:not([data-background-media="true"]) {
+  background-image:
+    linear-gradient(-90deg, rgba(4, 3, 10, 0.78) 0%, rgba(4, 3, 10, 0.48) 45%, rgba(4, 3, 10, 0.26) 100%),
+    linear-gradient(0deg, rgba(8, 6, 18, 0.48), rgba(91, 66, 128, 0.18)),
+    url("/assets/editorial/portfolio-strategic-tracks.gif") !important;
+}
+.content-grid--tracks[data-background-media="true"] {
+  background-image:
+    linear-gradient(90deg, rgba(4, 3, 10, 0.78) 0%, rgba(4, 3, 10, 0.48) 45%, rgba(4, 3, 10, 0.26) 100%),
+    linear-gradient(0deg, rgba(8, 6, 18, 0.48), rgba(91, 66, 128, 0.18)),
+    var(--section-image) !important;
+}
+[dir="rtl"] .content-grid--tracks[data-background-media="true"] {
+  background-image:
+    linear-gradient(-90deg, rgba(4, 3, 10, 0.78) 0%, rgba(4, 3, 10, 0.48) 45%, rgba(4, 3, 10, 0.26) 100%),
+    linear-gradient(0deg, rgba(8, 6, 18, 0.48), rgba(91, 66, 128, 0.18)),
+    var(--section-image) !important;
+}
+.content-grid--tracks::before {
+  display: none;
+}
+[dir="rtl"] .content-grid--tracks[data-background-media="true"]::before {
+  background:
+    linear-gradient(-90deg, rgba(4, 3, 10, 0.94) 0%, rgba(4, 3, 10, 0.72) 45%, rgba(4, 3, 10, 0.52) 100%),
+    linear-gradient(0deg, rgba(8, 6, 18, 0.72), rgba(91, 66, 128, 0.32)) !important;
+}
+.content-grid--tracks::after {
+  border-color: rgba(145, 114, 190, 0.28);
+  box-shadow: 0 0 0 8vw rgba(112, 83, 148, 0.06), 0 0 0 16vw rgba(112, 83, 148, 0.035);
+}
+.content-grid--tracks .content-grid__items--tracks {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(4, 3, 10, 0.24);
+  backdrop-filter: blur(3px);
+}
+.content-grid--tracks .content-grid__items--tracks .content-card {
+  transition: background-color 260ms ease, transform 260ms ease;
+}
+.content-grid--tracks .content-grid__items--tracks .content-card:hover {
+  background: rgba(112, 83, 148, 0.22);
+  transform: translateY(-5px);
+}
+
+/* Five concise tracks read as a strategic-navigation rail over the approved
+   animation—not as five opaque cards that conceal the campaign artwork. */
+.content-grid--tracks .section-heading {
+  max-width: 840px;
+  margin-inline: auto;
+  text-align: center;
+}
+.content-grid--tracks .section-heading h2 {
+  max-width: 800px;
+  margin-inline: auto;
+}
+.content-grid--tracks .content-grid__items--tracks {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+  margin-top: clamp(36px, 4vw, 60px);
+  border-block: 1px solid rgba(255, 255, 255, 0.28);
+  background: transparent;
+  backdrop-filter: none;
+}
+.content-grid--tracks .content-grid__items--tracks .content-card,
+.content-grid--tracks .content-grid__items--tracks .content-card:nth-child(2n),
+.content-grid--tracks .content-grid__items--tracks .content-card:last-child {
+  grid-column: auto;
+  min-height: 0;
+  border: 0;
+  border-inline-end: 1px solid rgba(255, 255, 255, 0.22);
+  background: transparent;
+  backdrop-filter: none;
+}
+.content-grid--tracks .content-grid__items--tracks .content-card:last-child {
+  border-inline-end: 0;
+}
+.content-grid--tracks .content-grid__items--tracks .content-card__body {
+  position: relative;
+  min-height: 245px;
+  padding: clamp(26px, 2.6vw, 40px) clamp(18px, 1.7vw, 28px);
+}
+.content-grid--tracks .content-grid__items--tracks .content-card__body::before {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 46px;
+  background: var(--startime-brand);
+  content: "";
+}
+.content-grid--tracks .content-grid__items--tracks .content-card__icon {
+  width: 52px;
+  height: 52px;
+  margin-bottom: clamp(30px, 3.5vw, 48px);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(4, 3, 10, 0.2);
+  backdrop-filter: blur(3px);
+}
+.content-grid--tracks .content-grid__items--tracks .content-card__icon::after {
+  display: none;
+}
+.content-grid--tracks .content-grid__items--tracks .content-card__body h3 {
+  max-width: 300px;
+  font-size: clamp(20px, 1.55vw, 27px);
+}
+.content-grid--tracks .content-grid__items--tracks .content-card:hover {
+  background: linear-gradient(180deg, rgba(112, 83, 148, 0.18), transparent 72%);
+  box-shadow: none;
+}
+
+/* Arabic glyphs need a little more breathing room than Latin capitals.
+   This prevents animated heading wrappers from clipping ascenders/descenders. */
+[dir="rtl"] .site :is(h1, h2, h3, h4) {
+  line-height: 1.38 !important;
+  overflow: visible;
+  padding-block: 0.1em 0.17em;
+}
+[dir="rtl"] .site .hero-section h1 {
+  line-height: 1.32 !important;
+  padding-block: 0.12em 0.2em;
+}
+[dir="rtl"] .site :is(.section-heading h2, .media-feature h2, .image-story h2, .projects-section h2, .cta-section h2) {
+  padding-block: 0.12em 0.2em;
+}
+[dir="rtl"] .kinetic-heading__clip {
+  overflow: visible;
+  padding-block: 0.12em 0.2em;
+  margin-block: -0.12em -0.2em;
+}
+
+@media (max-width: 760px) {
+  .hero-section--solutions .hero-section__details strong { font-size: 30px; }
+  .content-grid--tracks .content-grid__items--tracks {
+    background: rgba(4, 3, 10, 0.44);
+  }
+  .content-grid--tracks .section-heading { text-align: start; }
+  .content-grid--tracks .section-heading h2 { margin-inline: 0; }
+  .content-grid--tracks .content-grid__items--tracks {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    margin-top: 34px;
+    border-block: 1px solid rgba(255, 255, 255, 0.24);
+    background: transparent;
+  }
+  .content-grid--tracks .content-grid__items--tracks .content-card,
+  .content-grid--tracks .content-grid__items--tracks .content-card:nth-child(2n),
+  .content-grid--tracks .content-grid__items--tracks .content-card:nth-child(4),
+  .content-grid--tracks .content-grid__items--tracks .content-card:last-child {
+    grid-column: auto;
+    min-height: 0;
+    border: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+  }
+  .content-grid--tracks .content-grid__items--tracks .content-card:last-child {
+    border-bottom: 0;
+  }
+  .content-grid--tracks .content-grid__items--tracks .content-card__body {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    align-items: center;
+    min-height: 0;
+    gap: 16px;
+    padding: 22px 16px;
+  }
+  .content-grid--tracks .content-grid__items--tracks .content-card__body::before {
+    top: 50%;
+    width: 3px;
+    height: 34px;
+    transform: translateY(-50%);
+  }
+  .content-grid--tracks .content-grid__items--tracks .content-card__icon {
+    width: 48px;
+    height: 48px;
+    margin: 0;
+  }
+  .content-grid--tracks .content-grid__items--tracks .content-card__body h3 {
+    margin: 0;
+  }
+}
+
+/* Strategic Tracks map constellation. The content remains CMS-driven, but
+   each track is now a live map point rather than a bordered card. */
+.content-grid--tracks .content-grid__items--tracks {
+  position: relative;
+  display: block;
+  min-height: clamp(470px, 42vw, 650px);
+  margin-top: clamp(24px, 3vw, 44px);
+  border: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.content-grid--tracks .content-grid__items--tracks::before {
+  display: none;
+}
+
+.content-grid__track {
+  position: absolute;
+  z-index: 2;
+  width: 200px;
+  height: auto !important;
+  min-width: 0;
+  min-height: 0 !important;
+  margin-left: -100px;
+}
+
+.content-grid__track:nth-child(1) { top: 28%; left: 17%; }
+.content-grid__track:nth-child(2) { top: 58%; left: 34%; }
+.content-grid__track:nth-child(3) { top: 34%; left: 50%; }
+.content-grid__track:nth-child(4) { top: 64%; left: 67%; }
+.content-grid__track:nth-child(5) { top: 30%; left: 83%; }
+
+.content-grid__track-marker {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin: 0 auto 15px;
+}
+
+.content-grid__track-marker > span {
+  position: relative;
+  z-index: 2;
+  width: 8px;
+  height: 8px;
+  background: #a98ad1;
+  border-radius: 50% !important;
+  box-shadow:
+    0 0 10px rgba(169, 138, 209, 0.95),
+    0 0 26px rgba(118, 90, 160, 0.72);
+  animation: strategic-track-glimmer 2s ease-in-out infinite;
+}
+
+.content-grid__track-marker::before,
+.content-grid__track-marker::after {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(184, 154, 222, 0.8);
+  border-radius: 50% !important;
+  content: "";
+  transform: translate(-50%, -50%);
+  animation: strategic-track-beacon 2.8s ease-out infinite;
+}
+
+.content-grid__track-marker::after {
+  animation-delay: 1.4s;
+}
+
+.content-grid__track h3 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(17px, 1.35vw, 23px);
+  font-weight: 650;
+  line-height: 1.2;
+  text-align: center;
+  text-shadow: 0 3px 18px rgba(4, 3, 10, 0.98);
+  text-wrap: balance;
+}
+
+.content-grid__track::after {
+  display: block;
+  width: 1px;
+  height: 30px;
+  margin: 12px auto 0;
+  background: linear-gradient(rgba(169, 138, 209, 0.65), transparent);
+  content: "";
+}
+
+@keyframes strategic-track-beacon {
+  0% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(0.45);
+  }
+  78%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.4);
+  }
+}
+
+@keyframes strategic-track-glimmer {
+  0%, 100% { opacity: 0.72; transform: scale(0.86); }
+  50% { opacity: 1; transform: scale(1.22); }
+}
+
+@media (max-width: 760px) {
+  .content-grid--tracks {
+    background-position: 50% center !important;
+  }
+
+  .content-grid--tracks .content-grid__items--tracks {
+    min-height: 570px;
+    margin-top: 16px;
+    border: 0;
+    background: transparent;
+  }
+
+  .content-grid__track {
+    width: 142px;
+    height: auto !important;
+    min-width: 0;
+    margin-left: -71px;
+  }
+
+  .content-grid__track:nth-child(1) { top: 12%; left: 28%; }
+  .content-grid__track:nth-child(2) { top: 30%; left: 70%; }
+  .content-grid__track:nth-child(3) { top: 49%; left: 30%; }
+  .content-grid__track:nth-child(4) { top: 68%; left: 70%; }
+  .content-grid__track:nth-child(5) { top: 87%; left: 34%; }
+
+  .content-grid__track h3 {
+    font-size: 16px;
+  }
+
+  .content-grid__track::after {
+    height: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content-grid__track-marker,
+  .content-grid__track-marker::before,
+  .content-grid__track-marker::after,
+  .content-grid__track-marker > span {
+    animation: none;
+  }
+}
+
+/* Keep the CEO at the artwork's outer focal edge on desktop. The Arabic
+   composition mirrors that same treatment so the portrait moves opposite the
+   reading column without changing the uploaded CMS asset. */
+@media (min-width: 901px) {
+  .cta-section--preserve-panorama .cta-section__media img {
+    object-position: right center;
+  }
+
+  .cta-section--preserve-panorama:hover .cta-section__media img {
+    transform: none !important;
+  }
+
+  [dir="rtl"] .cta-section--preserve-panorama .cta-section__media img,
+  [dir="rtl"] .cta-section--preserve-panorama:hover .cta-section__media img {
+    object-position: right center;
+    transform: scaleX(-1) !important;
+  }
+}
+
+/* The source is an ultra-wide 2560×699 composition. Once the viewport is
+   wider than a standard desktop, let the section follow that source ratio so
+   `object-fit: cover` no longer removes the portrait's top and lower edge. */
+@media (min-width: 1900px) {
+  .cta-section--preserve-panorama {
+    min-height: max(520px, 27.3046875vw);
+  }
+}
+
+/* The original split-section orbit relied on a circular border. The global
+   architectural radius reset turns that orbit into a clipped square on
+   ultra-wide displays, leaving an unintended top/left frame at the far edge.
+   Preserve the ambient depth as a borderless brand glow instead. */
+.media-feature::before {
+  border: 0;
+  box-shadow: none;
+  background: radial-gradient(
+    circle,
+    rgba(91, 66, 128, 0.16) 0%,
+    rgba(91, 66, 128, 0.07) 38%,
+    transparent 72%
+  );
+}
+
+/*
+ * Final text treatment: keep all editorial copy crisp. Contrast is supplied
+ * by the section and media overlays rather than shadows behind the glyphs.
+ */
+.site :is(h1, h2, h3, h4, p, span, small, label, a, li, strong, em),
+.site-footer :is(h1, h2, h3, h4, p, span, small, label, a, li, strong, em),
+.site .eyebrow,
+.site-footer .eyebrow {
+  text-shadow: none !important;
+}
