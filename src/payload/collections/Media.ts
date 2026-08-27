@@ -7,7 +7,7 @@ export const Media: CollectionConfig = {
     group: "Content",
     useAsTitle: "alt",
     description:
-      "Upload source artwork here. Images are automatically optimized to WebP. Use 1920 × 1080 px for full-width hero imagery and 960 × 640 px for cards; preserve the subject within the centre-safe area.",
+      "Upload source artwork and public documents here. Raster images are automatically optimized to WebP; SVG and PDF files retain their original format. Use 1920 × 1080 px for full-width hero imagery and 960 × 640 px for cards; preserve the subject within the centre-safe area.",
   },
   access: {
     create: manageCmsContent,
@@ -58,6 +58,7 @@ export const Media: CollectionConfig = {
       "image/svg+xml",
       "video/mp4",
       "video/webm",
+      "application/pdf",
     ],
     staticDir: "uploads/media",
   },

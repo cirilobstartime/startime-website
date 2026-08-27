@@ -58,6 +58,7 @@ npm run start
 ## Documentation
 
 - [Architecture](docs/ARCHITECTURE.md)
+- [Database setup and recovery](docs/DATABASE.md)
 - [Fresh server provisioning](docs/PROVISIONING.md)
 - [Manual deployment and rollback](docs/DEPLOYMENT.md)
 - [Operations and troubleshooting](docs/OPERATIONS.md)
@@ -71,3 +72,5 @@ npm run start
 - Keep production secrets only in the server environment.
 - Back up the SQLite database, uploads, and environment file before every deployment.
 - Report security issues privately to the Startime technical team rather than opening a public issue.
+
+Raw production databases and uploads are never committed to Git. Use the documented bilingual seed for a clean development environment, or obtain an exact database-and-uploads recovery archive through Startime's approved private encrypted channel. See [Database and recovery](docs/DATABASE.md).

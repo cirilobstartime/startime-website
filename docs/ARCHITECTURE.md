@@ -15,6 +15,8 @@ The public website and Payload CMS are delivered as one Next.js application:
 - Payload uses SQLite in WAL mode.
 - The production database is stateful and must not be replaced during a code deployment.
 - User-uploaded media is stateful and must be backed up separately from Git.
+- Raw production databases and form uploads are not source artifacts and must not be committed to Git.
+- Clean development environments use the source-controlled bilingual seed. Exact production recovery uses a matching database-and-uploads archive held in private encrypted backup storage.
 - Source-controlled media in `public/assets` is part of the application release.
 - Uploaded raster images are processed through Sharp. SVG source files remain SVG.
 

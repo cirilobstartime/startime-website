@@ -8,6 +8,8 @@ This runbook describes the current production layout:
 - Application origin: `127.0.0.1:3000`
 - Public domain: `https://startime.sa`
 
+For a new environment that needs the current CMS content, first follow [Database setup and recovery](DATABASE.md). Routine code deployments must preserve the database and uploads already on the server.
+
 Run commands from an account with `sudo` access. Do not paste secrets into terminal history or commit them to Git.
 
 ## 1. Pre-deployment checks
@@ -143,6 +145,8 @@ sudo systemctl start startime
 ```
 
 Restore database or uploads only when the release changed content or schema and the restore has been approved. Restoring an old database removes content added after that backup.
+
+For an exact recovery, follow [Database and recovery](DATABASE.md). Never replace production state without approval, a fresh backup, checksum verification, and a maintenance window.
 
 ## SSL renewal
 

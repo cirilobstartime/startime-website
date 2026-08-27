@@ -8,11 +8,14 @@ import { livePageTypes } from "../src/content/liveSiteDefaults";
 import type { Locale, PageSection } from "../src/content/types";
 
 const projectRoot = process.cwd();
-// Arabic is generated and reviewed independently through `npm run translate:ar`.
-// Keep it untouched during routine English reseeds unless placeholders are
-// explicitly requested for a fresh database.
+// Routine reseeds remain English-only so they cannot overwrite reviewed live
+// Arabic content. New disposable environments can explicitly install the
+// source-controlled English and Arabic defaults with `npm run seed:bilingual`.
 const locales: Locale[] =
-  process.env.SEED_ARABIC_PLACEHOLDERS === "true" ? ["en", "ar"] : ["en"];
+  process.env.SEED_BILINGUAL === "true" ||
+  process.env.SEED_ARABIC_PLACEHOLDERS === "true"
+    ? ["en", "ar"]
+    : ["en"];
 const pageTypes = [...livePageTypes];
 const internalPageTitles: Record<string, string> = {
   home: "Homepage",
@@ -25,23 +28,41 @@ const internalPageTitles: Record<string, string> = {
 };
 
 const insightCategories = [
-  { internalTitle: "B2B Hosting", slug: "b2b-hosting", title: "B2B Hosting" },
-  { internalTitle: "Partnership", slug: "partnership", title: "Partnership" },
-  { internalTitle: "Governance", slug: "governance", title: "Governance" },
+  {
+    internalTitle: "B2B Hosting",
+    slug: "b2b-hosting",
+    title: "B2B Hosting",
+    titleAr: "استضافة الأعمال",
+  },
+  {
+    internalTitle: "Partnership",
+    slug: "partnership",
+    title: "Partnership",
+    titleAr: "الشراكات",
+  },
+  {
+    internalTitle: "Governance",
+    slug: "governance",
+    title: "Governance",
+    titleAr: "الحوكمة",
+  },
   {
     internalTitle: "Global Events",
     slug: "global-events",
     title: "Global Events",
+    titleAr: "الفعاليات العالمية",
   },
   {
     internalTitle: "Sovereign Events",
     slug: "sovereign-events",
     title: "Sovereign Events",
+    titleAr: "الفعاليات السيادية",
   },
   {
     internalTitle: "National Ceremony",
     slug: "national-ceremony",
     title: "National Ceremony",
+    titleAr: "المناسبات الوطنية",
   },
 ];
 
@@ -970,7 +991,7 @@ for (const [index, category] of insightCategories.entries()) {
       displayOrder: (index + 1) * 10,
       internalTitle: category.internalTitle,
       slug: category.slug,
-      title: category.title,
+      title: locale === "ar" ? category.titleAr : category.title,
       visible: true,
     };
     if (!categoryID) {

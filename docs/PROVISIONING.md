@@ -104,7 +104,16 @@ Required production values include:
 
 The attribution secret must match only across approved Startime domains that participate in cross-domain attribution. Restrict `.env` to the service account.
 
-## 6. Build the first release
+## 6. Restore content for a reproducible environment
+
+Choose one supported path:
+
+1. For a clean development environment, complete the first build and run `npm run seed:bilingual`. This installs the approved source-controlled English and Arabic baseline without production users, sessions, submissions, or private uploads.
+2. For an exact production environment, obtain the latest verified database-and-uploads recovery archive through Startime's approved private encrypted channel and follow [Database and recovery](DATABASE.md).
+
+Never commit a raw production database or uploads archive to Git. Only authorized administrators should handle an exact recovery archive.
+
+## 7. Build the first release
 
 ```bash
 npm run lint
@@ -113,9 +122,9 @@ npm run build
 mkdir -p uploads/media uploads/form-uploads
 ```
 
-Do not run `npm run seed` against an existing production database. For a new empty installation, seeding must be explicitly approved because it creates initial CMS content.
+Do not run `npm run seed` or `npm run seed:bilingual` against an existing production database. Seeding is only for a new, empty development installation. Exact production restoration uses the recovery procedure instead.
 
-## 7. Install the systemd service
+## 8. Install the systemd service
 
 Create `/etc/systemd/system/startime.service`:
 
@@ -151,7 +160,7 @@ sudo systemctl status startime --no-pager
 curl -I http://127.0.0.1:3000/
 ```
 
-## 8. Configure Nginx
+## 9. Configure Nginx
 
 Create `/etc/nginx/sites-available/startime.sa`:
 
@@ -187,7 +196,7 @@ sudo systemctl reload nginx
 
 Remove the default Nginx site only after the Startime configuration passes validation.
 
-## 9. Issue SSL certificates
+## 10. Issue SSL certificates
 
 ```bash
 sudo certbot --nginx -d startime.sa -d www.startime.sa
@@ -202,7 +211,7 @@ curl -sS -o /dev/null -w '%{http_code} HTTP/%{http_version}\n' https://startime.
 
 The expected result is `200 HTTP/2`.
 
-## 10. Create the first CMS administrator
+## 11. Create the first CMS administrator
 
 Run the administrator creation command interactively and use credentials supplied through the approved secure channel:
 
@@ -212,7 +221,7 @@ npm run create-admin
 
 Never place administrator credentials in source files, shell scripts, documentation, tickets, or Git commits.
 
-## 11. Final verification
+## 12. Final verification
 
 - English and Arabic pages return HTTP 200.
 - `/content-admin` loads and authenticates.

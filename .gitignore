@@ -7,6 +7,12 @@ dist
 *.db
 *.db-shm
 *.db-wal
+database/*.db
+database/*.db-shm
+database/*.db-wal
+database/*.tar
+database/*.tar.gz
+database/*.zip
 uploads/media/*
 !uploads/media/.gitkeep
 src/generated/payload-types.ts
