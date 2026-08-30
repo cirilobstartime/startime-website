@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { CardGridSection, Locale } from "@/content/types";
 import { CmsImage } from "./CmsImage";
+import { useMobileCarouselAutoplay } from "./useMobileCarouselAutoplay";
 
 type EditorialSwiperProps = {
   cards: CardGridSection["cards"];
@@ -15,6 +16,13 @@ export function EditorialSwiper({ cards, locale }: EditorialSwiperProps) {
   const railRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const visibleCards = cards.filter((card) => card.visible !== false);
+
+  useMobileCarouselAutoplay({
+    interval: 5600,
+    locale,
+    railRef,
+    slideSelector: ".editorial-slide",
+  });
 
   const updateActive = useCallback(() => {
     const rail = railRef.current;

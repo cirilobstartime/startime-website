@@ -6,6 +6,7 @@ import { useCallback, useRef, useState } from "react";
 import type { Locale, NewsMosaicSection } from "@/content/types";
 import { CmsImage } from "./CmsImage";
 import { TiltCard } from "./TiltCard";
+import { useMobileCarouselAutoplay } from "./useMobileCarouselAutoplay";
 
 type Props = {
   articles: NewsMosaicSection["articles"];
@@ -55,6 +56,13 @@ export function InsightsCollection({
 }: Props) {
   const railRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(Math.max(3, Number(pageSize) || 9));
+
+  useMobileCarouselAutoplay({
+    interval: 4200,
+    locale,
+    railRef,
+    slideSelector: ".insight-card",
+  });
 
   const move = useCallback(
     (direction: -1 | 1) => {

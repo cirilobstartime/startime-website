@@ -92,6 +92,7 @@ export function OrganizationSchema({
         __html: JSON.stringify(schema).replaceAll("<", "\\u003c"),
       }}
       nonce={nonce}
+      suppressHydrationWarning
       type="application/ld+json"
     />
   );

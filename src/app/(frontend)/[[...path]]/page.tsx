@@ -316,6 +316,7 @@ export default async function PublicPage({ params }: PageProps) {
               ).replaceAll("<", "\\u003c"),
             }}
             nonce={nonce}
+            suppressHydrationWarning
             type="application/ld+json"
           />
         ) : null}

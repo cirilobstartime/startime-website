@@ -170,6 +170,22 @@ export type CredibilitySection = BaseSection & {
   media?: MediaValue;
 };
 
+export type LogoMarqueeSection = BaseSection & {
+  blockType: "logoMarquee";
+  body?: string | null;
+  eyebrow?: string | null;
+  eyebrowSize?: "small" | "default" | "large" | null;
+  heading: string;
+  logos: Array<{
+    alt: string;
+    href?: string | null;
+    id?: string | null;
+    logo: MediaValue;
+    visible?: boolean | null;
+  }>;
+  speed?: "slow" | "standard" | null;
+};
+
 export type Project = {
   featured?: boolean | null;
   href?: string | null;
@@ -249,6 +265,7 @@ export type PageSection =
   | FormSection
   | HeroSection
   | ImageStorySection
+  | LogoMarqueeSection
   | MapSection
   | MediaFeatureSection
   | NewsMosaicSection

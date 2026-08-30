@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Locale, SiteChrome } from "@/content/types";
 import { CmsImage } from "./CmsImage";
+import { ThemeToggle } from "./ThemeToggle";
 
 type SiteHeaderProps = {
   chrome: SiteChrome;
@@ -48,7 +49,7 @@ export function SiteHeader({ chrome, locale, routePath }: SiteHeaderProps) {
 
   return (
     <header
-      className={`site-header ${scrolled ? "site-header--scrolled" : ""}`}
+      className={`site-header ${scrolled ? "site-header--scrolled" : ""}${menuOpen ? " site-header--menu-open" : ""}`}
     >
       <Link
         aria-label={
@@ -57,12 +58,22 @@ export function SiteHeader({ chrome, locale, routePath }: SiteHeaderProps) {
         className="site-header__logo"
         href={homeHref}
       >
-        <CmsImage
-          alt="Startime"
-          media={chrome.headerLogo || "/assets/brand/startime-white.svg"}
-          priority
-          sizes="180px"
-        />
+        <span className="site-header__logo-image site-header__logo-image--light">
+          <CmsImage
+            alt="Startime"
+            media={chrome.headerLogo || "/assets/brand/startime-white.svg"}
+            priority
+            sizes="180px"
+          />
+        </span>
+        <span className="site-header__logo-image site-header__logo-image--dark">
+          <CmsImage
+            alt=""
+            media={chrome.headerLogoDark || "/assets/brand/startime-dark.svg"}
+            priority
+            sizes="180px"
+          />
+        </span>
       </Link>
 
       <nav
@@ -77,6 +88,7 @@ export function SiteHeader({ chrome, locale, routePath }: SiteHeaderProps) {
       </nav>
 
       <div className="site-header__actions">
+        <ThemeToggle locale={locale} />
         <a
           aria-label={
             locale === "en" ? "Switch to Arabic" : "Switch to English"

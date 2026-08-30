@@ -6,6 +6,7 @@ import { useRef } from "react";
 import type { Locale, Project } from "@/content/types";
 import { CmsImage } from "./CmsImage";
 import { TiltCard } from "./TiltCard";
+import { useMobileCarouselAutoplay } from "./useMobileCarouselAutoplay";
 
 type ProjectRailProps = {
   locale: Locale;
@@ -20,6 +21,13 @@ export function ProjectRail({
 }: ProjectRailProps) {
   const railRef = useRef<HTMLDivElement>(null);
   const isArabic = locale === "ar";
+
+  useMobileCarouselAutoplay({
+    interval: 4000,
+    locale,
+    railRef,
+    slideSelector: ".project-card",
+  });
 
   function scroll(direction: -1 | 1) {
     const rail = railRef.current;

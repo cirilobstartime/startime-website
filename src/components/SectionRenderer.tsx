@@ -34,6 +34,7 @@ import type {
   HeroSection,
   ImageStorySection,
   Locale,
+  LogoMarqueeSection,
   MapSection,
   MediaFeatureSection,
   NewsMosaicSection,
@@ -639,6 +640,66 @@ function Credibility({ section }: { section: CredibilitySection }) {
   );
 }
 
+function LogoMarquee({ section }: { section: LogoMarqueeSection }) {
+  const logos = section.logos.filter(
+    (item) => item.visible !== false && Boolean(item.logo),
+  );
+  if (!logos.length) return null;
+
+  const renderLogo = (
+    item: LogoMarqueeSection["logos"][number],
+    index: number,
+    duplicate = false,
+  ) => {
+    const logo = (
+      <span className="partner-marquee__logo">
+        <CmsImage alt={duplicate ? "" : item.alt} media={item.logo} sizes="180px" />
+      </span>
+    );
+
+    return (
+      <li key={`${duplicate ? "duplicate" : "primary"}-${item.id || item.alt}-${index}`}>
+        {item.href ? (
+          <a
+            aria-hidden={duplicate || undefined}
+            href={item.href}
+            rel="noreferrer"
+            tabIndex={duplicate ? -1 : undefined}
+            target="_blank"
+          >
+            {logo}
+          </a>
+        ) : (
+          logo
+        )}
+      </li>
+    );
+  };
+
+  return (
+    <SectionBackground className="partner-marquee" section={section}>
+      <div className="shell">
+        <Reveal className="partner-marquee__heading">
+          <h2>{section.heading}</h2>
+          {section.body ? <p>{section.body}</p> : null}
+        </Reveal>
+      </div>
+      <Reveal className="partner-marquee__viewport" delay={0.08}>
+        <div
+          className={`partner-marquee__track partner-marquee__track--${section.speed || "standard"}`}
+        >
+          <ul className="partner-marquee__set">
+            {logos.map((item, index) => renderLogo(item, index))}
+          </ul>
+          <ul aria-hidden="true" className="partner-marquee__set">
+            {logos.map((item, index) => renderLogo(item, index, true))}
+          </ul>
+        </div>
+      </Reveal>
+    </SectionBackground>
+  );
+}
+
 function ProjectShowcase({
   locale,
   section,
@@ -821,6 +882,8 @@ export function SectionRenderer({
       return <Hero locale={locale} pagePath={pagePath} section={section} />;
     case "credibility":
       return <Credibility section={section} />;
+    case "logoMarquee":
+      return <LogoMarquee section={section} />;
     case "cardGrid":
       return <CardGrid locale={locale} section={section} />;
     case "projectShowcase":

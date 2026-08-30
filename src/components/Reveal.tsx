@@ -27,7 +27,6 @@ export function Reveal({
           : {
               opacity: 0,
               y: distance,
-              filter: "blur(12px)",
             }
       }
       transition={{
@@ -43,7 +42,6 @@ export function Reveal({
           : {
               opacity: 1,
               y: 0,
-              filter: "blur(0px)",
             }
       }
     >
@@ -58,10 +56,10 @@ export function HeroMotion({ children }: { children: ReactNode }) {
   return (
     <motion.div
       initial={
-        reduceMotion ? false : { opacity: 0, y: 30, filter: "blur(10px)" }
+        reduceMotion ? false : { opacity: 0, y: 30 }
       }
       animate={
-        reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }
+        reduceMotion ? undefined : { opacity: 1, y: 0 }
       }
       transition={{ duration: 1.05, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
     >

@@ -10,6 +10,9 @@ import { OrganizationSchema } from "@/components/OrganizationSchema";
 import { getMarketingSettings, getSiteChrome } from "@/content/payload";
 import "./globals.css";
 import "./luxury.css";
+import "./themes.css";
+
+const themeBootScript = `(()=>{try{const k="startime-theme",s=localStorage.getItem(k),m=s==="light"||s==="dark"?s:"system",p=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.documentElement.dataset.theme=m==="system"?p:m;document.documentElement.dataset.themeMode=m}catch{document.documentElement.dataset.theme="dark";document.documentElement.dataset.themeMode="system"}})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -41,7 +44,18 @@ export default async function FrontendLayout({
     getSiteChrome(locale),
   ]);
   return (
-    <html dir={locale === "ar" ? "rtl" : "ltr"} lang={locale}>
+    <html
+      dir={locale === "ar" ? "rtl" : "ltr"}
+      lang={locale}
+      suppressHydrationWarning
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{ __html: themeBootScript }}
+          nonce={nonce}
+          suppressHydrationWarning
+        />
+      </head>
       <body>
         <AmbientSpotlight />
         <FuturisticMotion />

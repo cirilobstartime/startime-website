@@ -153,15 +153,16 @@ export function FuturisticMotion() {
         ".form-section",
         ".location-map",
         ".credibility",
+        ".partner-marquee",
       ].join(", ");
 
       gsap.utils.toArray<HTMLElement>(sceneSelectors).forEach((scene) => {
         const heading = scene.querySelector<HTMLElement>(
-          ".section-heading h2, .projects-section__intro h2, .media-feature__content h2, .image-story__content h2, .news-section__intro h2, .cta-section__content h2, .form-section__intro h2, .location-map__heading h2",
+          ".section-heading h2, .projects-section__intro h2, .media-feature__content h2, .image-story__content h2, .news-section__intro h2, .cta-section__content h2, .form-section__intro h2, .location-map__heading h2, .partner-marquee__heading h2",
         );
         const eyebrow = scene.querySelector<HTMLElement>(".eyebrow");
         const body = scene.querySelector<HTMLElement>(
-          ".section-heading > p, .projects-section__copy p, .media-feature__content > p:not(.eyebrow), .image-story__content > p:not(.eyebrow), .cta-section__content > p:not(.eyebrow), .form-section__intro > p:not(.eyebrow), .location-map__heading p",
+          ".section-heading > p, .projects-section__copy p, .media-feature__content > p:not(.eyebrow), .image-story__content > p:not(.eyebrow), .cta-section__content > p:not(.eyebrow), .form-section__intro > p:not(.eyebrow), .location-map__heading p, .partner-marquee__heading > p:not(.eyebrow)",
         );
         const links = scene.querySelectorAll<HTMLElement>(
           ".text-link, .section-buttons .button, .hero-section__buttons .button",
@@ -482,6 +483,12 @@ export function FuturisticMotion() {
       // settles. Refreshing here makes every page (and /ar equivalent) get
       // correct trigger positions, not only the first page loaded.
       ScrollTrigger.refresh();
+
+      const refresh = () => ScrollTrigger.refresh();
+      window.addEventListener("load", refresh, { once: true });
+      document.fonts?.ready.then(refresh).catch(() => undefined);
+
+      return () => window.removeEventListener("load", refresh);
     });
 
     return () => {

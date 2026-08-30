@@ -31,7 +31,8 @@
     "sync:solutions-counters-and-portfolio-tracks": "tsx scripts/sync-solutions-counters-and-portfolio-tracks.ts",
     "sync:triple-s-policy": "tsx scripts/sync-triple-s-policy.ts",
     "sync:home-seo": "tsx scripts/update-home-seo.ts",
-    "sync:insights": "tsx scripts/sync-insights.ts"
+    "sync:insights": "tsx scripts/sync-insights.ts",
+    "sync:home-partners": "tsx scripts/sync-home-partners.ts"
   },
   "dependencies": {
     "@payloadcms/db-sqlite": "3.86.0",

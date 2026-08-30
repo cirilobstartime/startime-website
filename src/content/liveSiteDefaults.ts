@@ -232,6 +232,24 @@ function projectSection(
   };
 }
 
+const partnerLogos = [
+  ["Ministry of Defense", "وزارة الدفاع", "/assets/partners/partner-01.png"],
+  ["Royal Saudi Naval Forces", "القوات البحرية الملكية السعودية", "/assets/partners/partner-02.png"],
+  ["Startime", "ستارتايم", "/assets/partners/partner-03.png"],
+  ["Impact Event Production", "إمباكت لإنتاج الفعاليات", "/assets/partners/partner-04.png"],
+  ["General Authority for Military Industries", "الهيئة العامة للصناعات العسكرية", "/assets/partners/partner-05.png"],
+  ["Ocean Science & Technology", "علوم وتقنيات المحيطات", "/assets/partners/partner-06.png"],
+  ["Defense Advancement", "ديفنس أدفانسمنت", "/assets/partners/partner-07.png"],
+  ["Unmanned Systems Technology", "تقنيات الأنظمة غير المأهولة", "/assets/partners/partner-08.png"],
+  ["United Advisory Chambers", "الغرف الاستشارية المتحدة", "/assets/partners/partner-09.png"],
+  ["Navantia", "نافانتيا", "/assets/partners/partner-10.png"],
+  ["Fincantieri Arabia", "فينكانتيري العربية", "/assets/partners/partner-11.png"],
+  ["Bridge Exhibitions", "بريدج للمعارض", "/assets/partners/partner-12.png"],
+  ["Leonardo", "ليوناردو", "/assets/partners/partner-13.png"],
+  ["SAMI Navantia Naval Industries", "سامي نافانتيا للصناعات البحرية", "/assets/partners/partner-14.png"],
+  ["Zamil and maritime industry partners", "الزامل وشركاء الصناعات البحرية", "/assets/partners/partner-15.png"],
+] as const;
+
 function page(
   locale: Locale,
   pageType: LivePageType,
@@ -327,6 +345,27 @@ function home(locale: Locale): PublicPage {
           { logo: media.ufi },
           { logo: "/assets/brand/ufi-iaee.svg" },
         ],
+      },
+      {
+        blockType: "logoMarquee",
+        displayOrder: 25,
+        visible: true,
+        internalLabel: "Homepage partners marquee",
+        heading: ar ? "شركاؤنا في صناعة الأثر" : "Our partners in creating impact",
+        body: ar
+          ? "تتسع شبكة شراكاتنا مع جهات وطنية ودولية تجمعنا بها رؤية مشتركة لصناعة قيمة مستدامة."
+          : "Our network brings together national and international organizations with a shared commitment to lasting value.",
+        speed: "slow",
+        logos: partnerLogos.map(([altEn, altAr, logo]) => ({
+          alt: ar ? altAr : altEn,
+          logo,
+          visible: true,
+        })),
+        appearance: {
+          theme: "dark",
+          spacing: "standard",
+          backgroundColor: "#0d0924",
+        },
       },
       projectSection(locale, 30, true),
       {
