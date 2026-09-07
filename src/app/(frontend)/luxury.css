@@ -16,9 +16,6 @@
 /* Filled icon tiles use white glyphs for maximum contrast. */
 .site :is(.content-card__icon, .hero-section__detail-icon, .timeline__number) :is(svg, path) { color:#ffffff !important; fill:currentColor; filter:none !important; }
 
-.site::after { position:fixed; z-index:2; inset:0; pointer-events:none; content:""; mix-blend-mode:screen; background:radial-gradient(620px circle at var(--mouse-x) var(--mouse-y),rgba(147,51,234,.16),transparent 68%),radial-gradient(420px circle at calc(var(--mouse-x) - 10vw) calc(var(--mouse-y) + 15vh),rgba(192,132,252,.1),transparent 72%); }
-.site > *, .site-footer > * { position:relative; z-index:3; }
-
 .site-header { position:fixed !important; z-index:1000 !important; display:grid !important; visibility:visible !important; opacity:1 !important; background:transparent !important; border-bottom-color:transparent !important; backdrop-filter:none !important; }
 .site-header--scrolled { position:fixed !important; background:rgba(4,3,10,.9) !important; border-bottom-color:rgba(168,143,255,.22) !important; backdrop-filter:blur(18px) !important; }
 .site-header__nav { background:transparent !important; backdrop-filter:none !important; border-color:transparent !important; }

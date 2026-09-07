@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { AttributionCapture } from "@/components/AttributionCapture";
-import { AmbientSpotlight } from "@/components/AmbientSpotlight";
 import { CookieConsent } from "@/components/CookieConsent";
 import { EventTracking } from "@/components/EventTracking";
 import { FuturisticMotion } from "@/components/FuturisticMotion";
@@ -57,7 +56,6 @@ export default async function FrontendLayout({
         />
       </head>
       <body>
-        <AmbientSpotlight />
         <FuturisticMotion />
         <AttributionCapture settings={marketing} />
         <EventTracking />
