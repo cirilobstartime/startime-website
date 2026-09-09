@@ -87,6 +87,7 @@ Install exactly the versions in `package-lock.json`:
 
 ```bash
 npm ci
+npm run payload:generate:types
 npm run lint
 npm run typecheck
 npm run db:migrate:status
