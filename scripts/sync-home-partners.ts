@@ -15,7 +15,10 @@ const partners = [
   ["Royal Saudi Naval Forces", "القوات البحرية الملكية السعودية"],
   ["Startime", "ستارتايم"],
   ["Impact Event Production", "إمباكت لإنتاج الفعاليات"],
-  ["General Authority for Military Industries", "الهيئة العامة للصناعات العسكرية"],
+  [
+    "General Authority for Military Industries",
+    "الهيئة العامة للصناعات العسكرية",
+  ],
   ["Ocean Science & Technology", "علوم وتقنيات المحيطات"],
   ["Defense Advancement", "تطوير القدرات الدفاعية"],
   ["Unmanned Systems Technology", "تقنيات الأنظمة غير المأهولة"],
@@ -70,7 +73,7 @@ function partnerSection(locale: Locale): LogoMarqueeSection {
     internalLabel: isArabic
       ? "شريط شركاء الصفحة الرئيسية"
       : "Homepage partners marquee",
-    displayOrder: 25,
+    displayOrder: 80,
     visible: true,
     heading: isArabic
       ? "شركاؤنا في صناعة الأثر"
@@ -111,21 +114,21 @@ for (const locale of ["en", "ar"] satisfies Locale[]) {
   const existingIndex = original.findIndex(
     (section) => section.blockType === "logoMarquee",
   );
-  const sections = [...original];
+  const existing =
+    existingIndex >= 0 ? (original[existingIndex] as LogoMarqueeSection) : null;
+  const sections = original.filter(
+    (section) => section.blockType !== "logoMarquee",
+  ) as PageSection[];
 
-  if (existingIndex >= 0) {
-    const existing = sections[existingIndex] as LogoMarqueeSection;
-    sections[existingIndex] = {
-      ...incoming,
-      id: existing.id,
-      internalLabel: existing.internalLabel || incoming.internalLabel,
-    };
-  } else {
-    const projectIndex = sections.findIndex(
-      (section) => section.blockType === "projectShowcase",
-    );
-    sections.splice(projectIndex >= 0 ? projectIndex : sections.length, 0, incoming);
-  }
+  sections.push(
+    existing
+      ? {
+          ...incoming,
+          id: existing.id,
+          internalLabel: existing.internalLabel || incoming.internalLabel,
+        }
+      : incoming,
+  );
 
   await payload.update({
     collection: "pages",

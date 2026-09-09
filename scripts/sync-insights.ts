@@ -46,8 +46,20 @@ function richText(body: string) {
 }
 
 const categoryDefinitions = [
-  { internalTitle: "Startime News", title: "Startime News", arabicTitle: "أحدث أخبار ستارتايم", slug: "news", displayOrder: 10 },
-  { internalTitle: "Industry Insights", title: "Industry Insights", arabicTitle: "المقالات والرؤى", slug: "articles", displayOrder: 20 },
+  {
+    internalTitle: "Startime News",
+    title: "Startime News",
+    arabicTitle: "أحدث أخبار ستارتايم",
+    slug: "news",
+    displayOrder: 10,
+  },
+  {
+    internalTitle: "Industry Insights",
+    title: "Industry Insights",
+    arabicTitle: "المقالات والرؤى",
+    slug: "articles",
+    displayOrder: 20,
+  },
 ] as const;
 
 const categories = await payload.find({
@@ -61,18 +73,40 @@ const categories = await payload.find({
 });
 const categoryIDs = new Map<string, number | string>();
 for (const definition of categoryDefinitions) {
-  const existing = categories.docs.find((category) => category.internalTitle === definition.internalTitle);
-  const category = existing || await payload.create({
-    collection: "insight-categories",
-    data: { _status: "published", internalTitle: definition.internalTitle, title: definition.title, slug: definition.slug, visible: true, displayOrder: definition.displayOrder } as never,
-    draft: false, locale: "en", overrideAccess: true,
-  });
+  const existing = categories.docs.find(
+    (category) => category.internalTitle === definition.internalTitle,
+  );
+  const category =
+    existing ||
+    (await payload.create({
+      collection: "insight-categories",
+      data: {
+        _status: "published",
+        internalTitle: definition.internalTitle,
+        title: definition.title,
+        slug: definition.slug,
+        visible: true,
+        displayOrder: definition.displayOrder,
+      } as never,
+      draft: false,
+      locale: "en",
+      overrideAccess: true,
+    }));
   categoryIDs.set(definition.internalTitle, category.id);
   await payload.update({
     collection: "insight-categories",
     id: category.id,
-    data: { _status: "published", internalTitle: definition.internalTitle, title: definition.title, slug: definition.slug, visible: true, displayOrder: definition.displayOrder } as never,
-    draft: false, locale: "en", overrideAccess: true,
+    data: {
+      _status: "published",
+      internalTitle: definition.internalTitle,
+      title: definition.title,
+      slug: definition.slug,
+      visible: true,
+      displayOrder: definition.displayOrder,
+    } as never,
+    draft: false,
+    locale: "en",
+    overrideAccess: true,
   });
   await payload.update({
     collection: "insight-categories",
@@ -103,10 +137,15 @@ const posts = await payload.find({
 for (const post of posts.docs) {
   const approved = approvedInsightContent[post.internalTitle];
   if (!approved) continue;
-  const categoryInternalTitle = post.internalTitle === "Corporate Governance Transformation" ? "Industry Insights" : "Startime News";
+  const categoryInternalTitle =
+    post.internalTitle === "Corporate Governance Transformation"
+      ? "Industry Insights"
+      : "Startime News";
   const categoryID = categoryIDs.get(categoryInternalTitle);
-  const categorySlug = categoryInternalTitle === "Industry Insights" ? "articles" : "news";
-  if (!categoryID) throw new Error(`Missing insight category: ${categoryInternalTitle}`);
+  const categorySlug =
+    categoryInternalTitle === "Industry Insights" ? "articles" : "news";
+  if (!categoryID)
+    throw new Error(`Missing insight category: ${categoryInternalTitle}`);
   await payload.update({
     collection: "insights-posts",
     id: post.id,
@@ -143,7 +182,9 @@ for (const post of posts.docs) {
   });
   const approvedArabic = approvedArabicInsightContent[post.internalTitle];
   if (!approvedArabic) {
-    throw new Error(`Approved Arabic insight is missing: ${post.internalTitle}`);
+    throw new Error(
+      `Approved Arabic insight is missing: ${post.internalTitle}`,
+    );
   }
   const arTitle = approvedArabic.title;
   const arSummary = approvedArabic.summary;
@@ -182,7 +223,6 @@ for (const post of posts.docs) {
     overrideAccess: true,
   });
 }
-
 
 async function pageFor(locale: Locale, pageType: string) {
   const result = await payload.find({
@@ -225,7 +265,8 @@ for (const locale of ["en", "ar"] satisfies Locale[]) {
   if (!fallbackPost) {
     throw new Error("A published insight with a featured image is required.");
   }
-  const fallbackMedia = fallbackPost.featuredImage as NewsMosaicSection["articles"][number]["media"];
+  const fallbackMedia =
+    fallbackPost.featuredImage as NewsMosaicSection["articles"][number]["media"];
   const fallbackArticle = {
     href: locale === "ar" ? "/ar/insights" : "/insights",
     media: fallbackMedia,
@@ -329,7 +370,7 @@ for (const locale of ["en", "ar"] satisfies Locale[]) {
   if (!home) throw new Error(`Home page is missing for ${locale}.`);
   const homeSections = ((home.sections || []) as PageSection[]).filter(
     (section) => section.blockType !== "newsMosaic",
-  );
+  ) as PageSection[];
   const homeNews: NewsMosaicSection = {
     ...newsSection,
     displayOrder: 70,
@@ -346,12 +387,21 @@ for (const locale of ["en", "ar"] satisfies Locale[]) {
       theme: "light",
     },
   };
+  const partnerIndex = homeSections.findIndex(
+    (section) => section.blockType === "logoMarquee",
+  );
+  const sectionsWithNews = [...homeSections];
+  sectionsWithNews.splice(
+    partnerIndex >= 0 ? partnerIndex : sectionsWithNews.length,
+    0,
+    homeNews,
+  );
   await payload.update({
     collection: "pages",
     id: home.id,
     data: {
       _status: "published",
-      sections: [...homeSections, homeNews],
+      sections: sectionsWithNews,
     } as never,
     draft: false,
     locale,

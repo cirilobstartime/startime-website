@@ -32,7 +32,8 @@
     "sync:triple-s-policy": "tsx scripts/sync-triple-s-policy.ts",
     "sync:home-seo": "tsx scripts/update-home-seo.ts",
     "sync:insights": "tsx scripts/sync-insights.ts",
-    "sync:home-partners": "tsx scripts/sync-home-partners.ts"
+    "sync:home-partners": "tsx scripts/sync-home-partners.ts",
+    "sync:home-client-edits": "tsx scripts/sync-home-client-edits.ts"
   },
   "dependencies": {
     "@payloadcms/db-sqlite": "3.86.0",

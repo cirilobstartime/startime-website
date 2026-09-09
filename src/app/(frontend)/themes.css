@@ -69,7 +69,7 @@ html[data-theme="light"] {
   overflow: hidden;
   padding-block: clamp(72px, 7vw, 108px) !important;
   background:
-    radial-gradient(circle at 18% 0%, rgba(112, 83, 148, 0.34), transparent 34%),
+    radial-gradient(circle at 18% 0%, rgba(90, 65, 127, 0.34), transparent 34%),
     linear-gradient(135deg, #0d0924 0%, #04030a 74%) !important;
   color: #fff;
   isolation: isolate;
@@ -229,13 +229,13 @@ html[data-theme="light"] .site::after {
 html[data-theme="light"] .site main > :is(section, div):not(.hero-section):not(.image-story):not(.cta-section):not(.partner-marquee):not(.credibility):not(.insight-article__hero):not(.insights-archive-hero):not(.section-surface--dark):not(.section-surface--brand):not(.media-feature--dark):not(.content-grid--tracks) {
   background: var(--theme-paper) !important;
   background-image:
-    radial-gradient(circle at 84% 4%, rgba(112, 83, 148, 0.1), transparent 32%) !important;
+    radial-gradient(circle at 84% 4%, rgba(90, 65, 127, 0.1), transparent 32%) !important;
 }
 
 html[data-theme="light"] .site main > :is(section, div):nth-child(even):not(.hero-section):not(.image-story):not(.cta-section):not(.partner-marquee):not(.credibility):not(.insight-article__hero):not(.insights-archive-hero):not(.section-surface--dark):not(.section-surface--brand):not(.media-feature--dark):not(.content-grid--tracks) {
   background: var(--theme-paper-alt) !important;
   background-image:
-    radial-gradient(circle at 16% 0%, rgba(112, 83, 148, 0.1), transparent 34%) !important;
+    radial-gradient(circle at 16% 0%, rgba(90, 65, 127, 0.1), transparent 34%) !important;
 }
 
 html[data-theme="light"] .site :is(h1, h2, h3, h4, p, span, small, label, a, li, strong, em) {
@@ -267,7 +267,7 @@ html[data-theme="light"] .site :is(.button, .header-cta) svg {
 }
 
 html[data-theme="light"] .site :is(.hero-section, .image-story, .cta-section, .partner-marquee, .section-surface--dark, .section-surface--brand, .media-feature--dark, .insights-archive-hero, .insight-article__hero) .eyebrow {
-  color: #bda8db !important;
+  color: var(--startime-brand-light) !important;
 }
 
 html[data-theme="light"] .site :is(.section-surface--light, .projects-section, .timeline-section, .media-feature--light, .news-section, .form-section, .location-map, .policy-content) :is(.tilt-card, .content-card, .project-card, .insight-card, .timeline__step, .form-section__panel, .lead-form, .location-map__frame, .insight-article__footer-card) {
@@ -283,7 +283,7 @@ html[data-theme="light"] .site .insights-archive :is(.tilt-card, .insight-card) 
 }
 
 html[data-theme="light"] .site .insights-archive :is(.tilt-card, .insight-card):hover {
-  border-color: rgba(112, 83, 148, 0.48) !important;
+  border-color: rgba(90, 65, 127, 0.48) !important;
   box-shadow: 0 22px 54px rgba(67, 43, 92, 0.14) !important;
 }
 
@@ -292,7 +292,7 @@ html[data-theme="light"] .site .insights-archive :is(.tilt-card, .insight-card):
 html[data-theme="light"] .site .insight-article__body-wrap {
   background: var(--theme-paper) !important;
   background-image:
-    radial-gradient(circle at 86% 0%, rgba(112, 83, 148, 0.1), transparent 34%) !important;
+    radial-gradient(circle at 86% 0%, rgba(90, 65, 127, 0.1), transparent 34%) !important;
   color: var(--theme-ink) !important;
 }
 
@@ -314,19 +314,19 @@ html[data-theme="light"] .site .insight-article__footer-card {
    visual moment in light mode. This preserves contrast and CMS intent. */
 html[data-theme="light"] .site main > section:is(.section-surface--dark, .section-surface--brand).section-surface {
   background-color: var(--section-bg, #0d0924) !important;
-  background-image: radial-gradient(circle at 78% 0%, rgba(112, 83, 148, 0.28), transparent 42%) !important;
+  background-image: radial-gradient(circle at 78% 0%, rgba(90, 65, 127, 0.28), transparent 42%) !important;
 }
 
 html[data-theme="light"] .site main > section.media-feature.media-feature--dark {
   background-color: var(--media-feature-bg, #30263d) !important;
-  background-image: radial-gradient(circle at 76% 4%, rgba(112, 83, 148, 0.28), transparent 46%) !important;
+  background-image: radial-gradient(circle at 76% 4%, rgba(90, 65, 127, 0.28), transparent 46%) !important;
 }
 
 html[data-theme="light"] .site main > section.content-grid.content-grid--tracks:not([data-background-media="true"]) {
   background-color: #04030a !important;
   background-image:
     linear-gradient(90deg, rgba(4, 3, 10, 0.78) 0%, rgba(4, 3, 10, 0.48) 45%, rgba(4, 3, 10, 0.26) 100%),
-    linear-gradient(0deg, rgba(8, 6, 18, 0.48), rgba(112, 83, 148, 0.18)),
+    linear-gradient(0deg, rgba(8, 6, 18, 0.48), rgba(90, 65, 127, 0.18)),
     url("/assets/editorial/portfolio-strategic-tracks.gif") !important;
 }
 
@@ -334,26 +334,26 @@ html[data-theme="light"] .site main > section.content-grid.content-grid--tracks[
   background-color: #04030a !important;
   background-image:
     linear-gradient(90deg, rgba(4, 3, 10, 0.78) 0%, rgba(4, 3, 10, 0.48) 45%, rgba(4, 3, 10, 0.26) 100%),
-    linear-gradient(0deg, rgba(8, 6, 18, 0.48), rgba(112, 83, 148, 0.18)),
+    linear-gradient(0deg, rgba(8, 6, 18, 0.48), rgba(90, 65, 127, 0.18)),
     var(--section-image) !important;
 }
 
 html[data-theme="light"][dir="rtl"] .site main > section.content-grid.content-grid--tracks:not([data-background-media="true"]) {
   background-image:
     linear-gradient(-90deg, rgba(4, 3, 10, 0.78) 0%, rgba(4, 3, 10, 0.48) 45%, rgba(4, 3, 10, 0.26) 100%),
-    linear-gradient(0deg, rgba(8, 6, 18, 0.48), rgba(112, 83, 148, 0.18)),
+    linear-gradient(0deg, rgba(8, 6, 18, 0.48), rgba(90, 65, 127, 0.18)),
     url("/assets/editorial/portfolio-strategic-tracks.gif") !important;
 }
 
 html[data-theme="light"][dir="rtl"] .site main > section.content-grid.content-grid--tracks[data-background-media="true"] {
   background-image:
     linear-gradient(-90deg, rgba(4, 3, 10, 0.78) 0%, rgba(4, 3, 10, 0.48) 45%, rgba(4, 3, 10, 0.26) 100%),
-    linear-gradient(0deg, rgba(8, 6, 18, 0.48), rgba(112, 83, 148, 0.18)),
+    linear-gradient(0deg, rgba(8, 6, 18, 0.48), rgba(90, 65, 127, 0.18)),
     var(--section-image) !important;
 }
 
 html[data-theme="light"] .site :is(.section-surface--light, .projects-section, .timeline-section, .media-feature--light, .news-section, .form-section, .location-map, .policy-content) :is(.tilt-card, .content-card, .project-card, .insight-card):hover {
-  border-color: rgba(112, 83, 148, 0.48) !important;
+  border-color: rgba(90, 65, 127, 0.48) !important;
   box-shadow: 0 22px 54px rgba(67, 43, 92, 0.14) !important;
 }
 
@@ -455,10 +455,10 @@ html[data-theme="light"] .timeline-section:not(.section-surface--dark) .timeline
 }
 
 html[data-theme="light"] .timeline-section:not(.section-surface--dark) .timeline--vertical .timeline__number {
-  border-color: rgba(112, 83, 148, 0.5) !important;
+  border-color: rgba(90, 65, 127, 0.5) !important;
   background: var(--startime-brand) !important;
   color: #fff !important;
-  box-shadow: 0 0 24px rgba(112, 83, 148, 0.16) !important;
+  box-shadow: 0 0 24px rgba(90, 65, 127, 0.16) !important;
 }
 
 html[data-theme="light"] .site-footer {
