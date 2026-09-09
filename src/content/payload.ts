@@ -1,9 +1,11 @@
 import configPromise from "@payload-config";
 import { unstable_cache } from "next/cache";
 import { getPayload } from "payload";
+import { cache } from "react";
 import { getDefaultChrome, getDefaultPage } from "./defaults";
 import type {
   Locale,
+  MaintenanceSettings,
   MarketingSettings,
   NewsMosaicSection,
   PageSection,
@@ -12,6 +14,87 @@ import type {
   PublicPage,
   SiteChrome,
 } from "./types";
+
+async function fetchMaintenance(
+  locale: Locale,
+): Promise<MaintenanceSettings> {
+  const fallback: MaintenanceSettings =
+    locale === "ar"
+      ? {
+          contactHref: "mailto:info@startime.sa",
+          contactLabel: "تواصل مع ستارتايم",
+          enabled: false,
+          eyebrow: "قيد التطوير",
+          heading: "نُعِدّ تجربة استثنائية تليق بكم.",
+          message:
+            "نعمل حالياً على تحديث مدروس لموقعنا. سنعود قريباً بتجربة رقمية أكثر تطوراً من ستارتايم.",
+          metaDescription:
+            "تعمل ستارتايم على إعداد تجربة رقمية متطورة. نعود إليكم قريباً.",
+          metaTitle: "الموقع قيد التطوير | ستارتايم",
+          overlayOpacity: 72,
+          showContactLink: true,
+          statusLabel: "تجربة جديدة تتشكل الآن",
+        }
+      : {
+          contactHref: "mailto:info@startime.sa",
+          contactLabel: "Contact Startime",
+          enabled: false,
+          eyebrow: "Under development",
+          heading: "We’re preparing something exceptional.",
+          message:
+            "Our website is receiving a carefully planned update. We’ll be back shortly with an improved Startime experience.",
+          metaDescription:
+            "Startime is preparing an improved digital experience. Please check back shortly.",
+          metaTitle: "Website under development | Startime",
+          overlayOpacity: 72,
+          showContactLink: true,
+          statusLabel: "A new experience is taking shape",
+        };
+
+  try {
+    const payload = await getPayload({ config: configPromise });
+    const settings = await payload.findGlobal({
+      slug: "maintenance-settings",
+      depth: 1,
+      fallbackLocale: false,
+      locale,
+      overrideAccess: true,
+    });
+
+    return {
+      backgroundMedia:
+        settings.backgroundMedia && typeof settings.backgroundMedia === "object"
+          ? settings.backgroundMedia
+          : undefined,
+      contactHref: settings.contactHref || fallback.contactHref,
+      contactLabel: settings.contactLabel || fallback.contactLabel,
+      enabled: Boolean(settings.enabled),
+      eyebrow: settings.eyebrow || fallback.eyebrow,
+      heading: settings.heading || fallback.heading,
+      logo:
+        settings.logo && typeof settings.logo === "object"
+          ? settings.logo
+          : undefined,
+      message: settings.message || fallback.message,
+      metaDescription:
+        settings.metaDescription || fallback.metaDescription,
+      metaTitle: settings.metaTitle || fallback.metaTitle,
+      mobileBackgroundMedia:
+        settings.mobileBackgroundMedia &&
+        typeof settings.mobileBackgroundMedia === "object"
+          ? settings.mobileBackgroundMedia
+          : undefined,
+      overlayOpacity: Math.min(
+        95,
+        Math.max(0, Number(settings.overlayOpacity ?? fallback.overlayOpacity)),
+      ),
+      showContactLink: settings.showContactLink !== false,
+      statusLabel: settings.statusLabel || fallback.statusLabel,
+    };
+  } catch {
+    return fallback;
+  }
+}
 
 async function fetchInsight(
   locale: Locale,
@@ -498,6 +581,11 @@ export const getMarketingSettings = unstable_cache(
   ["startime-marketing-v1"],
   { revalidate: 60, tags: ["startime-marketing"] },
 );
+
+// Maintenance state is intentionally request-scoped: editors must be able to
+// enable or disable it without waiting for an ISR cache to expire. React cache
+// still deduplicates the metadata/page reads made during one render.
+export const getMaintenanceSettings = cache(fetchMaintenance);
 
 async function fetchRedirect(
   locale: Locale,

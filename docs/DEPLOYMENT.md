@@ -89,9 +89,24 @@ Install exactly the versions in `package-lock.json`:
 npm ci
 npm run lint
 npm run typecheck
+npm run db:migrate:status
 ```
 
 Do not run `npm audit fix --force` during a deployment. Dependency upgrades require a separate reviewed change.
+
+If the approved release contains new files in `src/migrations/`, apply them only
+after the stateful-data backup above has been verified:
+
+```bash
+npm run db:migrate
+npm run db:migrate:status
+```
+
+Migrations update the existing CMS schema in place. They do not seed, replace,
+or reset production content. Stop and investigate any unexpected destructive
+migration warning before continuing. The maintenance-mode release adds only the
+new `maintenance_settings` tables; it does not modify existing pages, media,
+users, or submissions.
 
 ## 5. Build and restart
 
@@ -129,6 +144,15 @@ Also verify in a browser:
 3. Content Studio login and one read-only content check.
 4. A form validation flow without submitting test data unless approved.
 5. Browser console and network requests for unexpected errors.
+
+For a release that changes maintenance mode, verify both states before closing
+the maintenance window:
+
+1. In Content Studio, open **Content → Maintenance mode** and enable it.
+2. Confirm both a public English URL and an Arabic URL redirect to the same
+   `/maintenance` page.
+3. Confirm `/content-admin` remains accessible while maintenance mode is on.
+4. Disable maintenance mode and confirm normal public routes return.
 
 ## Rollback
 

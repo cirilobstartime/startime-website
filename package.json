@@ -14,6 +14,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "payload": "payload",
+    "db:migrate": "payload migrate",
+    "db:migrate:status": "payload migrate:status",
     "payload:generate:types": "payload generate:types",
     "payload:generate:importmap": "payload generate:importmap",
     "seed": "tsx scripts/seed.ts",

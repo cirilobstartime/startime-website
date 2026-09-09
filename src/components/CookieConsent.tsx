@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { MarketingSettings } from "@/content/types";
 import { updateGoogleConsent } from "@/lib/dataLayer";
@@ -11,7 +12,10 @@ export function CookieConsent({
 }: {
   settings: MarketingSettings;
 }) {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
+  const isMaintenancePage =
+    pathname === "/maintenance" || pathname === "/ar/maintenance";
 
   useEffect(() => {
     const saved = window.localStorage.getItem(CONSENT_KEY);
@@ -35,7 +39,7 @@ export function CookieConsent({
     setVisible(false);
   }
 
-  if (!visible) return null;
+  if (!visible || isMaintenancePage) return null;
 
   return (
     <aside

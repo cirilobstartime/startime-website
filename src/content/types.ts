@@ -394,3 +394,20 @@ export type MarketingSettings = {
   tiktokPixelID: string;
   xPixelID: string;
 };
+
+export type MaintenanceSettings = {
+  backgroundMedia?: MediaValue;
+  contactHref: string;
+  contactLabel: string;
+  enabled: boolean;
+  eyebrow: string;
+  heading: string;
+  logo?: MediaValue;
+  message: string;
+  metaDescription: string;
+  metaTitle: string;
+  mobileBackgroundMedia?: MediaValue;
+  overlayOpacity: number;
+  showContactLink: boolean;
+  statusLabel: string;
+};

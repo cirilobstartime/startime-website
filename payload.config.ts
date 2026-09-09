@@ -13,6 +13,7 @@ import { Redirects } from "./src/payload/collections/Redirects";
 import { Users } from "./src/payload/collections/Users";
 import { SiteSettings } from "./src/payload/globals/SiteSettings";
 import { MarketingSettings } from "./src/payload/globals/MarketingSettings";
+import { MaintenanceSettings } from "./src/payload/globals/MaintenanceSettings";
 
 const serverURL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 const payloadSecret = process.env.PAYLOAD_SECRET;
@@ -72,7 +73,7 @@ export default buildConfig({
     Insights,
     Redirects,
   ],
-  globals: [SiteSettings, MarketingSettings],
+  globals: [SiteSettings, MaintenanceSettings, MarketingSettings],
   db: sqliteAdapter({
     client: {
       url: process.env.DATABASE_URL || "file:./startime.db",

@@ -895,6 +895,251 @@ select {
 .not-found__orb--one { inset: 8% auto auto 55%; }
 .not-found__orb--two { inset: auto 59% -24% auto; width: 52vw; }
 
+/* CMS-controlled maintenance page. Public routes redirect here temporarily;
+   Content Studio and Payload routes remain outside the public catch-all. */
+.maintenance-mode {
+  --maintenance-overlay: 0.72;
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 76% 20%, rgba(109, 80, 151, 0.28), transparent 34%),
+    #07060d;
+  color: #fff;
+  isolation: isolate;
+}
+
+.maintenance-mode__media,
+.maintenance-mode__media :is(img, video),
+.maintenance-mode__wash,
+.maintenance-mode__grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.maintenance-mode__media :is(img, video) {
+  object-fit: cover;
+  filter: saturate(0.72) contrast(1.12) brightness(0.82);
+}
+
+.maintenance-mode__wash {
+  z-index: 1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 3, 10, calc(var(--maintenance-overlay) + 0.16)) 0%,
+      rgba(4, 3, 10, var(--maintenance-overlay)) 52%,
+      rgba(4, 3, 10, calc(var(--maintenance-overlay) - 0.12)) 100%
+    ),
+    linear-gradient(0deg, rgba(4, 3, 10, 0.72), transparent 58%);
+}
+
+[dir="rtl"].maintenance-mode .maintenance-mode__wash {
+  background:
+    linear-gradient(
+      -90deg,
+      rgba(4, 3, 10, calc(var(--maintenance-overlay) + 0.16)) 0%,
+      rgba(4, 3, 10, var(--maintenance-overlay)) 52%,
+      rgba(4, 3, 10, calc(var(--maintenance-overlay) - 0.12)) 100%
+    ),
+    linear-gradient(0deg, rgba(4, 3, 10, 0.72), transparent 58%);
+}
+
+.maintenance-mode__grid {
+  z-index: 2;
+  opacity: 0.34;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(90deg, #000, transparent 78%);
+}
+
+[dir="rtl"].maintenance-mode .maintenance-mode__grid {
+  mask-image: linear-gradient(-90deg, #000, transparent 78%);
+}
+
+.maintenance-mode__shell {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  width: var(--shell);
+  min-height: 100svh;
+  margin-inline: auto;
+  grid-template-rows: auto 1fr auto;
+  padding-block: clamp(28px, 4vw, 54px);
+}
+
+.maintenance-mode__topline,
+.maintenance-mode__footerline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.maintenance-mode__logo {
+  position: relative;
+  display: block;
+  width: clamp(150px, 14vw, 220px);
+  height: clamp(46px, 4vw, 68px);
+}
+
+.maintenance-mode__logo img {
+  object-fit: contain;
+  object-position: left center;
+}
+
+[dir="rtl"].maintenance-mode .maintenance-mode__logo img {
+  object-position: right center;
+}
+
+.maintenance-mode__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.maintenance-mode__status i {
+  display: block;
+  width: 7px;
+  height: 7px;
+  background: #a78fc3;
+  box-shadow: 0 0 0 6px rgba(167, 143, 195, 0.13);
+  animation: maintenance-pulse 2.4s ease-in-out infinite;
+}
+
+.maintenance-mode__content {
+  align-self: center;
+  width: min(900px, 76vw);
+  padding-block: clamp(90px, 13vh, 150px);
+}
+
+.maintenance-mode__eyebrow {
+  margin: 0 0 24px;
+  color: #a78fc3;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.maintenance-mode h1 {
+  max-width: 900px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(58px, 7.2vw, 126px);
+  font-weight: 650;
+  letter-spacing: -0.065em;
+  line-height: 0.91;
+  text-wrap: balance;
+}
+
+[dir="rtl"].maintenance-mode h1 {
+  letter-spacing: -0.025em;
+  line-height: 1.16;
+}
+
+.maintenance-mode__message {
+  max-width: 650px;
+  margin: clamp(28px, 3.2vw, 42px) 0 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: clamp(16px, 1.35vw, 20px);
+  line-height: 1.75;
+}
+
+.maintenance-mode__contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 34px;
+  padding: 15px 20px;
+  background: #6d5097;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.maintenance-mode__contact:hover {
+  background: #7d5dab;
+  transform: translateY(-2px);
+}
+
+.maintenance-mode__contact svg {
+  width: 18px;
+  height: 18px;
+}
+
+[dir="rtl"].maintenance-mode .maintenance-mode__contact svg {
+  transform: scaleX(-1);
+}
+
+.maintenance-mode__footerline {
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+}
+
+@keyframes maintenance-pulse {
+  0%, 100% { opacity: 0.56; transform: scale(0.86); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 760px) {
+  .maintenance-mode__shell {
+    width: min(100% - 36px, 620px);
+    padding-block: 24px 26px;
+  }
+
+  .maintenance-mode__status {
+    max-width: 46vw;
+    justify-content: flex-end;
+    font-size: 9px;
+    line-height: 1.45;
+    text-align: end;
+  }
+
+  .maintenance-mode__content {
+    width: 100%;
+    padding-block: 78px;
+  }
+
+  .maintenance-mode__eyebrow {
+    margin-bottom: 18px;
+    font-size: 11px;
+  }
+
+  .maintenance-mode h1 {
+    font-size: clamp(48px, 14.5vw, 70px);
+    line-height: 0.96;
+  }
+
+  [dir="rtl"].maintenance-mode h1 { line-height: 1.2; }
+
+  .maintenance-mode__message {
+    margin-top: 24px;
+    font-size: 15px;
+  }
+
+  .maintenance-mode__contact {
+    margin-top: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .maintenance-mode__status i { animation: none; }
+}
+
 @media (max-width: 760px) {
   .not-found,
   .not-found__content { min-height: 100svh; }

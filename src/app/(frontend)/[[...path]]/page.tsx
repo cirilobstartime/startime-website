@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { notFound, permanentRedirect, redirect } from "next/navigation";
 import { InsightArticle } from "@/components/InsightArticle";
 import { InsightsArchive } from "@/components/InsightsArchive";
+import { MaintenanceMode } from "@/components/MaintenanceMode";
 import { SectionRenderer } from "@/components/SectionRenderer";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -11,6 +12,7 @@ import {
   getCMSRedirect,
   getInsight,
   getInsightArchive,
+  getMaintenanceSettings,
   getPage,
   getSiteChrome,
 } from "@/content/payload";
@@ -83,6 +85,14 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { path } = await params;
   const { locale, publicPath, slug } = resolveRoute(path);
+  const maintenance = await getMaintenanceSettings("en");
+  if (maintenance.enabled || (slug.length === 1 && slug[0] === "maintenance")) {
+    return {
+      title: maintenance.metaTitle,
+      description: maintenance.metaDescription,
+      robots: { follow: false, index: false },
+    };
+  }
   if (slug.length === 1 && slug[0] === "insights") {
     const title =
       locale === "ar"
@@ -236,6 +246,21 @@ export default async function PublicPage({ params }: PageProps) {
   }
 
   const { locale, publicPath, slug } = resolveRoute(path);
+  const maintenance = await getMaintenanceSettings("en");
+  const isMaintenancePage = slug.length === 1 && slug[0] === "maintenance";
+
+  if (maintenance.enabled && !isMaintenancePage) {
+    redirect("/maintenance");
+  }
+
+  if (isMaintenancePage) {
+    if (locale === "ar") redirect("/maintenance");
+    if (!maintenance.enabled) notFound();
+    const chrome = await getSiteChrome("en");
+    return (
+      <MaintenanceMode chrome={chrome} locale="en" settings={maintenance} />
+    );
+  }
   if (slug.length === 1 && slug[0] === "insights") {
     const [chrome, archive] = await Promise.all([
       getSiteChrome(locale),
