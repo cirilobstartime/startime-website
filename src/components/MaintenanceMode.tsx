@@ -84,7 +84,7 @@ export function MaintenanceMode({
 
         <div className="maintenance-mode__footerline" aria-hidden="true">
           <span>STARTIME</span>
-          <span>2009 — 2030</span>
+          <span>Since 2009</span>
         </div>
       </div>
     </main>
