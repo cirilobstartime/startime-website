@@ -422,7 +422,7 @@ function Timeline({ section }: { section: TimelineSection }) {
           </div>
           {section.body ? <p>{section.body}</p> : null}
         </Reveal>
-        <div className="timeline timeline--vertical">
+        <div className="timeline timeline--vertical timeline--journey">
           {section.steps
             .filter((step) => step.visible !== false)
             .map((step, index) => {

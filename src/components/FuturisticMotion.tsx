@@ -241,10 +241,18 @@ export function FuturisticMotion() {
       gsap.utils.toArray<HTMLElement>(".timeline--vertical").forEach((timeline) => {
         const steps = timeline.querySelectorAll<HTMLElement>(".timeline__step");
         const markers = timeline.querySelectorAll<HTMLElement>(".timeline__number");
+        const isHorizontalJourney = timeline.classList.contains("timeline--journey");
         if (steps.length) {
           gsap.fromTo(
             steps,
-            { x: (index: number) => (index % 2 ? 34 : -34) * (document.documentElement.dir === "rtl" ? -1 : 1) },
+            {
+              x: isHorizontalJourney
+                ? 0
+                : (index: number) =>
+                    (index % 2 ? 34 : -34) *
+                    (document.documentElement.dir === "rtl" ? -1 : 1),
+              y: isHorizontalJourney ? 26 : 0,
+            },
             {
               duration: 0.72,
               ease: "power3.out",
@@ -256,6 +264,7 @@ export function FuturisticMotion() {
               },
               stagger: 0.13,
               x: 0,
+              y: 0,
             },
           );
         }

@@ -33,7 +33,8 @@
     "sync:home-seo": "tsx scripts/update-home-seo.ts",
     "sync:insights": "tsx scripts/sync-insights.ts",
     "sync:home-partners": "tsx scripts/sync-home-partners.ts",
-    "sync:home-client-edits": "tsx scripts/sync-home-client-edits.ts"
+    "sync:home-client-edits": "tsx scripts/sync-home-client-edits.ts",
+    "sync:home-membership-order": "NODE_ENV=production node --env-file=.env --import tsx scripts/sync-home-membership-order.ts"
   },
   "dependencies": {
     "@payloadcms/db-sqlite": "3.86.0",

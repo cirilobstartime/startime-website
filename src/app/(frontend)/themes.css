@@ -2,12 +2,22 @@
    predictable system-aware light mode without changing CMS section content. */
 :root {
   color-scheme: dark;
-  --theme-paper: #f7f5fa;
-  --theme-paper-alt: #efebf4;
-  --theme-ink: #17131f;
-  --theme-copy: #554e5f;
-  --theme-line: rgba(56, 42, 72, 0.16);
-  --theme-card: rgba(255, 255, 255, 0.88);
+  --theme-paper: #f8f5fb;
+  --theme-paper-alt: #d4bda3;
+  --theme-ink: #24182f;
+  --theme-copy: #594b65;
+  --theme-line: rgba(90, 65, 127, 0.22);
+  --theme-card: rgba(255, 255, 255, 0.94);
+  --theme-brand-wash: rgba(90, 65, 127, 0.1);
+  --theme-brand-wash-strong: rgba(167, 143, 195, 0.2);
+  --theme-beige-wash: rgba(212, 189, 163, 0.3);
+  --theme-dark: #04030a;
+  --theme-dark-raised: #0d0924;
+  --theme-dark-surface: radial-gradient(
+    circle at 50% 0%,
+    #0d0924 0%,
+    #04030a 100%
+  );
 }
 
 html[data-theme="light"] {
@@ -68,9 +78,8 @@ html[data-theme="light"] {
   position: relative;
   overflow: hidden;
   padding-block: clamp(72px, 7vw, 108px) !important;
-  background:
-    radial-gradient(circle at 18% 0%, rgba(90, 65, 127, 0.34), transparent 34%),
-    linear-gradient(135deg, #0d0924 0%, #04030a 74%) !important;
+  background-color: var(--theme-dark) !important;
+  background-image: var(--theme-dark-surface) !important;
   color: #fff;
   isolation: isolate;
 }
@@ -229,13 +238,15 @@ html[data-theme="light"] .site::after {
 html[data-theme="light"] .site main > :is(section, div):not(.hero-section):not(.image-story):not(.cta-section):not(.partner-marquee):not(.credibility):not(.insight-article__hero):not(.insights-archive-hero):not(.section-surface--dark):not(.section-surface--brand):not(.media-feature--dark):not(.content-grid--tracks) {
   background: var(--theme-paper) !important;
   background-image:
-    radial-gradient(circle at 84% 4%, rgba(90, 65, 127, 0.1), transparent 32%) !important;
+    radial-gradient(circle at 88% 0%, var(--theme-brand-wash-strong), transparent 34%),
+    radial-gradient(circle at 6% 100%, var(--theme-beige-wash), transparent 30%) !important;
 }
 
 html[data-theme="light"] .site main > :is(section, div):nth-child(even):not(.hero-section):not(.image-story):not(.cta-section):not(.partner-marquee):not(.credibility):not(.insight-article__hero):not(.insights-archive-hero):not(.section-surface--dark):not(.section-surface--brand):not(.media-feature--dark):not(.content-grid--tracks) {
   background: var(--theme-paper-alt) !important;
   background-image:
-    radial-gradient(circle at 16% 0%, rgba(90, 65, 127, 0.1), transparent 34%) !important;
+    radial-gradient(circle at 12% 0%, rgba(90, 65, 127, 0.18), transparent 38%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 62%) !important;
 }
 
 html[data-theme="light"] .site :is(h1, h2, h3, h4, p, span, small, label, a, li, strong, em) {
@@ -273,7 +284,7 @@ html[data-theme="light"] .site :is(.hero-section, .image-story, .cta-section, .p
 html[data-theme="light"] .site :is(.section-surface--light, .projects-section, .timeline-section, .media-feature--light, .news-section, .form-section, .location-map, .policy-content) :is(.tilt-card, .content-card, .project-card, .insight-card, .timeline__step, .form-section__panel, .lead-form, .location-map__frame, .insight-article__footer-card) {
   border-color: var(--theme-line) !important;
   background: var(--theme-card) !important;
-  box-shadow: 0 18px 44px rgba(42, 29, 59, 0.07) !important;
+  box-shadow: 0 18px 44px rgba(54, 37, 74, 0.09) !important;
 }
 
 html[data-theme="light"] .site .insights-archive :is(.tilt-card, .insight-card) {
@@ -292,7 +303,8 @@ html[data-theme="light"] .site .insights-archive :is(.tilt-card, .insight-card):
 html[data-theme="light"] .site .insight-article__body-wrap {
   background: var(--theme-paper) !important;
   background-image:
-    radial-gradient(circle at 86% 0%, rgba(90, 65, 127, 0.1), transparent 34%) !important;
+    radial-gradient(circle at 86% 0%, var(--theme-brand-wash-strong), transparent 34%),
+    radial-gradient(circle at 8% 100%, var(--theme-beige-wash), transparent 30%) !important;
   color: var(--theme-ink) !important;
 }
 
@@ -308,18 +320,6 @@ html[data-theme="light"] .site .insight-article__footer-card {
   border-color: var(--theme-line) !important;
   background: var(--theme-card) !important;
   box-shadow: 0 18px 44px rgba(42, 29, 59, 0.07) !important;
-}
-
-/* A section explicitly authored as dark or brand remains a deliberate dark
-   visual moment in light mode. This preserves contrast and CMS intent. */
-html[data-theme="light"] .site main > section:is(.section-surface--dark, .section-surface--brand).section-surface {
-  background-color: var(--section-bg, #0d0924) !important;
-  background-image: radial-gradient(circle at 78% 0%, rgba(90, 65, 127, 0.28), transparent 42%) !important;
-}
-
-html[data-theme="light"] .site main > section.media-feature.media-feature--dark {
-  background-color: var(--media-feature-bg, #30263d) !important;
-  background-image: radial-gradient(circle at 76% 4%, rgba(90, 65, 127, 0.28), transparent 46%) !important;
 }
 
 html[data-theme="light"] .site main > section.content-grid.content-grid--tracks:not([data-background-media="true"]) {
@@ -461,8 +461,470 @@ html[data-theme="light"] .timeline-section:not(.section-surface--dark) .timeline
   box-shadow: 0 0 24px rgba(90, 65, 127, 0.16) !important;
 }
 
+/* Dark editorial bands keep the exact obsidian system used by dark mode.
+   Light mode changes the surrounding canvas, never the identity of a section
+   deliberately authored as dark. */
+html[data-theme="light"] .site main > section:is(
+  .section-surface--dark,
+  .section-surface--brand,
+  .media-feature--dark
+):not([data-background-media="true"]) {
+  --section-bg: var(--theme-dark);
+  --section-copy: rgba(255, 255, 255, 0.74);
+  background-color: var(--theme-dark) !important;
+  background-image: var(--theme-dark-surface) !important;
+}
+
+html[data-theme="light"] .site main > section:is(
+  .section-surface--dark,
+  .section-surface--brand,
+  .media-feature--dark
+) :is(h1, h2, h3, h4, p, span, small, label, a, li, strong, em) {
+  color: #fff !important;
+}
+
+html[data-theme="light"] .site main > section:is(
+  .section-surface--dark,
+  .section-surface--brand,
+  .media-feature--dark
+) :is(.tilt-card, .content-card, .timeline__step > div) {
+  border-color: rgba(167, 143, 195, 0.22) !important;
+  background: rgba(12, 10, 24, 0.82) !important;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34) !important;
+}
+
+html[data-theme="light"] .site main > section:is(
+  .section-surface--dark,
+  .section-surface--brand,
+  .media-feature--dark
+) .eyebrow {
+  color: var(--startime-brand-light) !important;
+}
+
+/* Light cards use crisp white surfaces with a stronger Startime-violet edge;
+   the beige appears only as a restrained secondary wash. */
+html[data-theme="light"] .site :is(
+  .section-surface--light,
+  .projects-section,
+  .media-feature--light,
+  .news-section,
+  .form-section,
+  .location-map,
+  .policy-content,
+  .insights-archive,
+  .insight-article__body-wrap
+) :is(.content-card, .project-card, .insight-card, .form-section__panel, .insight-article__footer-card) {
+  border-color: var(--theme-line) !important;
+  box-shadow:
+    inset 0 2px 0 rgba(167, 143, 195, 0.16),
+    0 18px 44px rgba(54, 37, 74, 0.09) !important;
+}
+
+html[data-theme="light"] .site :is(.text-link, .content-card__meta, .insight-card__kicker) {
+  color: var(--startime-brand) !important;
+}
+
+/* Beige editorial bands are the card surface. Their cards stay open and
+   transparent, using a violet architectural edge instead of a second white
+   panel. This selector intentionally mirrors the alternating beige-band rule
+   above so CMS section order remains the source of truth. */
+html[data-theme="light"] .site main > :is(section, div):nth-child(even):not(.hero-section):not(.image-story):not(.cta-section):not(.partner-marquee):not(.credibility):not(.insight-article__hero):not(.insights-archive-hero):not(.section-surface--dark):not(.section-surface--brand):not(.media-feature--dark):not(.content-grid--tracks) :is(
+  .tilt-card,
+  .content-card,
+  .project-card,
+  .insight-card,
+  .news-card,
+  .team-card-motion,
+  .form-section__panel,
+  .lead-form,
+  .insight-article__footer-card
+) {
+  border-color: rgba(90, 65, 127, 0.44) !important;
+  background: linear-gradient(
+    145deg,
+    rgba(90, 65, 127, 0.11),
+    rgba(90, 65, 127, 0.035)
+  ) !important;
+  box-shadow: 0 14px 34px rgba(54, 37, 74, 0.07) !important;
+}
+
+html[data-theme="light"] .site main > :is(section, div):nth-child(even):not(.hero-section):not(.image-story):not(.cta-section):not(.partner-marquee):not(.credibility):not(.insight-article__hero):not(.insights-archive-hero):not(.section-surface--dark):not(.section-surface--brand):not(.media-feature--dark):not(.content-grid--tracks) :is(
+  .tilt-card,
+  .content-card,
+  .project-card,
+  .insight-card,
+  .news-card,
+  .team-card-motion
+):hover {
+  border-color: rgba(90, 65, 127, 0.72) !important;
+  background: rgba(90, 65, 127, 0.14) !important;
+  box-shadow: 0 20px 44px rgba(54, 37, 74, 0.12) !important;
+}
+
+/* Discover milestones: preserve the year-led vertical journey while making
+   it feel like one connected composition instead of a stack of generic
+   cards. The center rail, connectors and markers work in both LTR and RTL. */
+.timeline--vertical {
+  width: min(1180px, 100%);
+}
+
+.timeline--vertical::before {
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgba(167, 143, 195, 0.34) 5%,
+    var(--startime-brand) var(--timeline-progress, 0%),
+    rgba(167, 143, 195, 0.24) var(--timeline-progress, 0%),
+    transparent 100%
+  ) !important;
+}
+
+.timeline--vertical .timeline__step {
+  grid-template-columns: minmax(0, 1fr) 96px minmax(0, 1fr);
+  gap: 0 clamp(24px, 3vw, 48px);
+  padding-bottom: clamp(36px, 4vw, 58px);
+}
+
+.timeline--vertical .timeline__number {
+  width: 58px;
+  height: 58px;
+  border: 1px solid rgba(167, 143, 195, 0.62) !important;
+  background: var(--theme-dark-raised) !important;
+  color: #fff !important;
+  box-shadow:
+    0 0 0 8px var(--section-bg),
+    0 0 30px rgba(90, 65, 127, 0.28) !important;
+}
+
+.timeline--vertical .timeline__number--year {
+  width: 82px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.timeline--vertical .timeline__step > div {
+  position: relative;
+  min-height: 176px;
+  padding: clamp(26px, 3vw, 38px);
+  border: 1px solid rgba(167, 143, 195, 0.24);
+  border-inline-end: 3px solid var(--startime-brand);
+  background: rgba(12, 10, 24, 0.7);
+}
+
+.timeline--vertical .timeline__step > div::after {
+  position: absolute;
+  top: 28px;
+  inset-inline-end: calc(clamp(24px, 3vw, 48px) * -1);
+  width: clamp(24px, 3vw, 48px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(167, 143, 195, 0.66), transparent);
+  content: "";
+}
+
+.timeline--vertical .timeline__step:nth-child(even) > div {
+  border-inline-start: 3px solid var(--startime-brand);
+  border-inline-end-width: 1px;
+}
+
+.timeline--vertical .timeline__step:nth-child(even) > div::after {
+  inset-inline-start: calc(clamp(24px, 3vw, 48px) * -1);
+  inset-inline-end: auto;
+  background: linear-gradient(-90deg, rgba(167, 143, 195, 0.66), transparent);
+}
+
+html[data-theme="light"] .timeline-section:not(.section-surface--dark):not(.section-surface--brand) .timeline--vertical .timeline__step > div {
+  border-color: rgba(90, 65, 127, 0.38) !important;
+  border-inline-end-color: var(--startime-brand) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="light"] .timeline-section:not(.section-surface--dark):not(.section-surface--brand) .timeline--vertical .timeline__step {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="light"] .timeline-section:not(.section-surface--dark):not(.section-surface--brand) .timeline--vertical .timeline__step:nth-child(even) > div {
+  border-inline-start-color: var(--startime-brand) !important;
+}
+
+html[data-theme="light"] .timeline-section:not(.section-surface--dark):not(.section-surface--brand) .timeline--vertical .timeline__number {
+  border-color: rgba(90, 65, 127, 0.62) !important;
+  background: var(--startime-brand) !important;
+  box-shadow:
+    0 0 0 8px var(--theme-paper-alt),
+    0 0 28px rgba(90, 65, 127, 0.2) !important;
+}
+
+html[data-theme="light"] .timeline-section:not(.section-surface--dark):not(.section-surface--brand) .timeline--vertical .timeline__step:hover > div {
+  border-color: rgba(90, 65, 127, 0.7) !important;
+  background: rgba(90, 65, 127, 0.055) !important;
+}
+
+@media (max-width: 760px) {
+  .timeline--vertical::before {
+    inset-inline-start: 31px;
+  }
+
+  .timeline--vertical .timeline__step {
+    grid-template-columns: 62px minmax(0, 1fr);
+    gap: 18px;
+    padding-bottom: 30px;
+  }
+
+  .timeline--vertical .timeline__number,
+  .timeline--vertical .timeline__number--year {
+    width: 62px;
+    height: 48px;
+    font-size: 11px;
+    box-shadow:
+      0 0 0 6px var(--theme-paper-alt),
+      0 0 24px rgba(90, 65, 127, 0.22) !important;
+  }
+
+  .timeline--vertical .timeline__step > div,
+  .timeline--vertical .timeline__step:nth-child(even) > div {
+    min-height: 0;
+    padding: 22px 20px;
+    border-inline-start: 3px solid var(--startime-brand);
+    border-inline-end-width: 1px;
+  }
+
+  .timeline--vertical .timeline__step > div::after,
+  .timeline--vertical .timeline__step:nth-child(even) > div::after {
+    top: 23px;
+    inset-inline-start: -19px;
+    inset-inline-end: auto;
+    width: 18px;
+    background: linear-gradient(-90deg, rgba(167, 143, 195, 0.66), transparent);
+  }
+}
+
+/* Timeline v2: one strong editorial journey rail is clearer and more
+   contemporary than alternating presentation cards. Logical properties make
+   the same composition mirror naturally in Arabic. */
+.timeline--vertical {
+  width: min(1100px, 100%);
+}
+
+.timeline--vertical::before {
+  inset-block: 20px 36px;
+  inset-inline-start: 159px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(167, 143, 195, 0.1),
+    rgba(167, 143, 195, 0.5) 7%,
+    var(--startime-brand) var(--timeline-progress, 0%),
+    rgba(167, 143, 195, 0.24) var(--timeline-progress, 0%),
+    rgba(167, 143, 195, 0.08)
+  ) !important;
+}
+
+.timeline--vertical .timeline__step {
+  grid-template-columns: 132px 54px minmax(0, 1fr);
+  gap: 0 clamp(22px, 2.5vw, 34px);
+  padding-bottom: clamp(30px, 3.5vw, 48px);
+}
+
+.timeline--vertical .timeline__step::before {
+  position: absolute;
+  z-index: 3;
+  top: 22px;
+  inset-inline-start: 153px;
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--section-bg);
+  background: var(--startime-brand-light);
+  box-shadow: 0 0 20px rgba(90, 65, 127, 0.42);
+  content: "";
+  transform: rotate(45deg);
+}
+
+.timeline--vertical .timeline__number,
+.timeline--vertical .timeline__number--year {
+  grid-column: 1;
+  justify-self: end;
+  width: auto;
+  height: auto;
+  margin-top: 7px;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--startime-brand-light) !important;
+  font-size: clamp(25px, 2.4vw, 36px);
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  box-shadow: none !important;
+}
+
+.timeline--vertical .timeline__step > div,
+.timeline--vertical .timeline__step:nth-child(even) > div {
+  position: relative;
+  grid-column: 3;
+  min-height: 0;
+  padding: clamp(26px, 3vw, 38px) clamp(28px, 3.5vw, 46px);
+  border: 1px solid rgba(167, 143, 195, 0.28);
+  border-inline-start: 4px solid var(--startime-brand);
+  border-inline-end-width: 1px;
+  background: rgba(12, 10, 24, 0.66);
+  text-align: start;
+  box-shadow: 0 18px 46px rgba(4, 3, 10, 0.16);
+}
+
+.timeline--vertical .timeline__step > div::after,
+.timeline--vertical .timeline__step:nth-child(even) > div::after {
+  position: absolute;
+  top: 28px;
+  inset-inline-start: calc((54px + clamp(22px, 2.5vw, 34px)) * -1);
+  inset-inline-end: auto;
+  width: calc(54px + clamp(22px, 2.5vw, 34px));
+  height: 1px;
+  background: linear-gradient(-90deg, rgba(167, 143, 195, 0.72), transparent);
+  content: "";
+}
+
+html[data-theme="light"] .timeline-section:not(.section-surface--dark):not(.section-surface--brand) .timeline--vertical .timeline__step {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="light"] .timeline-section:not(.section-surface--dark):not(.section-surface--brand) .timeline--vertical .timeline__step::before {
+  border-color: var(--theme-paper-alt);
+  background: var(--startime-brand);
+}
+
+html[data-theme="light"] .timeline-section:not(.section-surface--dark):not(.section-surface--brand) .timeline--vertical .timeline__number {
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--startime-brand) !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="light"] .timeline-section:not(.section-surface--dark):not(.section-surface--brand) .timeline--vertical .timeline__step > div,
+html[data-theme="light"] .timeline-section:not(.section-surface--dark):not(.section-surface--brand) .timeline--vertical .timeline__step:nth-child(even) > div {
+  border-color: rgba(71, 49, 96, 0.46) !important;
+  border-inline-start-color: var(--startime-brand) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(64, 44, 88, 0.16),
+    rgba(90, 65, 127, 0.065)
+  ) !important;
+  box-shadow: 0 18px 42px rgba(54, 37, 74, 0.1) !important;
+}
+
+html[data-theme="light"] .timeline-section:not(.section-surface--dark):not(.section-surface--brand) .timeline--vertical .timeline__step:hover > div {
+  border-color: rgba(71, 49, 96, 0.76) !important;
+  border-inline-start-color: var(--startime-brand) !important;
+  background: rgba(64, 44, 88, 0.2) !important;
+}
+
+@media (max-width: 760px) {
+  .timeline--vertical::before {
+    inset-inline-start: 7px;
+  }
+
+  .timeline--vertical .timeline__step {
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 14px;
+    padding-bottom: 28px;
+  }
+
+  .timeline--vertical .timeline__step::before {
+    top: 15px;
+    inset-inline-start: 1px;
+    width: 13px;
+    height: 13px;
+    border-width: 3px;
+  }
+
+  .timeline--vertical .timeline__number,
+  .timeline--vertical .timeline__number--year {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: start;
+    width: auto;
+    height: auto;
+    margin: 0 0 10px;
+    font-size: 22px;
+    box-shadow: none !important;
+  }
+
+  .timeline--vertical .timeline__step > div,
+  .timeline--vertical .timeline__step:nth-child(even) > div {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 22px;
+    border-inline-start: 3px solid var(--startime-brand);
+    border-inline-end-width: 1px;
+  }
+
+  .timeline--vertical .timeline__step > div::after,
+  .timeline--vertical .timeline__step:nth-child(even) > div::after {
+    top: -22px;
+    inset-inline-start: -36px;
+    width: 34px;
+  }
+}
+
+/* One dark-surface contract for both themes. Sections with CMS background
+   media keep their authored image; only the underlying colour is normalized. */
+.site main > section:is(
+  .section-surface--dark,
+  .section-surface--brand,
+  .media-feature--dark
+):not([data-background-media="true"]) {
+  background-color: var(--theme-dark) !important;
+  background-image: var(--theme-dark-surface) !important;
+}
+
+.site main > section:is(
+  .section-surface--dark,
+  .section-surface--brand,
+  .media-feature--dark
+)[data-background-media="true"] {
+  background-color: var(--theme-dark) !important;
+}
+
+/* Preserve CMS-authored photography while keeping the same obsidian base in
+   both themes. Strategic Tracks retains its dedicated directional treatment. */
+.site main > section.section-surface[data-background-media="true"]:not(.content-grid--tracks) {
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(14, 10, 25, 0.76) 0%,
+      rgba(32, 21, 51, 0.42) 42%,
+      rgba(32, 21, 51, 0.08) 78%
+    ),
+    linear-gradient(
+      rgba(17, 16, 26, var(--section-overlay)),
+      rgba(17, 16, 26, var(--section-overlay))
+    ),
+    var(--section-image) !important;
+}
+
+[dir="rtl"] .site main > section.section-surface[data-background-media="true"]:not(.content-grid--tracks) {
+  background-image:
+    linear-gradient(
+      -90deg,
+      rgba(14, 10, 25, 0.76) 0%,
+      rgba(32, 21, 51, 0.42) 42%,
+      rgba(32, 21, 51, 0.08) 78%
+    ),
+    linear-gradient(
+      rgba(17, 16, 26, var(--section-overlay)),
+      rgba(17, 16, 26, var(--section-overlay))
+    ),
+    var(--section-image) !important;
+}
+
+.site-footer,
 html[data-theme="light"] .site-footer {
-  background: #080611 !important;
+  background-color: var(--theme-dark) !important;
+  background-image: var(--theme-dark-surface) !important;
 }
 
 @media (max-width: 820px) {
@@ -525,5 +987,236 @@ html[data-theme="light"] .site-footer {
 @media (prefers-reduced-motion: reduce) {
   .partner-marquee__track {
     animation-play-state: paused;
+  }
+}
+
+/* Horizontal milestone journey. This final layer intentionally overrides the
+   legacy vertical timeline without changing its CMS block or content model. */
+.timeline--journey {
+  --journey-gap: clamp(22px, 2.4vw, 36px);
+  position: relative;
+  display: grid;
+  width: min(1320px, 100%);
+  margin-inline: auto;
+  padding: 0 0 18px;
+  grid-auto-columns: minmax(190px, 1fr);
+  grid-auto-flow: column;
+  gap: var(--journey-gap);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-padding-inline: 0;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.timeline--journey::-webkit-scrollbar {
+  display: none;
+}
+
+.timeline--journey::before {
+  position: absolute;
+  top: 74px;
+  inset-inline: 0;
+  width: auto;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--startime-brand) 0 var(--timeline-progress, 0%),
+    rgba(90, 65, 127, 0.24) var(--timeline-progress, 0%) 100%
+  ) !important;
+  content: "";
+}
+
+[dir="rtl"] .timeline--journey::before {
+  background: linear-gradient(
+    -90deg,
+    var(--startime-brand) 0 var(--timeline-progress, 0%),
+    rgba(90, 65, 127, 0.24) var(--timeline-progress, 0%) 100%
+  ) !important;
+}
+
+.timeline--journey .timeline__step {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  padding: 0;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 60px minmax(0, 1fr);
+  gap: 0;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  scroll-snap-align: start;
+}
+
+.timeline--journey .timeline__step::before {
+  position: absolute;
+  z-index: 2;
+  top: 66px;
+  inset-inline-start: 0;
+  width: 16px;
+  height: 16px;
+  border: 4px solid var(--section-bg);
+  background: var(--startime-brand-light);
+  box-shadow: 0 0 0 1px rgba(167, 143, 195, 0.36);
+  content: "";
+  transform: rotate(45deg);
+  transition:
+    background 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.timeline--journey .timeline__number,
+.timeline--journey .timeline__number--year {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  width: auto;
+  height: auto;
+  margin: 0;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--startime-brand-light) !important;
+  font-size: clamp(27px, 2.35vw, 38px);
+  font-weight: 680;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  box-shadow: none !important;
+}
+
+.timeline--journey .timeline__step > div,
+.timeline--journey .timeline__step:nth-child(even) > div {
+  position: relative;
+  display: block;
+  grid-column: 1;
+  grid-row: 2;
+  min-height: 250px;
+  margin-top: 42px;
+  padding: 0 clamp(18px, 2vw, 28px) 0 0;
+  border: 0 !important;
+  background: transparent !important;
+  text-align: start;
+  box-shadow: none !important;
+  transform: none;
+}
+
+[dir="rtl"] .timeline--journey .timeline__step > div,
+[dir="rtl"] .timeline--journey .timeline__step:nth-child(even) > div {
+  padding: 0 0 0 clamp(18px, 2vw, 28px);
+}
+
+.timeline--journey .timeline__step > div::after,
+.timeline--journey .timeline__step:nth-child(even) > div::after {
+  display: none;
+}
+
+.timeline--journey .timeline__step h3 {
+  max-width: 280px;
+  margin: 0;
+  font-size: clamp(23px, 1.75vw, 30px);
+  line-height: 1.12;
+}
+
+.timeline--journey .timeline__step p {
+  max-width: 290px;
+  margin-top: 17px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.timeline--journey .timeline__step:hover::before {
+  background: #fff;
+  box-shadow:
+    0 0 0 1px var(--startime-brand),
+    0 0 24px rgba(90, 65, 127, 0.58);
+  transform: rotate(45deg) scale(1.18);
+}
+
+.timeline--journey .timeline__step:hover > div {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none;
+}
+
+html[data-theme="light"] .timeline-section:not(.section-surface--dark):not(.section-surface--brand) .timeline--journey .timeline__step::before {
+  border-color: var(--theme-paper-alt);
+  background: var(--startime-brand);
+}
+
+html[data-theme="light"] .timeline-section:not(.section-surface--dark):not(.section-surface--brand) .timeline--journey .timeline__number {
+  color: var(--startime-brand) !important;
+}
+
+html[data-theme="light"] .timeline-section:not(.section-surface--dark):not(.section-surface--brand) .timeline--journey .timeline__step > div {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="light"] .timeline-section:not(.section-surface--dark):not(.section-surface--brand) .timeline--journey .timeline__step:nth-child(even) > div,
+html[data-theme="light"] .timeline-section:not(.section-surface--dark):not(.section-surface--brand) .timeline--journey .timeline__step:hover > div {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+@media (min-width: 1000px) {
+  .timeline--journey {
+    grid-auto-columns: minmax(0, 1fr);
+    overflow: visible;
+  }
+}
+
+@media (max-width: 999px) {
+  .timeline--journey {
+    width: calc(100% + max(24px, calc((100vw - var(--shell)) / 2)));
+    margin-inline-end: calc(max(24px, calc((100vw - var(--shell)) / 2)) * -1);
+    padding-inline-end: max(24px, calc((100vw - var(--shell)) / 2));
+    grid-auto-columns: minmax(260px, 72vw);
+    scroll-snap-type: x mandatory;
+  }
+}
+
+@media (max-width: 600px) {
+  .timeline--journey {
+    --journey-gap: 24px;
+    grid-auto-columns: minmax(244px, 82vw);
+  }
+
+  .timeline--journey::before {
+    top: 62px;
+  }
+
+  .timeline--journey .timeline__step {
+    grid-template-rows: 48px minmax(0, 1fr);
+  }
+
+  .timeline--journey .timeline__step::before {
+    top: 54px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .timeline--journey .timeline__number,
+  .timeline--journey .timeline__number--year {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 27px;
+  }
+
+  .timeline--journey .timeline__step > div,
+  .timeline--journey .timeline__step:nth-child(even) > div {
+    grid-column: 1;
+    grid-row: 2;
+    min-height: 230px;
+    margin-top: 40px;
+    padding: 0 24px 0 0;
+  }
+
+  [dir="rtl"] .timeline--journey .timeline__step > div,
+  [dir="rtl"] .timeline--journey .timeline__step:nth-child(even) > div {
+    padding: 0 0 0 24px;
   }
 }
