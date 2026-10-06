@@ -1,6 +1,6 @@
 # Handoff manifest — October 7, 2026
 
-Company review branch: `codex/handoff-20261007`. Internal source reference: `60946db1a600424ecfa53ccdebd3307badcbd48b`. The company source tree intentionally excludes internal instructions/working notes and has streamlined operational scripts/documentation. Production main and the live server are not changed by this handoff.
+Company source branch: `codex/handoff-20261007`. Approved runtime source reference: `da209d95c7cb9e0efb70c5f2b57282c056143e81`. The company source tree intentionally excludes internal instructions/working notes and has streamlined operational scripts/documentation. The October 7 runtime patch is now deployed; publishing this handoff does not replace production CMS data.
 
 ## Contents
 
@@ -18,4 +18,8 @@ No credentials, accounts, sessions, visitor data, submissions, private attachmen
 - A fresh local test administrator authenticated successfully. This account is in the ignored disposable local DB, not the published snapshot.
 - Tracked-file credential/private-path check and manual path review passed. Largest tracked file is under 20 MB. Scan is basic, not exhaustive security certification.
 
-See [known issues](KNOWN-ISSUES.md) for unresolved dependency advisories. Production SMTP/inbox, third-party conversion receipt, live D&B, current DNS/TLS/server behavior and live CMS parity were not re-certified. Do not merge/promote to production without dependency review and the release acceptance procedure.
+## Production patch verification
+
+The production build and isolated candidate checks passed before activation. Live English/Arabic main pages, CMS login and Investment editor, assets, news redirects and 404 behavior passed. Desktop and 390×844 carousel checks confirmed portfolio photos and a stationary shared Legacy & Impact background. Existing CMS content, uploads, administrators and submissions were retained; only empty portfolio image selections were populated from existing media. Checksummed private recovery files were retained on the server, and the temporary candidate listener was stopped.
+
+See [known issues](KNOWN-ISSUES.md) for unresolved dependency advisories. Dependencies were unchanged. Production SMTP inbox delivery, third-party conversion receipt and live D&B provider availability were not re-certified by this patch. Follow the release acceptance procedure for subsequent releases.
