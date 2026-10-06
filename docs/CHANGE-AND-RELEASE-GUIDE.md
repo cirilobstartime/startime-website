@@ -153,11 +153,11 @@ Uncompress the verified database backup into a separate private build-only DB. B
 
 ```bash
 NODE_ENV=production DATABASE_URL=file:/absolute/path/to/build-only.db node --env-file=.env --import tsx node_modules/payload/bin.js generate:types
-NODE_ENV=production DATABASE_URL=file:/absolute/path/to/build-only.db node --env-file=.env node_modules/next/dist/bin/next build
+NODE_ENV=production DATABASE_URL=file:/absolute/path/to/build-only.db env -u NODE_OPTIONS npx next build
 test -s .next/BUILD_ID
 ```
 
-Environment override must win over `.env`; runtime `.env` remains live DB. Do not put `--env-file` into `NODE_OPTIONS`: build workers may reject it. Verify exit status and BUILD_ID. Do not seed to fix a build.
+Environment override must win over `.env`; runtime `.env` remains live DB. Next.js loads `.env` itself. Do not launch `next build` through `node --env-file`, or put that flag into `NODE_OPTIONS`: it can be forwarded to workers and fail with `ERR_WORKER_INVALID_EXEC_ARGV`. Use normal `022` umask for builds, owner-only permissions for logs/backups, and verify Nginx can traverse/read only intended public static paths. Verify exit status and BUILD_ID. Do not seed to fix a build.
 
 Review pending migrations, rehearse exact migrations on a disposable backup, inspect counts/locale status, then apply only approved pending migrations to live with a fresh backup. No development schema push on production. JSON section additions often need no SQL migration; new collections/globals do. Any content update must target exact records and preserve unrelated fields/locale drafts.
 
