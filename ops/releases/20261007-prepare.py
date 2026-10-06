@@ -33,6 +33,12 @@ for name, base, target in FILES:
     file = OLD/name
     assert (sha(file) if file.exists() else None) == base, 'Base source mismatch: '+name
 print('PREFLIGHT: all 17 patch source paths match the recorded base', flush=True)
+patch = pathlib.Path('/tmp/startime-20261007-runtime.patch')
+with urllib.request.urlopen('https://raw.githubusercontent.com/cirilobstartime/startime-website/refs/heads/codex/handoff-20261007/ops/releases/20261007-runtime.patch',timeout=45) as response:
+    patch_data = response.read()
+assert hashlib.sha256(patch_data).hexdigest() == 'b4cd176ab2edfd5b016cdcdaf91204dd3857c8c275cace8975f539f737a2b6a2'
+patch.write_bytes(patch_data)
+subprocess.run(['git','apply','--check',str(patch)],cwd=OLD,check=True)
 os.umask(0o077)
 BACKUP.mkdir(parents=True)
 source = sqlite3.connect(DB)
@@ -51,15 +57,9 @@ with sqlite3.connect(BACKUP/'startime.db') as backup:
 print('BACKUP: DB integrity ok; uploads/env/Nginx/unit captured; counts '+json.dumps(counts), flush=True)
 os.umask(0o022)
 shutil.copytree(OLD, NEW, symlinks=True, ignore=shutil.ignore_patterns('.next*','node_modules','uploads','.git','.env','*.db','*.db-wal','*.db-shm','database','backups','tmp','qa-captures'))
-def download(entry):
-    name, base, target = entry
-    url = 'https://raw.githubusercontent.com/cirilobstartime/startime-website/'+COMMIT+'/'+urllib.parse.quote(name)
-    with urllib.request.urlopen(url,timeout=45) as response: data=response.read()
-    assert hashlib.sha256(data).hexdigest()==target, 'Target checksum mismatch: '+name
-    file=NEW/name
-    file.parent.mkdir(parents=True,exist_ok=True)
-    file.write_bytes(data)
-with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool: list(pool.map(download,FILES))
+subprocess.run(['git','apply','--check',str(patch)],cwd=NEW,check=True)
+subprocess.run(['git','apply',str(patch)],cwd=NEW,check=True)
+for name, base, target in FILES: assert sha(NEW/name) == target, 'Applied source checksum mismatch: '+name
 shutil.copyfile(OLD/'.env', NEW/'.env')
 os.chmod(NEW/'.env',0o600)
 (NEW/'uploads').symlink_to(UPLOADS)
@@ -67,4 +67,5 @@ subprocess.run(['cp','-a','--reflink=auto',str(OLD/'node_modules'),str(NEW/'node
 for filename in ['package.json','package-lock.json','payload.config.ts']:
     assert sha(OLD/filename)==sha(NEW/filename)
 (NEW/'RELEASE-MANIFEST.json').write_text((BACKUP/'metadata.json').read_text())
+subprocess.run(['chown','-R','-h','ubuntu:ubuntu',str(NEW)],check=True)
 print('PREPARED: checksummed code-only patch; dependencies unchanged; preserved live data links; active service untouched',flush=True)
