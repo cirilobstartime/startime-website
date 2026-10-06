@@ -1,6 +1,6 @@
 import { existsSync } from 'node:fs';
 import { getPayload } from 'payload';
-import config from '../../payload.config';
+import config from '../../payload.config.ts';
 
 if (process.env.PORTFOLIO_MEDIA_CONFIRM !== 'fill-empty-after-backup' || !process.env.PORTFOLIO_BACKUP_DB || !existsSync(process.env.PORTFOLIO_BACKUP_DB)) {
   throw new Error('A verified backup and explicit fill-empty confirmation are required');

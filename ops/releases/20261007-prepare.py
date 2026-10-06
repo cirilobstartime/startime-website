@@ -45,6 +45,7 @@ source = sqlite3.connect(DB)
 with sqlite3.connect(BACKUP/'startime.db') as backup:
     source.backup(backup)
     assert backup.execute('PRAGMA integrity_check').fetchone()[0] == 'ok'
+backup.close()
 source.close()
 for source_file, name in [(OLD/'.env','environment.private'),(pathlib.Path('/etc/nginx/sites-enabled/startime.sa'),'nginx-site.conf'),(pathlib.Path('/etc/systemd/system/startime-cms.service'),'systemd-unit.service')]:
     shutil.copyfile(source_file, BACKUP/name)
@@ -52,8 +53,9 @@ with tarfile.open(BACKUP/'uploads.tar.gz','w:gz') as archive:
     archive.add(UPLOADS, arcname='uploads')
 with sqlite3.connect(BACKUP/'startime.db') as backup:
     counts = {name:backup.execute('SELECT count(*) FROM "'+name+'"').fetchone()[0] for name in ['pages','media','cms_users','forms','form_submissions','jobs','redirects']}
+backup.close()
 (BACKUP/'metadata.json').write_text(json.dumps({'old':str(OLD),'new':str(NEW),'base':'ec77cbef5409d8edef4821e8981d37e08152b17f','target':'da209d95c7cb9e0efb70c5f2b57282c056143e81','companySource':COMMIT,'counts':counts,'archiveRoot':'uploads'},indent=2))
-(BACKUP/'SHA256SUMS').write_text(''.join(sha(file)+'  '+file.name+'\n' for file in sorted(BACKUP.iterdir()) if file.is_file()))
+(BACKUP/'SHA256SUMS').write_text(''.join(sha(file)+'  '+file.name+'\n' for file in sorted(BACKUP.iterdir()) if file.is_file() and not file.name.endswith(('-wal','-shm'))))
 print('BACKUP: DB integrity ok; uploads/env/Nginx/unit captured; counts '+json.dumps(counts), flush=True)
 os.umask(0o022)
 shutil.copytree(OLD, NEW, symlinks=True, ignore=shutil.ignore_patterns('.next*','node_modules','uploads','.git','.env','*.db','*.db-wal','*.db-shm','database','backups','tmp','qa-captures'))
