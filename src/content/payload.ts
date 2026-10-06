@@ -2,6 +2,7 @@ import configPromise from "@payload-config";
 import { unstable_cache } from "next/cache";
 import { getPayload } from "payload";
 import { cache } from "react";
+import { mainPageKey } from "@/lib/pageRoutes";
 import { getDefaultChrome, getDefaultPage } from "./defaults";
 import type {
   Locale,
@@ -512,6 +513,7 @@ async function fetchMarketing(locale: Locale): Promise<MarketingSettings> {
     metaDomainVerification: "",
     metaPixelID: "",
     privacyHref: locale === "ar" ? "/ar/privacy-policy" : "/privacy-policy",
+    showConsentNotice: false,
     tiktokPixelID: "",
     xPixelID: "",
   };
@@ -551,6 +553,7 @@ async function fetchMarketing(locale: Locale): Promise<MarketingSettings> {
       privacyHref: settings.privacyHref || fallback.privacyHref,
       rejectLabel: settings.rejectLabel || fallback.rejectLabel,
       settingsLabel: settings.settingsLabel || fallback.settingsLabel,
+      showConsentNotice: Boolean(settings.showConsentNotice),
       tiktokPixelID: settings.tiktokPixelID || "",
       xPixelID: settings.xPixelID || "",
     };
@@ -590,7 +593,7 @@ export const getMaintenanceSettings = cache(fetchMaintenance);
 async function fetchRedirect(
   locale: Locale,
   fromPath: string,
-): Promise<{ permanent: boolean; slug: string } | null> {
+): Promise<{ permanent: boolean; slug: string; key: string } | null> {
   try {
     const payload = await getPayload({ config: configPromise });
     const dedicated = await payload.find({
@@ -615,12 +618,14 @@ async function fetchRedirect(
         : null;
     if (
       target?.slug &&
+      mainPageKey(target.internalTitle) &&
       target.visible !== false &&
       target._status === "published"
     ) {
       return {
         permanent: redirect.permanent !== false,
         slug: target.slug,
+        key: mainPageKey(target.internalTitle)!,
       };
     }
 
@@ -641,11 +646,12 @@ async function fetchRedirect(
       },
     });
     const page = result.docs[0];
-    if (!page?.slug) return null;
+    if (!page?.slug || !mainPageKey(page.internalTitle)) return null;
     const entry = page.redirects?.find((item) => item.fromPath === fromPath);
     return {
       permanent: entry?.permanent !== false,
       slug: page.slug,
+      key: mainPageKey(page.internalTitle)!,
     };
   } catch {
     return null;

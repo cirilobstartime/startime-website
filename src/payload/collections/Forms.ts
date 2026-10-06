@@ -140,7 +140,7 @@ export const Forms: CollectionConfig = {
       fields: [{ name: "email", type: "email", required: true }],
       admin: {
         description:
-          "Recipients for future transactional-email integration. Submissions are always retained in the CMS.",
+          "Email recipients notified after a submission is saved. If empty, the form uses its default recipient. Submissions remain in the CMS even if email delivery fails.",
       },
     },
     {

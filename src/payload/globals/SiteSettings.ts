@@ -5,7 +5,8 @@ export const SiteSettings: GlobalConfig = {
   slug: "site-settings",
   label: "Header and footer",
   admin: {
-    group: "Content",
+    hidden: true,
+    group: "Legacy",
     description:
       "Header and footer content is localized. Switch English or Arabic before editing and publishing.",
   },

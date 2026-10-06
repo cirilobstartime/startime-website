@@ -156,6 +156,16 @@ export const MarketingSettings: GlobalConfig = {
           label: "Cookie notice",
           fields: [
             {
+              name: "showConsentNotice",
+              label: "Show consent notice",
+              type: "checkbox",
+              defaultValue: false,
+              admin: {
+                description:
+                  "Off by default. Turn this on if a visitor choice needs to be presented. This setting does not change analytics tag consent on its own.",
+              },
+            },
+            {
               name: "cookieNotice",
               label: "Cookie notice message",
               type: "textarea",

@@ -13,7 +13,7 @@ export function buildContentSecurityPolicy(
     "font-src 'self' data: https:",
     "connect-src 'self' https: wss:",
     "media-src 'self' blob: https:",
-    "frame-src 'self' https://www.googletagmanager.com https://www.youtube-nocookie.com https://www.google.com https://maps.google.com",
+    "frame-src 'self' https://www.googletagmanager.com https://www.youtube-nocookie.com https://www.google.com https://maps.google.com https://dunsregistered.dnb.com https://profiles.dunsregistered.com",
     "worker-src 'self' blob:",
     "object-src 'none'",
     "base-uri 'self'",

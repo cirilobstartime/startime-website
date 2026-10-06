@@ -7,7 +7,7 @@ export const Media: CollectionConfig = {
     group: "Content",
     useAsTitle: "alt",
     description:
-      "Upload source artwork and public documents here. Raster images are automatically optimized to WebP; SVG and PDF files retain their original format. Use 1920 × 1080 px for full-width hero imagery and 960 × 640 px for cards; preserve the subject within the centre-safe area.",
+      "Upload source artwork, MP4/WebM videos, and public documents here. Raster images are automatically optimized to WebP; videos, SVGs and PDFs retain their original format. Use the dimensions shown beside each section's media field.",
   },
   access: {
     create: manageCmsContent,
@@ -82,7 +82,7 @@ export const Media: CollectionConfig = {
       type: "textarea",
       admin: {
         description:
-          "Internal editor guidance only. It is never shown on the public website. Recommended source sizes: hero 1920 × 1080 px; landscape card 960 × 640 px; portrait team image 900 × 1200 px. Raster uploads are saved as WebP automatically.",
+          "Internal editor guidance only. Use the exact viewport and frame dimensions shown beside the page field where this file will appear—hero, panorama, card, team and logo shapes differ. Raster uploads are saved as WebP automatically without cropping the primary file.",
       },
     },
   ],

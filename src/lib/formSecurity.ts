@@ -13,8 +13,8 @@ if (
   );
 }
 
-export function createFormToken(formKey: string): string {
-  const timestamp = Date.now().toString();
+export function createFormToken(formKey: string, issuedAt = Date.now()): string {
+  const timestamp = issuedAt.toString();
   const payload = `${formKey}.${timestamp}`;
   const signature = createHmac("sha256", secret).update(payload).digest("hex");
   return `${timestamp}.${signature}`;

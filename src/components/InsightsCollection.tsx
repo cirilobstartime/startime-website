@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "@phosphor-icons/react";
-import Link from "next/link";
+import Link from "./CmsLink";
 import { useCallback, useRef, useState } from "react";
 import type { Locale, NewsMosaicSection } from "@/content/types";
 import { CmsImage } from "./CmsImage";

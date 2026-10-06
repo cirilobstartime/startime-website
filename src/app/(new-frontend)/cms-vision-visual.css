@@ -1,0 +1,94 @@
+/* Vision CMS controls are opt-in. Empty fields retain the approved layout and animation. */
+.vision-page .vision-cms-section[style*="--cms-section-background"] { background-color: var(--cms-section-background) !important; }
+.vision-page .vision-cms-section[style*="--cms-section-padding"] { padding-block: var(--cms-section-padding) !important; }
+.vision-page .vision-cms-section { isolation: isolate; }
+.vision-page .vision-cms-section:has(> .vision-cms-backdrop) { position: relative; }
+.vision-page .vision-cms-backdrop { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.vision-page .vision-cms-backdrop :is(img, video) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.vision-page .vision-cms-backdrop ~ :not(.vision-roadmap-stage) { position: relative; z-index: 1; }
+.vision-page .vision-roadmap-stage > .vision-cms-backdrop { z-index: 0; }
+.vision-page .vision-hero-media > .vision-cms-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .54; }
+.vision-page .vision-path-media img { object-fit: cover; }
+.vision-page .vision-programs-visual img { object-fit: cover; }
+.vision-page .vision-statement-pattern img { object-fit: contain; }
+
+.vision-page .vision-cms-section[style*="--cms-eyebrow-color"] .vision-label { color: var(--cms-eyebrow-color) !important; }
+.vision-page .vision-cms-section[style*="--cms-heading-color"] :is(.vision-hero-copy h1, .vision-path-copy h2, .vision-statement-copy h2, .vision-pillars-intro h2, .vision-programs-intro h2, .vision-roadmap-heading h2, .vision-commitment-heading h2, .vision-chapter-heading h2) { color: var(--cms-heading-color) !important; }
+.vision-page .vision-cms-section[style*="--cms-body-color"] :is(.vision-hero-honorific, .vision-path-copy p, .vision-statement-copy > p:not(.vision-label), .vision-pillars-intro > p, .vision-programs-intro > p, .vision-commitment-copy p, .vision-chapter-heading > p) { color: var(--cms-body-color) !important; }
+.vision-page .vision-cms-section[style*="--cms-itemHeading-color"] :is(.vision-hero-copy strong, .vision-pillar-copy h3, .vision-program-row h3 button, .vision-chapter-list strong) { color: var(--cms-itemHeading-color) !important; }
+.vision-page .vision-cms-section[style*="--cms-itemBody-color"] :is(.vision-hero-role, .vision-pillar-copy p, .vision-program-panel p, .vision-chapter-list p, .vision-roadmap-active p) { color: var(--cms-itemBody-color) !important; }
+.vision-page .vision-cms-section[style*="--cms-cta-color"] .vision-program-panel small { color: var(--cms-cta-color) !important; }
+.vision-page .vision-cms-section[style*="--cms-number-color"] :is(.vision-pillar-index, .vision-program-index, .vision-roadmap-active strong) { color: var(--cms-number-color) !important; }
+.vision-page .vision-cms-section[style*="--cms-detail-number"] :is(.vision-pillar-index, .vision-program-index, .vision-roadmap-active strong) { color: var(--cms-detail-number) !important; }
+.vision-page .vision-cms-section[style*="--cms-detail-line"] :is(.vision-pillar-progress i, .vision-program-row, .vision-roadmap-track) { border-color: var(--cms-detail-line) !important; stroke: var(--cms-detail-line); }
+.vision-page .vision-cms-section[style*="--cms-detail-icon"] :is(.carousel-arrow, .vision-roadmap-fill) { color: var(--cms-detail-icon) !important; stroke: var(--cms-detail-icon) !important; }
+.vision-page .vision-cms-section[style*="--cms-detail-pattern"] .vision-statement-pattern { color: var(--cms-detail-pattern) !important; }
+.vision-page .vision-pillar-slide[style*="--cms-item-background"],
+.vision-page .vision-program-row[style*="--cms-item-background"] { background-color: var(--cms-item-background) !important; }
+.vision-page :is(.vision-pillar-slide, .vision-program-row)[style*="--cms-item-border"] { border-color: var(--cms-item-border) !important; }
+.vision-page :is(.vision-pillar-slide, .vision-program-row, .vision-roadmap-active, .vision-chapter-list button)[style*="--cms-item-title-color"] :is(h3, strong, h3 button) { color: var(--cms-item-title-color) !important; }
+.vision-page :is(.vision-pillar-slide, .vision-program-row, .vision-roadmap-active, .vision-chapter-list button)[style*="--cms-item-body-color"] p { color: var(--cms-item-body-color) !important; }
+.vision-page .vision-cms-paragraph[style*="--cms-item-body-color"] { color: var(--cms-item-body-color) !important; }
+
+@layer startime-editorial-type {
+@media (max-width: 640px) {
+  .vision-page .vision-cms-paragraph[style*="--cms-item-body-mobile"] { font-size: var(--cms-item-body-mobile) !important; }
+  .vision-page .vision-cms-section[style*="--cms-eyebrow-mobile"] .vision-label { font-size: var(--cms-eyebrow-mobile) !important; }
+  .vision-page .vision-cms-section[style*="--cms-heading-mobile"] :is(.vision-hero-copy h1, .vision-path-copy h2, .vision-statement-copy h2, .vision-pillars-intro h2, .vision-programs-intro h2, .vision-roadmap-heading h2, .vision-commitment-heading h2, .vision-chapter-heading h2) { font-size: var(--cms-heading-mobile) !important; }
+  .vision-page .vision-cms-section[style*="--cms-body-mobile"] :is(.vision-hero-honorific, .vision-path-copy p, .vision-statement-copy > p:not(.vision-label), .vision-pillars-intro > p, .vision-programs-intro > p, .vision-commitment-copy p, .vision-chapter-heading > p) { font-size: var(--cms-body-mobile) !important; }
+  .vision-page .vision-cms-section[style*="--cms-itemHeading-mobile"] :is(.vision-hero-copy strong, .vision-pillar-copy h3, .vision-program-row h3 button, .vision-chapter-list strong) { font-size: var(--cms-itemHeading-mobile) !important; }
+  .vision-page .vision-cms-section[style*="--cms-itemBody-mobile"] :is(.vision-hero-role, .vision-pillar-copy p, .vision-program-panel p, .vision-chapter-list p, .vision-roadmap-active p) { font-size: var(--cms-itemBody-mobile) !important; }
+  .vision-page .vision-cms-section[style*="--cms-cta-mobile"] .vision-program-panel small { font-size: var(--cms-cta-mobile) !important; }
+  .vision-page .vision-cms-section[style*="--cms-number-mobile"] :is(.vision-pillar-index, .vision-program-index, .vision-roadmap-active strong) { font-size: var(--cms-number-mobile) !important; }
+  .vision-page [style*="--cms-item-title-mobile"] :is(.vision-pillar-copy h3, .vision-program-row h3 button, .vision-roadmap-active strong, .vision-chapter-list strong) { font-size: var(--cms-item-title-mobile) !important; }
+  .vision-page [style*="--cms-item-body-mobile"] :is(.vision-pillar-copy p, .vision-program-panel p, .vision-roadmap-active p, .vision-chapter-list p) { font-size: var(--cms-item-body-mobile) !important; }
+}
+@media (min-width: 641px) and (max-width: 1023px) {
+  .vision-page .vision-cms-paragraph[style*="--cms-item-body-tablet"] { font-size: var(--cms-item-body-tablet) !important; }
+  .vision-page .vision-cms-section[style*="--cms-eyebrow-tablet"] .vision-label { font-size: var(--cms-eyebrow-tablet) !important; }
+  .vision-page .vision-cms-section[style*="--cms-heading-tablet"] :is(.vision-hero-copy h1, .vision-path-copy h2, .vision-statement-copy h2, .vision-pillars-intro h2, .vision-programs-intro h2, .vision-roadmap-heading h2, .vision-commitment-heading h2, .vision-chapter-heading h2) { font-size: var(--cms-heading-tablet) !important; }
+  .vision-page .vision-cms-section[style*="--cms-body-tablet"] :is(.vision-hero-honorific, .vision-path-copy p, .vision-statement-copy > p:not(.vision-label), .vision-pillars-intro > p, .vision-programs-intro > p, .vision-commitment-copy p, .vision-chapter-heading > p) { font-size: var(--cms-body-tablet) !important; }
+  .vision-page .vision-cms-section[style*="--cms-itemHeading-tablet"] :is(.vision-hero-copy strong, .vision-pillar-copy h3, .vision-program-row h3 button, .vision-chapter-list strong) { font-size: var(--cms-itemHeading-tablet) !important; }
+  .vision-page .vision-cms-section[style*="--cms-itemBody-tablet"] :is(.vision-hero-role, .vision-pillar-copy p, .vision-program-panel p, .vision-chapter-list p, .vision-roadmap-active p) { font-size: var(--cms-itemBody-tablet) !important; }
+  .vision-page .vision-cms-section[style*="--cms-cta-tablet"] .vision-program-panel small { font-size: var(--cms-cta-tablet) !important; }
+  .vision-page .vision-cms-section[style*="--cms-number-tablet"] :is(.vision-pillar-index, .vision-program-index, .vision-roadmap-active strong) { font-size: var(--cms-number-tablet) !important; }
+  .vision-page [style*="--cms-item-title-tablet"] :is(.vision-pillar-copy h3, .vision-program-row h3 button, .vision-roadmap-active strong, .vision-chapter-list strong) { font-size: var(--cms-item-title-tablet) !important; }
+  .vision-page [style*="--cms-item-body-tablet"] :is(.vision-pillar-copy p, .vision-program-panel p, .vision-roadmap-active p, .vision-chapter-list p) { font-size: var(--cms-item-body-tablet) !important; }
+}
+@media (min-width: 1024px) and (max-width: 1599px) {
+  .vision-page .vision-cms-paragraph[style*="--cms-item-body-laptop"] { font-size: var(--cms-item-body-laptop) !important; }
+  .vision-page .vision-cms-section[style*="--cms-eyebrow-laptop"] .vision-label { font-size: var(--cms-eyebrow-laptop) !important; }
+  .vision-page .vision-cms-section[style*="--cms-heading-laptop"] :is(.vision-hero-copy h1, .vision-path-copy h2, .vision-statement-copy h2, .vision-pillars-intro h2, .vision-programs-intro h2, .vision-roadmap-heading h2, .vision-commitment-heading h2, .vision-chapter-heading h2) { font-size: var(--cms-heading-laptop) !important; }
+  .vision-page .vision-cms-section[style*="--cms-body-laptop"] :is(.vision-hero-honorific, .vision-path-copy p, .vision-statement-copy > p:not(.vision-label), .vision-pillars-intro > p, .vision-programs-intro > p, .vision-commitment-copy p, .vision-chapter-heading > p) { font-size: var(--cms-body-laptop) !important; }
+  .vision-page .vision-cms-section[style*="--cms-itemHeading-laptop"] :is(.vision-hero-copy strong, .vision-pillar-copy h3, .vision-program-row h3 button, .vision-chapter-list strong) { font-size: var(--cms-itemHeading-laptop) !important; }
+  .vision-page .vision-cms-section[style*="--cms-itemBody-laptop"] :is(.vision-hero-role, .vision-pillar-copy p, .vision-program-panel p, .vision-chapter-list p, .vision-roadmap-active p) { font-size: var(--cms-itemBody-laptop) !important; }
+  .vision-page .vision-cms-section[style*="--cms-cta-laptop"] .vision-program-panel small { font-size: var(--cms-cta-laptop) !important; }
+  .vision-page .vision-cms-section[style*="--cms-number-laptop"] :is(.vision-pillar-index, .vision-program-index, .vision-roadmap-active strong) { font-size: var(--cms-number-laptop) !important; }
+  .vision-page [style*="--cms-item-title-laptop"] :is(.vision-pillar-copy h3, .vision-program-row h3 button, .vision-roadmap-active strong, .vision-chapter-list strong) { font-size: var(--cms-item-title-laptop) !important; }
+  .vision-page [style*="--cms-item-body-laptop"] :is(.vision-pillar-copy p, .vision-program-panel p, .vision-roadmap-active p, .vision-chapter-list p) { font-size: var(--cms-item-body-laptop) !important; }
+}
+@media (min-width: 1600px) and (max-width: 1999px) {
+  .vision-page .vision-cms-paragraph[style*="--cms-item-body-desktop"] { font-size: var(--cms-item-body-desktop) !important; }
+  .vision-page .vision-cms-section[style*="--cms-eyebrow-desktop"] .vision-label { font-size: var(--cms-eyebrow-desktop) !important; }
+  .vision-page .vision-cms-section[style*="--cms-heading-desktop"] :is(.vision-hero-copy h1, .vision-path-copy h2, .vision-statement-copy h2, .vision-pillars-intro h2, .vision-programs-intro h2, .vision-roadmap-heading h2, .vision-commitment-heading h2, .vision-chapter-heading h2) { font-size: var(--cms-heading-desktop) !important; }
+  .vision-page .vision-cms-section[style*="--cms-body-desktop"] :is(.vision-hero-honorific, .vision-path-copy p, .vision-statement-copy > p:not(.vision-label), .vision-pillars-intro > p, .vision-programs-intro > p, .vision-commitment-copy p, .vision-chapter-heading > p) { font-size: var(--cms-body-desktop) !important; }
+  .vision-page .vision-cms-section[style*="--cms-itemHeading-desktop"] :is(.vision-hero-copy strong, .vision-pillar-copy h3, .vision-program-row h3 button, .vision-chapter-list strong) { font-size: var(--cms-itemHeading-desktop) !important; }
+  .vision-page .vision-cms-section[style*="--cms-itemBody-desktop"] :is(.vision-hero-role, .vision-pillar-copy p, .vision-program-panel p, .vision-chapter-list p, .vision-roadmap-active p) { font-size: var(--cms-itemBody-desktop) !important; }
+  .vision-page .vision-cms-section[style*="--cms-cta-desktop"] .vision-program-panel small { font-size: var(--cms-cta-desktop) !important; }
+  .vision-page .vision-cms-section[style*="--cms-number-desktop"] :is(.vision-pillar-index, .vision-program-index, .vision-roadmap-active strong) { font-size: var(--cms-number-desktop) !important; }
+  .vision-page [style*="--cms-item-title-desktop"] :is(.vision-pillar-copy h3, .vision-program-row h3 button, .vision-roadmap-active strong, .vision-chapter-list strong) { font-size: var(--cms-item-title-desktop) !important; }
+  .vision-page [style*="--cms-item-body-desktop"] :is(.vision-pillar-copy p, .vision-program-panel p, .vision-roadmap-active p, .vision-chapter-list p) { font-size: var(--cms-item-body-desktop) !important; }
+}
+@media (min-width: 2000px) {
+  .vision-page .vision-cms-paragraph[style*="--cms-item-body-imac"] { font-size: var(--cms-item-body-imac) !important; }
+  .vision-page .vision-cms-section[style*="--cms-eyebrow-imac"] .vision-label { font-size: var(--cms-eyebrow-imac) !important; }
+  .vision-page .vision-cms-section[style*="--cms-heading-imac"] :is(.vision-hero-copy h1, .vision-path-copy h2, .vision-statement-copy h2, .vision-pillars-intro h2, .vision-programs-intro h2, .vision-roadmap-heading h2, .vision-commitment-heading h2, .vision-chapter-heading h2) { font-size: var(--cms-heading-imac) !important; }
+  .vision-page .vision-cms-section[style*="--cms-body-imac"] :is(.vision-hero-honorific, .vision-path-copy p, .vision-statement-copy > p:not(.vision-label), .vision-pillars-intro > p, .vision-programs-intro > p, .vision-commitment-copy p, .vision-chapter-heading > p) { font-size: var(--cms-body-imac) !important; }
+  .vision-page .vision-cms-section[style*="--cms-itemHeading-imac"] :is(.vision-hero-copy strong, .vision-pillar-copy h3, .vision-program-row h3 button, .vision-chapter-list strong) { font-size: var(--cms-itemHeading-imac) !important; }
+  .vision-page .vision-cms-section[style*="--cms-itemBody-imac"] :is(.vision-hero-role, .vision-pillar-copy p, .vision-program-panel p, .vision-chapter-list p, .vision-roadmap-active p) { font-size: var(--cms-itemBody-imac) !important; }
+  .vision-page .vision-cms-section[style*="--cms-cta-imac"] .vision-program-panel small { font-size: var(--cms-cta-imac) !important; }
+  .vision-page .vision-cms-section[style*="--cms-number-imac"] :is(.vision-pillar-index, .vision-program-index, .vision-roadmap-active strong) { font-size: var(--cms-number-imac) !important; }
+  .vision-page [style*="--cms-item-title-imac"] :is(.vision-pillar-copy h3, .vision-program-row h3 button, .vision-roadmap-active strong, .vision-chapter-list strong) { font-size: var(--cms-item-title-imac) !important; }
+  .vision-page [style*="--cms-item-body-imac"] :is(.vision-pillar-copy p, .vision-program-panel p, .vision-roadmap-active p, .vision-chapter-list p) { font-size: var(--cms-item-body-imac) !important; }
+}
+}

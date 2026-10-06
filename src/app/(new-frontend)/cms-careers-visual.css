@@ -1,0 +1,57 @@
+/* Careers editor overrides are opt-in: empty fields keep the approved layout. */
+.careers-page > section[style*="--cms-section-background"] { background-color: var(--cms-section-background) !important; }
+.careers-page > section[style*="--cms-section-padding"]:not(.careers-hero) { padding-block: var(--cms-section-padding) !important; }
+.careers-page > section[style*="--cms-eyebrow-color"] .careers-label { color: var(--cms-eyebrow-color) !important; }
+.careers-page > section[style*="--cms-heading-color"] :is(h1,h2) { color: var(--cms-heading-color) !important; }
+.careers-page > section[style*="--cms-body-color"] :is(.careers-hero-copy > p:last-child, .careers-investing-copy > p:last-child, .careers-section-intro > p, .careers-talent-copy > p:last-child) { color: var(--cms-body-color) !important; }
+.careers-page > section[style*="--cms-itemHeading-color"] :is(.careers-workplace-point h3, .careers-job h3) { color: var(--cms-itemHeading-color) !important; }
+.careers-page > section[style*="--cms-itemBody-color"] :is(.careers-workplace-point > p, .careers-job p) { color: var(--cms-itemBody-color) !important; }
+.careers-page > section[style*="--cms-cta-color"] .careers-job button { color: var(--cms-cta-color) !important; }
+.careers-page > section[style*="--cms-detail-icon"] .careers-workplace-icon { color: var(--cms-detail-icon) !important; }
+.careers-page .careers-workplace-point[style*="--cms-item-background"] { background: var(--cms-item-background) !important; }
+.careers-page .careers-workplace-point[style*="--cms-item-border"] { border: 1px solid var(--cms-item-border) !important; }
+.careers-page .careers-workplace-point[style*="--cms-item-title-color"] h3 { color: var(--cms-item-title-color) !important; }
+.careers-page .careers-workplace-point[style*="--cms-item-body-color"] > p { color: var(--cms-item-body-color) !important; }
+.careers-page .careers-hero > .careers-section-background, .careers-page .careers-hero > .careers-section-video { z-index: 0; }
+.careers-page .careers-hero > .careers-hero-shade { z-index: 0; }
+
+@media (max-width:640px) {
+  .careers-page [style*="--cms-eyebrow-mobile"] .careers-label { font-size: var(--cms-eyebrow-mobile) !important; }
+  .careers-page [style*="--cms-heading-mobile"] :is(h1,h2) { font-size: var(--cms-heading-mobile) !important; }
+  .careers-page [style*="--cms-body-mobile"] :is(.careers-hero-copy > p:last-child,.careers-investing-copy > p:last-child,.careers-section-intro > p,.careers-talent-copy > p:last-child) { font-size: var(--cms-body-mobile) !important; }
+  .careers-page [style*="--cms-itemHeading-mobile"] :is(.careers-workplace-point h3,.careers-job h3) { font-size: var(--cms-itemHeading-mobile) !important; }
+  .careers-page [style*="--cms-itemBody-mobile"] :is(.careers-workplace-point > p,.careers-job p) { font-size: var(--cms-itemBody-mobile) !important; }
+  .careers-page [style*="--cms-cta-mobile"] .careers-job button { font-size: var(--cms-cta-mobile) !important; }
+}
+@media (min-width:641px) and (max-width:1023px) {
+  .careers-page [style*="--cms-eyebrow-tablet"] .careers-label { font-size: var(--cms-eyebrow-tablet) !important; }
+  .careers-page [style*="--cms-heading-tablet"] :is(h1,h2) { font-size: var(--cms-heading-tablet) !important; }
+  .careers-page [style*="--cms-body-tablet"] :is(.careers-hero-copy > p:last-child,.careers-investing-copy > p:last-child,.careers-section-intro > p,.careers-talent-copy > p:last-child) { font-size: var(--cms-body-tablet) !important; }
+  .careers-page [style*="--cms-itemHeading-tablet"] :is(.careers-workplace-point h3,.careers-job h3) { font-size: var(--cms-itemHeading-tablet) !important; }
+  .careers-page [style*="--cms-itemBody-tablet"] :is(.careers-workplace-point > p,.careers-job p) { font-size: var(--cms-itemBody-tablet) !important; }
+  .careers-page [style*="--cms-cta-tablet"] .careers-job button { font-size: var(--cms-cta-tablet) !important; }
+}
+@media (min-width:1024px) and (max-width:1599px) {
+  .careers-page [style*="--cms-eyebrow-laptop"] .careers-label { font-size: var(--cms-eyebrow-laptop) !important; }
+  .careers-page [style*="--cms-heading-laptop"] :is(h1,h2) { font-size: var(--cms-heading-laptop) !important; }
+  .careers-page [style*="--cms-body-laptop"] :is(.careers-hero-copy > p:last-child,.careers-investing-copy > p:last-child,.careers-section-intro > p,.careers-talent-copy > p:last-child) { font-size: var(--cms-body-laptop) !important; }
+  .careers-page [style*="--cms-itemHeading-laptop"] :is(.careers-workplace-point h3,.careers-job h3) { font-size: var(--cms-itemHeading-laptop) !important; }
+  .careers-page [style*="--cms-itemBody-laptop"] :is(.careers-workplace-point > p,.careers-job p) { font-size: var(--cms-itemBody-laptop) !important; }
+  .careers-page [style*="--cms-cta-laptop"] .careers-job button { font-size: var(--cms-cta-laptop) !important; }
+}
+@media (min-width:1600px) and (max-width:1999px) {
+  .careers-page [style*="--cms-eyebrow-desktop"] .careers-label { font-size: var(--cms-eyebrow-desktop) !important; }
+  .careers-page [style*="--cms-heading-desktop"] :is(h1,h2) { font-size: var(--cms-heading-desktop) !important; }
+  .careers-page [style*="--cms-body-desktop"] :is(.careers-hero-copy > p:last-child,.careers-investing-copy > p:last-child,.careers-section-intro > p,.careers-talent-copy > p:last-child) { font-size: var(--cms-body-desktop) !important; }
+  .careers-page [style*="--cms-itemHeading-desktop"] :is(.careers-workplace-point h3,.careers-job h3) { font-size: var(--cms-itemHeading-desktop) !important; }
+  .careers-page [style*="--cms-itemBody-desktop"] :is(.careers-workplace-point > p,.careers-job p) { font-size: var(--cms-itemBody-desktop) !important; }
+  .careers-page [style*="--cms-cta-desktop"] .careers-job button { font-size: var(--cms-cta-desktop) !important; }
+}
+@media (min-width:2000px) {
+  .careers-page [style*="--cms-eyebrow-imac"] .careers-label { font-size: var(--cms-eyebrow-imac) !important; }
+  .careers-page [style*="--cms-heading-imac"] :is(h1,h2) { font-size: var(--cms-heading-imac) !important; }
+  .careers-page [style*="--cms-body-imac"] :is(.careers-hero-copy > p:last-child,.careers-investing-copy > p:last-child,.careers-section-intro > p,.careers-talent-copy > p:last-child) { font-size: var(--cms-body-imac) !important; }
+  .careers-page [style*="--cms-itemHeading-imac"] :is(.careers-workplace-point h3,.careers-job h3) { font-size: var(--cms-itemHeading-imac) !important; }
+  .careers-page [style*="--cms-itemBody-imac"] :is(.careers-workplace-point > p,.careers-job p) { font-size: var(--cms-itemBody-imac) !important; }
+  .careers-page [style*="--cms-cta-imac"] .careers-job button { font-size: var(--cms-cta-imac) !important; }
+}

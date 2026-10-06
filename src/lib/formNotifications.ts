@@ -8,6 +8,7 @@ type NotificationInput = {
   submissionID: number | string;
   submittedAt: Date;
   values: Record<string, string | boolean>;
+  notificationEmails?: string[];
 };
 
 type NotificationRecipient = {
@@ -18,13 +19,18 @@ type NotificationRecipient = {
 
 const notificationRecipients: Record<string, NotificationRecipient> = {
   careers: {
-    cc: "website@startime.sa",
+    cc: "",
     subject: "New Applicant applied at Startime Website",
-    to: "career@startime.sa",
+    to: "sara@startime.sa",
   },
   contact: {
     cc: "website@startime.sa",
     subject: "New contact query at Startime website",
+    to: "info@startime.sa",
+  },
+  governance: {
+    cc: "",
+    subject: "New governance enquiry at Startime website",
     to: "info@startime.sa",
   },
 };
@@ -56,6 +62,7 @@ export async function sendFormNotification(
 ): Promise<void> {
   const recipient = recipientFor(input.formKey);
   if (!recipient) return;
+  const configuredEmails = (input.notificationEmails || []).filter((email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)).slice(0, 10);
 
   const host = process.env.SMTP_HOST;
   const user = process.env.SMTP_USER;
@@ -88,7 +95,7 @@ export async function sendFormNotification(
   });
 
   await transport.sendMail({
-    cc: recipient.cc,
+    ...(configuredEmails.length ? {} : recipient.cc ? { cc: recipient.cc } : {}),
     from: process.env.SMTP_FROM || `Startime Website <${user}>`,
     html: `
       <p>A new website form submission has been received.</p>
@@ -115,6 +122,6 @@ export async function sendFormNotification(
       ),
       `CMS: ${adminURL}`,
     ].join("\n"),
-    to: recipient.to,
+    to: configuredEmails.length ? configuredEmails : recipient.to,
   });
 }

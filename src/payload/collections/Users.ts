@@ -28,7 +28,7 @@ export const Users: CollectionConfig = {
     {
       name: "role",
       type: "select",
-      defaultValue: "editor",
+      defaultValue: ({ req }) => req.user ? "editor" : "administrator",
       access: {
         create: administerRole,
         update: administerRole,

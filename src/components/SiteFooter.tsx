@@ -11,7 +11,7 @@ import {
   XLogo,
   YoutubeLogo,
 } from "@phosphor-icons/react/dist/ssr";
-import Link from "next/link";
+import Link from "./CmsLink";
 import type { SiteChrome } from "@/content/types";
 import { CmsImage } from "./CmsImage";
 

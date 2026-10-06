@@ -15,6 +15,7 @@ Include:
 ## Handling requirements
 
 - Never commit secrets, credentials, private keys, database files, uploaded form documents, or production backups.
+- Reviewed public CMS content and public media may be included as a sanitized handoff snapshot; exclude accounts, sessions, submissions, private attachments, internal sourcing notes and history. Checksum verification is not a security review of untrusted snapshot SQL: import only a trusted reviewed package.
 - Rotate a credential immediately if it may have been exposed, then remove it from Git history using the approved incident process.
 - Keep Payload, Next.js, Node.js, Nginx, and operating-system security updates under regular review.
 - Test dependency upgrades on a non-production environment before release.

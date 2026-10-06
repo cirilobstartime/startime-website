@@ -391,6 +391,7 @@ export type MarketingSettings = {
   privacyHref: string;
   rejectLabel: string;
   settingsLabel: string;
+  showConsentNotice: boolean;
   tiktokPixelID: string;
   xPixelID: string;
 };

@@ -15,6 +15,7 @@ database/*.tar.gz
 database/*.zip
 uploads/media/*
 !uploads/media/.gitkeep
+uploads/form-uploads/*
 src/generated/payload-types.ts
 *.tsbuildinfo
 .DS_Store
