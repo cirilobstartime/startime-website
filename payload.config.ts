@@ -7,13 +7,24 @@ import { FormSubmissions } from "./src/payload/collections/FormSubmissions";
 import { FormUploads } from "./src/payload/collections/FormUploads";
 import { FormAttempts } from "./src/payload/collections/FormAttempts";
 import { InsightCategories } from "./src/payload/collections/InsightCategories";
+import { InsightTags } from "./src/payload/collections/InsightTags";
 import { Insights } from "./src/payload/collections/Insights";
+import { Jobs } from "./src/payload/collections/Jobs";
+import { JobCategories } from "./src/payload/collections/JobCategories";
+import { JobTags } from "./src/payload/collections/JobTags";
 import { Pages } from "./src/payload/collections/Pages";
+import { Projects } from "./src/payload/collections/Projects";
 import { Redirects } from "./src/payload/collections/Redirects";
+import { ExternalLinkRules } from "./src/payload/collections/ExternalLinkRules";
 import { Users } from "./src/payload/collections/Users";
 import { SiteSettings } from "./src/payload/globals/SiteSettings";
+import { HeaderSettings } from "./src/payload/globals/HeaderSettings";
+import { FooterSettings } from "./src/payload/globals/FooterSettings";
+import { GlobalSEO } from "./src/payload/globals/GlobalSEO";
 import { MarketingSettings } from "./src/payload/globals/MarketingSettings";
 import { MaintenanceSettings } from "./src/payload/globals/MaintenanceSettings";
+import { IconSettings } from "./src/payload/globals/IconSettings";
+import { DesignSettings } from "./src/payload/globals/DesignSettings";
 
 const serverURL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 const payloadSecret = process.env.PAYLOAD_SECRET;
@@ -64,16 +75,22 @@ export default buildConfig({
   collections: [
     Users,
     Pages,
+    Projects,
     Media,
     Forms,
     FormSubmissions,
     FormUploads,
     FormAttempts,
     InsightCategories,
+    InsightTags,
     Insights,
+    JobCategories,
+    JobTags,
+    Jobs,
     Redirects,
+    ExternalLinkRules,
   ],
-  globals: [SiteSettings, MaintenanceSettings, MarketingSettings],
+  globals: [HeaderSettings, FooterSettings, GlobalSEO, SiteSettings, MaintenanceSettings, MarketingSettings, IconSettings, DesignSettings],
   db: sqliteAdapter({
     client: {
       url: process.env.DATABASE_URL || "file:./startime.db",

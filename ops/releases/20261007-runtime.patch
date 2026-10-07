@@ -1,0 +1,754 @@
+diff --git a/src/app/(new-frontend)/[locale]/investment/page.tsx b/src/app/(new-frontend)/[locale]/investment/page.tsx
+index 7bd631d..8fd6f3e 100644
+--- a/src/app/(new-frontend)/[locale]/investment/page.tsx
++++ b/src/app/(new-frontend)/[locale]/investment/page.tsx
+@@ -3,6 +3,7 @@ import { InvestmentPage } from "@/components/InvestmentPage";
+ import { getNewSitePageContent } from "@/content/newSiteCmsPages";
+ import { getNewSiteMetadata, NewSiteSeoSchema } from "@/content/newSiteSEO";
+ import { investmentSectionKeys, pageSettingsFromEditor } from "@/content/investmentContactCms";
++import { getHomepagePortfolioPhotos } from "@/content/newSiteCmsHome";
+ 
+ export const dynamic = "force-dynamic";
+ 
+@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
+ export default async function LocalizedInvestment({ params }: { params: Promise<{ locale: string }> }) {
+   const { locale } = await params;
+   if (locale !== "en" && locale !== "ar") notFound();
+-  const page = await getNewSitePageContent("investment", locale);
++  const [page, portfolioPhotos] = await Promise.all([getNewSitePageContent("investment", locale), getHomepagePortfolioPhotos(locale)]);
+   if (!page.published) notFound();
+-  return <><NewSiteSeoSchema slug="investment" locale={locale} /><InvestmentPage locale={locale} route="investment" square newDesign cmsPortfolios={page.content.projects.portfolios} cmsContent={page.content} cmsSettings={pageSettingsFromEditor("Investment", investmentSectionKeys, page.editorSections)} /></>;
++  return <><NewSiteSeoSchema slug="investment" locale={locale} /><InvestmentPage locale={locale} route="investment" square newDesign portfolioPhotos={portfolioPhotos} cmsPortfolios={page.content.projects.portfolios} cmsContent={page.content} cmsSettings={pageSettingsFromEditor("Investment", investmentSectionKeys, page.editorSections)} /></>;
+ }
+diff --git a/src/app/(new-frontend)/cms-carousel.css b/src/app/(new-frontend)/cms-carousel.css
+new file mode 100644
+index 0000000..4a5e19e
+--- /dev/null
++++ b/src/app/(new-frontend)/cms-carousel.css
+@@ -0,0 +1,18 @@
++/* Shared slider affordances; preserve each section's CMS colors and sizing. */
++.sharp-variation .carousel-arrow-shape::before,
++.sharp-variation .carousel-arrow:focus-visible .carousel-arrow-shape::before { border-width: 3px !important; }
++button.carousel-arrow:disabled,
++.editorial-swiper__buttons button:disabled {
++  opacity: .25 !important;
++  cursor: not-allowed !important;
++}
++button.carousel-arrow:not(:disabled) { opacity: 1; }
++button.carousel-arrow:focus-visible { outline: 2px solid currentColor !important; outline-offset: 3px; }
++.slide-counter { white-space: nowrap; font-variant-numeric: tabular-nums; }
++.slide-counter .slide-counter-current,
++.editorial-swiper__controls > p strong { font-weight: 700 !important; opacity: 1; }
++.slide-counter .slide-counter-total,
++.editorial-swiper__controls > p > span { font-weight: 500 !important; opacity: .45; }
++.editorial-slide__index { font-weight: 500; opacity: .45; }
++.editorial-slide.is-active .editorial-slide__index { font-weight: 700; opacity: 1; }
++main:not(.sharp-variation) .carousel-arrow-shape { filter: drop-shadow(.4px 0 currentColor) drop-shadow(-.4px 0 currentColor); }
+diff --git a/src/app/(new-frontend)/cms-investment-contact-visual.css b/src/app/(new-frontend)/cms-investment-contact-visual.css
+index 1e91ae4..49b9c7b 100644
+--- a/src/app/(new-frontend)/cms-investment-contact-visual.css
++++ b/src/app/(new-frontend)/cms-investment-contact-visual.css
+@@ -1,3 +1,65 @@
++/* Investment portfolio photographs mirror the approved Home card geometry.
++   Keep this section's own background, copy and all opt-in CMS overrides. */
++.investment-page-next.sharp-variation .investment-next-portfolios .investment-portfolio-grid {
++  width: min(1180px, 100%);
++  gap: clamp(.65rem, .9vw, 1rem);
++  align-items: stretch;
++}
++.investment-page-next.sharp-variation .investment-next-portfolios .investment-portfolio-photo-card,
++.investment-page-next.sharp-variation .investment-next-portfolios .investment-portfolio-photo-card:not(:first-child),
++.investment-page-next.sharp-variation .investment-next-portfolios .investment-portfolio-photo-card:last-child {
++  display: flex;
++  flex-direction: column;
++  overflow: visible;
++  padding: 0 clamp(.65rem, .9vw, 1rem) 0 0;
++  padding-inline: 0 clamp(.65rem, .9vw, 1rem);
++  border: 0;
++  background: transparent;
++  box-shadow: none;
++}
++.investment-portfolio-photo-media {
++  position: relative;
++  flex: 0 0 auto;
++  overflow: hidden;
++  aspect-ratio: 1.55;
++  background: #211a36;
++}
++.investment-portfolio-photo-media img { transition: transform 1s var(--ease); }
++.investment-portfolio-photo-card:hover .investment-portfolio-photo-media img { transform: scale(1.04); }
++.investment-portfolio-photo-copy {
++  flex: 1;
++  padding: 1.35rem clamp(.5rem, .75vw, 1rem) .5rem;
++  border-inline-start: 1px solid var(--cms-item-border, var(--cms-detail-line, rgba(91,66,128,.32)));
++  text-align: start;
++}
++.investment-page-next .investment-portfolio-photo-card h3 {
++  min-height: 2.65em;
++  margin: 0;
++  color: var(--ip-ink);
++  font-weight: 400;
++  line-height: 1.35;
++}
++.investment-page-next .investment-portfolio-photo-card p {
++  margin: .55rem 0 0;
++  color: var(--ip-muted);
++  font-size: clamp(.82rem, .88vw, .92rem);
++  line-height: 1.7;
++  text-align: start;
++  text-align-last: start;
++  text-justify: auto;
++  hyphens: none;
++}
++@media (max-width: 900px) {
++  .investment-page-next.sharp-variation .investment-next-portfolios { padding-inline: 1.25rem; }
++  .investment-page-next.sharp-variation .investment-next-portfolios .investment-portfolio-grid { gap: 2.7rem; }
++  .investment-page-next.sharp-variation .investment-next-portfolios .investment-portfolio-photo-card,
++  .investment-page-next.sharp-variation .investment-next-portfolios .investment-portfolio-photo-card:not(:first-child),
++  .investment-page-next.sharp-variation .investment-next-portfolios .investment-portfolio-photo-card:last-child { padding: 0; }
++  .investment-portfolio-photo-media { aspect-ratio: 1.65; }
++  .investment-portfolio-photo-copy { padding-inline: .75rem; }
++  .investment-page-next .investment-portfolio-photo-card p { max-width: 62ch; }
++}
++
+ /* All overrides are opt-in; empty Payload fields preserve the approved CSS and animations. */
+ .investment-cms-page, .contact-cms-page { display: flex; flex-direction: column; }
+ .investment-cms-page > *, .contact-cms-page > * { flex-shrink: 0; }
+diff --git a/src/app/(new-frontend)/globals.css b/src/app/(new-frontend)/globals.css
+index 234d929..7e28721 100644
+--- a/src/app/(new-frontend)/globals.css
++++ b/src/app/(new-frontend)/globals.css
+@@ -6572,13 +6572,6 @@ main.ltr .contact p { letter-spacing: .1em !important; }
+   transform: translate(-35%, -50%) rotate(-135deg);
+ }
+ 
+-/* This impact carousel keeps physical left/right controls in both languages. */
+-.investment-page-next.rtl .investment-impact-governance-controls .carousel-arrow-prev .carousel-arrow-shape::before {
+-  transform: translate(-35%, -50%) rotate(-135deg);
+-}
+-.investment-page-next.rtl .investment-impact-governance-controls .carousel-arrow-next .carousel-arrow-shape::before {
+-  transform: translate(-65%, -50%) rotate(45deg);
+-}
+ 
+ /* New primary homepage only: a clean, pattern-free deep brand-purple statistics panel. */
+ .home5.sharp-variation .home2-stats {
+@@ -6793,15 +6786,6 @@ main.ltr .contact p { letter-spacing: .1em !important; }
+   cursor: not-allowed;
+ }
+ 
+-/* Keep the Projects control pair visually consistent as < > in Arabic.
+-   The RTL slide track itself remains reversed independently. */
+-.home5.sharp-variation.rtl .home5-project-controls .carousel-arrow-prev .carousel-arrow-shape::before {
+-  transform: translate(-35%, -50%) rotate(-135deg);
+-}
+-
+-.home5.sharp-variation.rtl .home5-project-controls .carousel-arrow-next .carousel-arrow-shape::before {
+-  transform: translate(-65%, -50%) rotate(45deg);
+-}
+ 
+ .home5-project-logos {
+   height: auto !important;
+@@ -8991,12 +8975,14 @@ main.sharp-variation.rtl:where(
+   }
+ 
+   @media (min-width: 1600px) and (max-width: 1999px) {
+-    main.home5.sharp-variation.homepage-next .home2-portfolio-card h3 {
++    main.home5.sharp-variation.homepage-next .home2-portfolio-card h3,
++    main.investment-page-next.sharp-variation .investment-portfolio-photo-card h3 {
+       font-size: var(--cms-item-title-desktop, var(--cms-itemHeading-desktop, calc(var(--editorial-h3) * .68))) !important;
+     }
+   }
+   @media (min-width: 2000px) {
+-    main.home5.sharp-variation.homepage-next .home2-portfolio-card h3 {
++    main.home5.sharp-variation.homepage-next .home2-portfolio-card h3,
++    main.investment-page-next.sharp-variation .investment-portfolio-photo-card h3 {
+       font-size: var(--cms-item-title-imac, var(--cms-itemHeading-imac, calc(var(--editorial-h3) * .68))) !important;
+     }
+   }
+diff --git a/src/app/(new-frontend)/layout.tsx b/src/app/(new-frontend)/layout.tsx
+index 5a3cb2a..bad8bbb 100644
+--- a/src/app/(new-frontend)/layout.tsx
++++ b/src/app/(new-frontend)/layout.tsx
+@@ -23,6 +23,7 @@ import "./cms-editorial-visual.css";
+ import "./cms-chrome.css";
+ import "./cms-icon-dimensions.css";
+ import "./cms-design.css";
++import "./cms-carousel.css";
+ 
+ const isNoIndex = process.env.STAGING_NOINDEX === "1";
+ 
+diff --git a/src/components/DiscoverPage.tsx b/src/components/DiscoverPage.tsx
+index e8ed4ce..2a276c3 100644
+--- a/src/components/DiscoverPage.tsx
++++ b/src/components/DiscoverPage.tsx
+@@ -1,4 +1,5 @@
+ "use client";
++import { SlideCounter } from "./SlideCounter";
+ 
+ import { NewSiteHeader } from "@/components/NewSiteHeader";
+ import { NewSiteFooter } from "@/components/NewSiteFooter";
+@@ -291,8 +292,8 @@ export function DiscoverPage({ locale, variant = "kinetic", square = false, cmsC
+                 <p>{c.timeline[timeline].body}</p>
+               </div>
+               <div className="timeline-controls carousel-control-pair">
+-                <button className="carousel-arrow carousel-arrow-prev" type="button" aria-label={rtl ? "المحطة السابقة" : "Previous milestone"} onClick={() => selectTimeline((timeline - 1 + c.timeline.length) % c.timeline.length)}><CarouselArrow /></button>
+-                <button className="carousel-arrow carousel-arrow-next" type="button" aria-label={rtl ? "المحطة التالية" : "Next milestone"} onClick={() => selectTimeline((timeline + 1) % c.timeline.length)}><CarouselArrow /></button>
++                <button className="carousel-arrow carousel-arrow-prev" type="button" disabled={timeline <= 0} aria-label={rtl ? "المحطة السابقة" : "Previous milestone"} onClick={() => selectTimeline(Math.max(0, timeline - 1))}><CarouselArrow /></button>
++                <button className="carousel-arrow carousel-arrow-next" type="button" disabled={timeline >= c.timeline.length - 1} aria-label={rtl ? "المحطة التالية" : "Next milestone"} onClick={() => selectTimeline(Math.min(c.timeline.length - 1, timeline + 1))}><CarouselArrow /></button>
+               </div>
+             </div>
+             <div className="timeline-rail" ref={timelineRailRef} style={{ "--timeline-progress": `${(timeline / (c.timeline.length - 1)) * 100}%` } as React.CSSProperties}>
+@@ -368,12 +369,12 @@ export function DiscoverPage({ locale, variant = "kinetic", square = false, cmsC
+         </Reveal>
+         {element("governance", "items") && <div className="governance-layout">
+           <div className="governance-active" key={`${locale}-${governance}`} aria-live="polite" style={homepageItemStyle(activePrinciple.cms?.visual)}>
+-            {cmsSettings?.governance?.showCounter !== false && <span>{String(governance + 1).padStart(2, "0")} / {String(activeGovernancePrinciples.length).padStart(2, "0")}</span>}
++            {cmsSettings?.governance?.showCounter !== false && <SlideCounter current={governance + 1} total={activeGovernancePrinciples.length} />}
+             <h3>{square ? activePrinciple.newPageTitle ?? activePrinciple.title : activePrinciple.title}</h3>
+             <p>{activePrinciple.body}</p>
+             <div className="governance-controls carousel-control-pair">
+-              <button className="carousel-arrow carousel-arrow-prev" type="button" aria-label={rtl ? "المبدأ السابق" : "Previous principle"} onClick={() => setGovernance((governance - 1 + activeGovernancePrinciples.length) % activeGovernancePrinciples.length)}><CarouselArrow /></button>
+-              <button className="carousel-arrow carousel-arrow-next" type="button" aria-label={rtl ? "المبدأ التالي" : "Next principle"} onClick={() => setGovernance((governance + 1) % activeGovernancePrinciples.length)}><CarouselArrow /></button>
++              <button className="carousel-arrow carousel-arrow-prev" type="button" disabled={governance <= 0} aria-label={rtl ? "المبدأ السابق" : "Previous principle"} onClick={() => setGovernance(Math.max(0, governance - 1))}><CarouselArrow /></button>
++              <button className="carousel-arrow carousel-arrow-next" type="button" disabled={governance >= activeGovernancePrinciples.length - 1} aria-label={rtl ? "المبدأ التالي" : "Next principle"} onClick={() => setGovernance(Math.min(activeGovernancePrinciples.length - 1, governance + 1))}><CarouselArrow /></button>
+             </div>
+           </div>
+         </div>}
+diff --git a/src/components/EditorialSwiper.tsx b/src/components/EditorialSwiper.tsx
+index 41e363a..d14aecd 100644
+--- a/src/components/EditorialSwiper.tsx
++++ b/src/components/EditorialSwiper.tsx
+@@ -15,6 +15,7 @@ type EditorialSwiperProps = {
+ export function EditorialSwiper({ cards, locale }: EditorialSwiperProps) {
+   const railRef = useRef<HTMLDivElement>(null);
+   const [active, setActive] = useState(0);
++  const [atEnd, setAtEnd] = useState(false);
+   const visibleCards = cards.filter((card) => card.visible !== false);
+ 
+   useMobileCarouselAutoplay({
+@@ -31,23 +32,27 @@ export function EditorialSwiper({ cards, locale }: EditorialSwiperProps) {
+       rail.querySelectorAll<HTMLElement>(".editorial-slide"),
+     );
+     if (!slides.length) return;
+-    const railStart = rail.getBoundingClientRect().left;
++    const railStart = locale === "ar" ? rail.getBoundingClientRect().right : rail.getBoundingClientRect().left;
++    const edge = (slide: HTMLElement) => locale === "ar" ? slide.getBoundingClientRect().right : slide.getBoundingClientRect().left;
+     const index = slides.reduce(
+       (nearest, slide, slideIndex) =>
+-        Math.abs(slide.getBoundingClientRect().left - railStart) <
+-        Math.abs(slides[nearest].getBoundingClientRect().left - railStart)
++        Math.abs(edge(slide) - railStart) <
++        Math.abs(edge(slides[nearest]) - railStart)
+           ? slideIndex
+           : nearest,
+       0,
+     );
+     setActive(index);
+-  }, []);
++    setAtEnd(Math.abs(rail.scrollLeft) >= rail.scrollWidth - rail.clientWidth - 2);
++  }, [locale]);
+ 
+   useEffect(() => {
+     const rail = railRef.current;
+     if (!rail) return;
+     rail.addEventListener("scroll", updateActive, { passive: true });
+-    return () => rail.removeEventListener("scroll", updateActive);
++    window.addEventListener("resize", updateActive);
++    updateActive();
++    return () => { rail.removeEventListener("scroll", updateActive); window.removeEventListener("resize", updateActive); };
+   }, [updateActive]);
+ 
+   const move = (direction: -1 | 1) => {
+@@ -82,7 +87,7 @@ export function EditorialSwiper({ cards, locale }: EditorialSwiperProps) {
+       >
+         {visibleCards.map((card, index) => (
+           <article
+-            className={`editorial-slide ${index === 0 ? "editorial-slide--featured" : ""}`}
++            className={`editorial-slide ${index === 0 ? "editorial-slide--featured" : ""} ${index === active ? "is-active" : ""}`}
+             key={card.id || `${card.title}-${index}`}
+           >
+             <div className="editorial-slide__media">
+@@ -131,17 +136,19 @@ export function EditorialSwiper({ cards, locale }: EditorialSwiperProps) {
+         <div className="editorial-swiper__buttons">
+           <button
+             aria-label={locale === "ar" ? "العنصر السابق" : "Previous item"}
++            disabled={active === 0}
+             onClick={() => move(-1)}
+             type="button"
+           >
+-            <ArrowLeft aria-hidden />
++            <ArrowLeft weight="bold" aria-hidden />
+           </button>
+           <button
+             aria-label={locale === "ar" ? "العنصر التالي" : "Next item"}
++            disabled={atEnd || active >= visibleCards.length - 1}
+             onClick={() => move(1)}
+             type="button"
+           >
+-            <ArrowRight aria-hidden />
++            <ArrowRight weight="bold" aria-hidden />
+           </button>
+         </div>
+       </div>
+diff --git a/src/components/Home2Page.tsx b/src/components/Home2Page.tsx
+index b412416..21e7ea9 100644
+--- a/src/components/Home2Page.tsx
++++ b/src/components/Home2Page.tsx
+@@ -1,6 +1,7 @@
+ "use client";
+ 
+ import Image from "next/image";
++import { SlideCounter } from "./SlideCounter";
+ import { postPath } from "@/lib/postPath";
+ import Link from "./CmsLink";
+ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+@@ -10,6 +11,7 @@ import { homeMediaPartners } from "@/content/homeMediaPartners";
+ import type { NewSiteCmsHome } from "@/content/newSiteCmsHome";
+ import { homepageItemStyle, homepageVisualStyle, type HomepageItemVisual } from "@/content/homepageVisual";
+ import { portfolioTopPaddingStyle } from "@/content/portfolioTopPadding";
++import { portfolioImages } from "@/content/portfolioImages";
+ import { getNewHomepageProjects } from "@/content/newPageProjects";
+ import { getNewsImageVariants, getPostCopy, getPostSummary, insightPosts, type InsightPost } from "@/content/insightPosts";
+ import { ResponsiveNewsImage } from "@/components/ResponsiveNewsImage";
+@@ -84,11 +86,6 @@ const domainIcons = [
+ ];
+ const legacyDomainIcons = [ShieldCheck, LockKey, Cpu, Leaf, UsersThree];
+ 
+-const portfolioImages = [
+-  "/assets/portfolios/startime-government-portfolio.webp",
+-  "/assets/portfolios/startime-business-portfolio.webp",
+-  "/assets/portfolios/startime-community-portfolio.webp",
+-];
+ 
+ const impactImages = impactMedia.map((item) => item.default);
+ 
+@@ -644,7 +641,7 @@ export function Home2Page({
+     return () => { cancelled = true; };
+   }, [partnerMediaActive, partnerLogoCopies, partnerLogoCount]);
+   const selectNewsPage = (page: number) => {
+-    const boundedPage = (page + newsPageCount) % newsPageCount;
++    const boundedPage = Math.max(0, Math.min(newsPageCount - 1, page));
+     setNewsPage(boundedPage);
+     if (!primaryHomeVariation) return;
+     const track = newsTrackRef.current;
+@@ -673,7 +670,7 @@ export function Home2Page({
+         nearestDistance = distance;
+       }
+     });
+-    setNewsPage(Math.min(newsPageCount - 1, Math.round(nearest / newsVisibleCount)));
++    setNewsPage(nearest >= homepageNews.length - newsVisibleCount ? newsPageCount - 1 : Math.min(newsPageCount - 1, Math.round(nearest / newsVisibleCount)));
+   };
+   useEffect(() => {
+     const track = newsTrackRef.current;
+@@ -713,9 +710,7 @@ export function Home2Page({
+       window.clearInterval(timer);
+     };
+   }, [primaryHomeVariation, homepageNews.length, newsVisibleCount, rtl]);
+-  const rotateProject = (direction: number) => setProject((current) => primaryHomeVariation
+-    ? Math.min(pageProjects.length - 1, Math.max(0, current + direction))
+-    : (current + direction + pageProjects.length) % pageProjects.length);
++  const rotateProject = (direction: number) => setProject((current) => Math.min(pageProjects.length - 1, Math.max(0, current + direction)));
+   const selectProject = (index: number) => {
+     setProject(index);
+     if (window.innerWidth > 900 && !primaryHomeVariation) {
+@@ -830,8 +825,8 @@ export function Home2Page({
+               <h3>{c.domains.items[domain].title}</h3>
+               <p>{c.domains.items[domain].body}</p>
+               <div className="carousel-control-pair">
+-                <button className="carousel-arrow carousel-arrow-prev" type="button" onClick={() => setDomain((domain - 1 + c.domains.items.length) % c.domains.items.length)} aria-label={c.domains.items[(domain - 1 + c.domains.items.length) % c.domains.items.length].title}><CarouselArrow /></button>
+-                <button className="carousel-arrow carousel-arrow-next" type="button" onClick={() => setDomain((domain + 1) % c.domains.items.length)} aria-label={c.domains.items[(domain + 1) % c.domains.items.length].title}><CarouselArrow /></button>
++                <button className="carousel-arrow carousel-arrow-prev" type="button" disabled={domain <= 0} onClick={() => setDomain((domain - 1 + c.domains.items.length) % c.domains.items.length)} aria-label={c.domains.items[(domain - 1 + c.domains.items.length) % c.domains.items.length].title}><CarouselArrow /></button>
++                <button className="carousel-arrow carousel-arrow-next" type="button" disabled={domain >= c.domains.items.length - 1} onClick={() => setDomain((domain + 1) % c.domains.items.length)} aria-label={c.domains.items[(domain + 1) % c.domains.items.length].title}><CarouselArrow /></button>
+               </div>
+             </div>
+           </>}
+@@ -881,8 +876,8 @@ export function Home2Page({
+               <h3>{c.impact.items[impact].title}</h3>
+               <p>{c.impact.items[impact].body}</p>
+               <div className="carousel-control-pair">
+-                <button className="carousel-arrow carousel-arrow-prev" type="button" onClick={() => setImpact((impact - 1 + c.impact.items.length) % c.impact.items.length)} aria-label={c.impact.items[(impact - 1 + c.impact.items.length) % c.impact.items.length].title}><CarouselArrow /></button>
+-                <button className="carousel-arrow carousel-arrow-next" type="button" onClick={() => setImpact((impact + 1) % c.impact.items.length)} aria-label={c.impact.items[(impact + 1) % c.impact.items.length].title}><CarouselArrow /></button>
++                <button className="carousel-arrow carousel-arrow-prev" type="button" disabled={impact <= 0} onClick={() => setImpact((impact - 1 + c.impact.items.length) % c.impact.items.length)} aria-label={c.impact.items[(impact - 1 + c.impact.items.length) % c.impact.items.length].title}><CarouselArrow /></button>
++                <button className="carousel-arrow carousel-arrow-next" type="button" disabled={impact >= c.impact.items.length - 1} onClick={() => setImpact((impact + 1) % c.impact.items.length)} aria-label={c.impact.items[(impact + 1) % c.impact.items.length].title}><CarouselArrow /></button>
+               </div>
+             </article>
+           </div>
+@@ -930,20 +925,16 @@ export function Home2Page({
+                   <button
+                     className="carousel-arrow carousel-arrow-prev"
+                     type="button"
+-                    onClick={() => rotateProject(rtl ? 1 : -1)}
+-                    disabled={rtl ? project === pageProjects.length - 1 : project === 0}
+-                    aria-label={rtl
+-                      ? (project < pageProjects.length - 1 ? pageProjects[project + 1].ar : undefined)
+-                      : (project > 0 ? pageProjects[project - 1].title : undefined)}
++                    onClick={() => rotateProject(-1)}
++                    disabled={project === 0}
++                    aria-label={rtl ? "المشروع السابق" : "Previous project"}
+                   ><CarouselArrow /></button>
+                   <button
+                     className="carousel-arrow carousel-arrow-next"
+                     type="button"
+-                    onClick={() => rotateProject(rtl ? -1 : 1)}
+-                    disabled={rtl ? project === 0 : project === pageProjects.length - 1}
+-                    aria-label={rtl
+-                      ? (project > 0 ? pageProjects[project - 1].ar : undefined)
+-                      : (project < pageProjects.length - 1 ? pageProjects[project + 1].title : undefined)}
++                    onClick={() => rotateProject(1)}
++                    disabled={project === pageProjects.length - 1}
++                    aria-label={rtl ? "المشروع التالي" : "Next project"}
+                   ><CarouselArrow /></button>
+                 </nav>
+               </div>
+@@ -961,8 +952,8 @@ export function Home2Page({
+                   </article>
+                 ))}
+                 <nav className="home2-project-arrows carousel-control-pair">
+-                  <button className="carousel-arrow carousel-arrow-prev" type="button" onClick={() => rotateProject(-1)} aria-label={rtl ? pageProjects[(project - 1 + pageProjects.length) % pageProjects.length].ar : pageProjects[(project - 1 + pageProjects.length) % pageProjects.length].title}><CarouselArrow /></button>
+-                  <button className="carousel-arrow carousel-arrow-next" type="button" onClick={() => rotateProject(1)} aria-label={rtl ? pageProjects[(project + 1) % pageProjects.length].ar : pageProjects[(project + 1) % pageProjects.length].title}><CarouselArrow /></button>
++                  <button className="carousel-arrow carousel-arrow-prev" type="button" disabled={project <= 0} onClick={() => rotateProject(-1)} aria-label={rtl ? pageProjects[(project - 1 + pageProjects.length) % pageProjects.length].ar : pageProjects[(project - 1 + pageProjects.length) % pageProjects.length].title}><CarouselArrow /></button>
++                  <button className="carousel-arrow carousel-arrow-next" type="button" disabled={project >= pageProjects.length - 1} onClick={() => rotateProject(1)} aria-label={rtl ? pageProjects[(project + 1) % pageProjects.length].ar : pageProjects[(project + 1) % pageProjects.length].title}><CarouselArrow /></button>
+                 </nav>
+               </div>
+               <div className="home2-project-logos" ref={projectTabsRef}>
+@@ -1027,15 +1018,15 @@ export function Home2Page({
+         </div>
+         {primaryHomeVariation ? <div className="home2-news-controls home5-news-controls">
+           <nav className="carousel-control-pair" aria-label={homepageNewsLabel}>
+-            <button className="carousel-arrow carousel-arrow-prev" type="button" onClick={() => selectNewsPage(newsPage - 1)} aria-label={rtl ? "التالي" : "Previous"}><CarouselArrow /></button>
+-            <button className="carousel-arrow carousel-arrow-next" type="button" onClick={() => selectNewsPage(newsPage + 1)} aria-label={rtl ? "السابق" : "Next"}><CarouselArrow /></button>
++            <button className="carousel-arrow carousel-arrow-prev" type="button" disabled={newsPage <= 0} onClick={() => selectNewsPage(newsPage - 1)} aria-label={rtl ? "السابق" : "Previous"}><CarouselArrow /></button>
++            <button className="carousel-arrow carousel-arrow-next" type="button" disabled={newsPage >= newsPageCount - 1} onClick={() => selectNewsPage(newsPage + 1)} aria-label={rtl ? "التالي" : "Next"}><CarouselArrow /></button>
+           </nav>
+         </div> : <div className="home2-news-controls">
+-          <span>{String(newsPage + 1).padStart(2, "0")} / {String(newsPageCount).padStart(2, "0")}</span>
++          <SlideCounter current={newsPage + 1} total={newsPageCount} />
+           <div>{Array.from({ length: newsPageCount }, (_, index) => <button type="button" className={newsPage === index ? "active" : ""} key={index} onClick={() => setNewsPage(index)} aria-label={getPostCopy(homepageNews[index * newsPerPage], locale).title} />)}</div>
+           <nav className="carousel-control-pair">
+-            <button className="carousel-arrow carousel-arrow-prev" type="button" onClick={() => setNewsPage((newsPage - 1 + newsPageCount) % newsPageCount)} aria-label={getPostCopy(homepageNews[((newsPage - 1 + newsPageCount) % newsPageCount) * newsPerPage], locale).title}><CarouselArrow /></button>
+-            <button className="carousel-arrow carousel-arrow-next" type="button" onClick={() => setNewsPage((newsPage + 1) % newsPageCount)} aria-label={getPostCopy(homepageNews[((newsPage + 1) % newsPageCount) * newsPerPage], locale).title}><CarouselArrow /></button>
++            <button className="carousel-arrow carousel-arrow-prev" type="button" disabled={newsPage <= 0} onClick={() => setNewsPage((newsPage - 1 + newsPageCount) % newsPageCount)} aria-label={getPostCopy(homepageNews[((newsPage - 1 + newsPageCount) % newsPageCount) * newsPerPage], locale).title}><CarouselArrow /></button>
++            <button className="carousel-arrow carousel-arrow-next" type="button" disabled={newsPage >= newsPageCount - 1} onClick={() => setNewsPage((newsPage + 1) % newsPageCount)} aria-label={getPostCopy(homepageNews[((newsPage + 1) % newsPageCount) * newsPerPage], locale).title}><CarouselArrow /></button>
+           </nav>
+         </div>}
+       </section>}
+diff --git a/src/components/InsightsPage.tsx b/src/components/InsightsPage.tsx
+index 6333ed8..d2ed013 100644
+--- a/src/components/InsightsPage.tsx
++++ b/src/components/InsightsPage.tsx
+@@ -71,7 +71,8 @@ export function InsightsPage({ locale, square = false, posts, cmsContent, cmsSet
+         nearestDistance = distance;
+       }
+     });
+-    setActiveArea(nearest);
++    const atEnd = Math.abs(track.scrollLeft) >= track.scrollWidth - track.clientWidth - 2;
++    setActiveArea(atEnd ? c.areas.items.length - 1 : nearest);
+   };
+ 
+   useEffect(() => {
+diff --git a/src/components/InvestmentPage.tsx b/src/components/InvestmentPage.tsx
+index c911df3..b8a93f4 100644
+--- a/src/components/InvestmentPage.tsx
++++ b/src/components/InvestmentPage.tsx
+@@ -1,4 +1,5 @@
+ "use client";
++import { SlideCounter } from "./SlideCounter";
+ 
+ import { NewSiteHeader } from "@/components/NewSiteHeader";
+ import { NewSiteFooter } from "@/components/NewSiteFooter";
+@@ -13,19 +14,17 @@ import { homepageItemStyle, homepageVisualStyle } from "@/content/homepageVisual
+ import { investmentSectionKeys, type InvestmentKey, type PageCmsSettings } from "@/content/investmentContactCms";
+ import { ArrowLeft } from "@phosphor-icons/react/ArrowLeft";
+ import { ArrowRight } from "@phosphor-icons/react/ArrowRight";
+-import { Buildings } from "@phosphor-icons/react/Buildings";
+-import { Briefcase } from "@phosphor-icons/react/Briefcase";
+ import { Cpu } from "@phosphor-icons/react/Cpu";
+ import { Leaf } from "@phosphor-icons/react/Leaf";
+ import { LockKey } from "@phosphor-icons/react/LockKey";
+ import { ShieldChevron } from "@phosphor-icons/react/ShieldChevron";
+-import { UsersFour } from "@phosphor-icons/react/UsersFour";
+ import { UsersThree } from "@phosphor-icons/react/UsersThree";
+ import { type Locale } from "@/content/home";
+ import { investmentContent } from "@/content/investment";
+ import { getNewInvestmentPortfolios } from "@/content/newPageProjects";
+ import { slideImagesWithFallback } from "@/content/slideImageFallback";
+ import type { InvestmentPortfolio } from "@/content/newSiteCmsProjects";
++import { resolvePortfolioPhoto, type PortfolioPhoto } from "@/content/portfolioImages";
+ 
+ 
+ const domainImages = [
+@@ -45,7 +44,6 @@ const impactImages = [
+ ];
+ 
+ const domainIcons = [ShieldChevron, LockKey, Cpu, Leaf, UsersThree];
+-const portfolioIcons = [Buildings, Briefcase, UsersFour];
+ // The process order is shared by the English and Arabic investment content.
+ const approachIcons = [
+   "/assets/ui/investment-icons/opportunity-foresight.svg",
+@@ -81,6 +79,7 @@ export function InvestmentPage({
+   cmsPortfolios,
+   cmsContent,
+   cmsSettings,
++  portfolioPhotos,
+ }: {
+   locale: Locale;
+   route?: "investment" | "investment1" | "investment2";
+@@ -89,6 +88,7 @@ export function InvestmentPage({
+   cmsPortfolios?: InvestmentPortfolio[];
+   cmsContent?: (typeof investmentContent)["en"];
+   cmsSettings?: PageCmsSettings<InvestmentKey>;
++  portfolioPhotos?: PortfolioPhoto[];
+ }) {
+   const c = cmsContent || investmentContent[locale];
+   const rtl = locale === "ar";
+@@ -183,14 +183,10 @@ export function InvestmentPage({
+   const activeProjects = projectPortfolios[portfolio]?.items || [];
+   const activeProject = activeProjects[project] ?? activeProjects[0];
+   const impactTotal = Math.max(1, impacts.length);
+-  const arabicImpactOrder = newDesign && rtl;
+-  const impactPosition = arabicImpactOrder ? impactTotal - impact : impact + 1;
+-  const impactCounter = arabicImpactOrder
+-    ? `${String(impactTotal).padStart(2, "0")} / ${String(impactPosition).padStart(2, "0")}`
+-    : `${String(impactPosition).padStart(2, "0")} / ${String(impactTotal).padStart(2, "0")}`;
++
+ 
+   const moveImpact = (step: number) => {
+-    setImpact((current) => (current + step + impactTotal) % impactTotal);
++    setImpact((current) => Math.max(0, Math.min(impactTotal - 1, current + step)));
+   };
+ 
+   const choosePortfolio = (index: number) => {
+@@ -199,7 +195,7 @@ export function InvestmentPage({
+   };
+ 
+   const moveProject = (direction: number) => {
+-    setProject((current) => (current + direction + activeProjects.length) % activeProjects.length);
++    setProject((current) => Math.max(0, Math.min(activeProjects.length - 1, current + direction)));
+   };
+ 
+   return (
+@@ -322,11 +318,13 @@ export function InvestmentPage({
+         </Reveal>
+         <div className="investment-portfolio-grid">
+           {element("portfolios", "items") && portfolios.map(({ item, originalIndex, settings: itemSettings }) => {
+-            const Icon = portfolioIcons[originalIndex] || portfolioIcons[0];
++            const sharedIndex = ["government", "business", "community"].indexOf(itemSettings?.homepagePortfolio || "");
++            const photoIndex = sharedIndex >= 0 ? sharedIndex : originalIndex;
++            const photo = resolvePortfolioPhoto(portfolioPhotos?.[photoIndex], itemSettings, photoIndex);
+             return (
+-              <Reveal className="investment-portfolio-item" style={homepageItemStyle(itemSettings?.visual)} key={`${originalIndex}-${item.title}`}>
++              <Reveal className={`investment-portfolio-item ${newDesign ? "investment-portfolio-photo-card" : ""}`} style={homepageItemStyle(itemSettings?.visual)} key={`${originalIndex}-${item.title}`}>
+                 {newDesign
+-                  ? <><div className="investment-next-portfolio-title">{itemSettings?.icon || itemSettings?.icons ? <span className="investment-cms-icon-frame"><ArtDirectedImage className="investment-cms-icon" images={itemSettings.icons} fallback={itemSettings.icon || ""} alt="" fill={false} width={44} height={44} /></span> : <Icon aria-hidden="true" />}<h3>{item.title}</h3></div><p>{item.body}</p></>
++                  ? <>{element("portfolios", "media") && <div className="investment-portfolio-photo-media"><ArtDirectedImage images={photo.images} fallback={photo.image} alt="" /></div>}<div className="investment-portfolio-photo-copy"><h3>{item.title}</h3>{element("portfolios", "body") && <p>{item.body}</p>}</div></>
+                   : <><span>{String(originalIndex + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.body}</p></>}
+               </Reveal>
+             );
+@@ -354,24 +352,27 @@ export function InvestmentPage({
+       {section("impact")?.visible !== false && <section className="investment-impact-governance investment-cms-section" id={section("impact")?.anchorID || "investment-impact"} style={sectionStyle("impact")}>
+         <PageSectionBackdrop settings={section("impact")} />
+         <div className="investment-impact-governance-media">
+-          {element("impact", "media") && impacts.map(({ item, originalIndex, settings: itemSettings }, index) => {
++          {element("impact", "media") && impacts.length > 0 && (() => {
+             const first = impacts[0];
+             const firstImage = first?.settings?.image || impactImages[first?.originalIndex ?? 0] || impactImages[0];
+-            return <ArtDirectedImage className={impact === index ? "active" : ""} images={slideImagesWithFallback({ default: firstImage, ...first?.settings?.images }, { default: itemSettings?.image, ...itemSettings?.images }, firstImage)} fallback={firstImage} alt="" key={`${originalIndex}-${item.title}`} />;
+-          })}
++            const itemSettings = impacts[impact % impacts.length]?.settings;
++            // One persistent background: shared fallback images never reanimate.
++            // An explicit slide/device override still changes the source normally.
++            return <ArtDirectedImage className="active" images={slideImagesWithFallback({ default: firstImage, ...first?.settings?.images }, { default: itemSettings?.image, ...itemSettings?.images }, firstImage)} fallback={firstImage} alt="" />;
++          })()}
+           <div />
+         </div>
+         <div className="investment-impact-governance-heading">{element("impact", "eyebrow") && <p className="investment-label">{c.impact.label}</p>}{element("impact", "heading") && <h2>{c.impact.title}</h2>}</div>
+         <div className="investment-impact-governance-layout">
+           {element("impact", "items") && impacts.length > 0 && <article className="investment-impact-governance-active" key={`${locale}-${impact}`} style={homepageItemStyle(impacts[impact % impacts.length]?.settings?.visual)}>
+-            <span dir={arabicImpactOrder ? "ltr" : undefined}>{impactCounter}</span>
++            <SlideCounter current={impact + 1} total={impactTotal} />
+             <h3>{impacts[impact % impacts.length].item.title}</h3>
+             <p>{impacts[impact % impacts.length].item.body}</p>
+             <ul>{impacts[impact % impacts.length].item.points.map((point) => <li key={point}>{point}</li>)}</ul>
+             <div className={`investment-impact-governance-controls ${square ? "carousel-control-pair" : ""}`}>
+               {square ? <>
+-                <button className="carousel-arrow carousel-arrow-prev" type="button" onClick={() => moveImpact(arabicImpactOrder ? 1 : -1)} aria-label={arabicImpactOrder ? "الأثر التالي" : rtl ? "الأثر السابق" : "Previous impact"}><CarouselArrow /></button>
+-                <button className="carousel-arrow carousel-arrow-next" type="button" onClick={() => moveImpact(arabicImpactOrder ? -1 : 1)} aria-label={arabicImpactOrder ? "الأثر السابق" : rtl ? "الأثر التالي" : "Next impact"}><CarouselArrow /></button>
++                <button className="carousel-arrow carousel-arrow-prev" type="button" disabled={impact <= 0} onClick={() => moveImpact(-1)} aria-label={rtl ? "الأثر السابق" : "Previous impact"}><CarouselArrow /></button>
++                <button className="carousel-arrow carousel-arrow-next" type="button" disabled={impact >= impactTotal - 1} onClick={() => moveImpact(1)} aria-label={rtl ? "الأثر التالي" : "Next impact"}><CarouselArrow /></button>
+               </> : <>
+                 <button type="button" onClick={() => moveImpact(-1)} aria-label={rtl ? "الأثر السابق" : "Previous impact"}><ArrowLeft aria-hidden="true" /></button>
+                 <button type="button" onClick={() => moveImpact(1)} aria-label={rtl ? "الأثر التالي" : "Next impact"}><ArrowRight aria-hidden="true" /></button>
+@@ -396,11 +397,11 @@ export function InvestmentPage({
+             <h3>{activeProject.title}</h3><p>{activeProject.body}</p>{element("projects", "cta") && <a href={safeInvestmentURL(activeProject.imageSettings?.url, "#investment-closing")}>{c.projects.cta}</a>}
+             <div className={`investment-project-controls ${square ? "carousel-control-pair" : ""}`}>
+               {square
+-                ? <button className="carousel-arrow carousel-arrow-prev" type="button" onClick={() => moveProject(rtl ? 1 : -1)} aria-label="Previous"><CarouselArrow /></button>
++                ? <button className="carousel-arrow carousel-arrow-prev" type="button" disabled={project <= 0} onClick={() => moveProject(-1)} aria-label="Previous"><CarouselArrow /></button>
+                 : <button type="button" onClick={() => moveProject(rtl ? 1 : -1)} aria-label="Previous"><ArrowLeft aria-hidden="true" /></button>}
+-              <span dir="ltr">{String(project + 1).padStart(2, "0")} / {String(activeProjects.length).padStart(2, "0")}</span>
++              <SlideCounter current={project + 1} total={activeProjects.length} />
+               {square
+-                ? <button className="carousel-arrow carousel-arrow-next" type="button" onClick={() => moveProject(rtl ? -1 : 1)} aria-label="Next"><CarouselArrow /></button>
++                ? <button className="carousel-arrow carousel-arrow-next" type="button" disabled={project >= activeProjects.length - 1} onClick={() => moveProject(1)} aria-label="Next"><CarouselArrow /></button>
+                 : <button type="button" onClick={() => moveProject(rtl ? -1 : 1)} aria-label="Next"><ArrowRight aria-hidden="true" /></button>}
+             </div>
+           </article>
+diff --git a/src/components/SlideCounter.tsx b/src/components/SlideCounter.tsx
+new file mode 100644
+index 0000000..ed06a7e
+--- /dev/null
++++ b/src/components/SlideCounter.tsx
+@@ -0,0 +1,3 @@
++export function SlideCounter({ current, total }: { current: number; total: number }) {
++  return <span className="slide-counter" dir="ltr"><strong className="slide-counter-current">{String(current).padStart(2, "0")}</strong><span className="slide-counter-total"> / {String(total).padStart(2, "0")}</span></span>;
++}
+diff --git a/src/components/VisionPage.tsx b/src/components/VisionPage.tsx
+index 043803c..cd95c57 100644
+--- a/src/components/VisionPage.tsx
++++ b/src/components/VisionPage.tsx
+@@ -1,4 +1,5 @@
+ "use client";
++import { SlideCounter } from "./SlideCounter";
+ 
+ import { NewSiteHeader } from "@/components/NewSiteHeader";
+ import { NewSiteFooter } from "@/components/NewSiteFooter";
+@@ -310,7 +311,7 @@ export function VisionPage({ locale, variant = "new", square = false, cmsContent
+               <article className="vision-pillar-slide" aria-hidden={pillar !== index} inert={pillar !== index} key={`${item.title}-${originalIndex}`} style={homepageItemStyle(itemSettings?.visual)}>
+                 {element("pillars", "media") && <div className="vision-pillar-image"><ArtDirectedImage images={itemSettings?.images} fallback={itemSettings?.image || item.image || newPillarImages[originalIndex] || newPillarImages[0]} alt="" /></div>}
+                 <div className="vision-pillar-copy">
+-                  <span className="vision-pillar-index">{String(index + 1).padStart(2, "0")} / {String(pillarEntries.length).padStart(2, "0")}</span>
++                  <span className="vision-pillar-index"><SlideCounter current={index + 1} total={pillarEntries.length} /></span>
+                   <h3>{item.title}</h3>
+                   <p>{item.body}</p>
+                   <div className="vision-pillar-controls">
+diff --git a/src/content/investmentContactCms.ts b/src/content/investmentContactCms.ts
+index 45775cb..ecd60b7 100644
+--- a/src/content/investmentContactCms.ts
++++ b/src/content/investmentContactCms.ts
+@@ -7,7 +7,7 @@ export const contactSectionKeys = ["hero", "form", "headquarters", "location"] a
+ export type InvestmentKey = (typeof investmentSectionKeys)[number];
+ export type ContactKey = (typeof contactSectionKeys)[number];
+ 
+-export type PageItemSettings = { visible: boolean; image?: string; images?: ViewportImages; icon?: string; icons?: ViewportImages; logo?: string; url?: string; visual?: HomepageItemVisual; items?: PageItemSettings[]; title?: string };
++export type PageItemSettings = { visible: boolean; homepagePortfolio?: string; image?: string; images?: ViewportImages; icon?: string; icons?: ViewportImages; logo?: string; url?: string; visual?: HomepageItemVisual; items?: PageItemSettings[]; title?: string };
+ export type PageSectionSettings = {
+   visible: boolean;
+   anchorID?: string;
+@@ -49,6 +49,7 @@ function itemSettings(item: Record<string, unknown>): PageItemSettings {
+   return {
+     visible: item.visible !== false,
+     title: typeof item.title === "string" ? item.title : undefined,
++    homepagePortfolio: typeof item.homepagePortfolio === "string" ? item.homepagePortfolio : undefined,
+     image: mediaURL(item.image), images: mediaSet(item.images),
+     icon: mediaURL(item.icon), icons: mediaSet(item.icons),
+     logo: mediaURL(item.logo),
+diff --git a/src/content/newSiteCmsHome.ts b/src/content/newSiteCmsHome.ts
+index 3748264..bc9e43e 100644
+--- a/src/content/newSiteCmsHome.ts
++++ b/src/content/newSiteCmsHome.ts
+@@ -9,6 +9,7 @@ import { cmsMediaURL } from "@/content/cmsMediaURL";
+ import type { HomepageItemVisual, HomepageVisual } from "@/content/homepageVisual";
+ import type { ViewportImages } from "@/components/ArtDirectedImage";
+ import type { PortfolioTopPadding } from "@/content/portfolioTopPadding";
++import type { PortfolioPhoto } from "@/content/portfolioImages";
+ 
+ type SectionRecord = Record<string, unknown>;
+ export type HomepageVideoSources = ViewportImages;
+@@ -151,8 +152,7 @@ function visualOf(section: SectionRecord | null | undefined): HomepageVisual | u
+   return { backgroundColor: appearance?.backgroundColor, backgroundPreset, spacingPreset, textStyles: section.textStyles as HomepageVisual["textStyles"], detailColors: section.detailColors as HomepageVisual["detailColors"], iconDimensions: section.iconDimensions as HomepageVisual["iconDimensions"] };
+ }
+ 
+-/** Only published sections of the selected language affect the public homepage. */
+-export const getNewSiteCmsHome = cache(async (locale: Locale): Promise<NewSiteCmsHome> => {
++const getPublishedHomepage = cache(async (locale: Locale): Promise<Page | undefined> => {
+   const payload = await getPayload({ config: configPromise });
+   const result = await payload.find({
+     collection: "pages",
+@@ -170,8 +170,22 @@ export const getNewSiteCmsHome = cache(async (locale: Locale): Promise<NewSiteCm
+       ],
+     },
+   });
+-  const page = result.docs[0] as Page | undefined;
++  return result.docs[0] as Page | undefined;
++});
++
++/** Share only artwork, never Home copy, colors, visibility or item styling. */
++export const getHomepagePortfolioPhotos = cache(async (locale: Locale): Promise<PortfolioPhoto[]> => {
++  const page = await getPublishedHomepage(locale);
++  const section = ((page?.sections || []) as unknown as SectionRecord[]).find((item) => item.blockType === "newHomepagePortfolios");
++  const items = Array.isArray(section?.portfolios) ? section.portfolios as SectionRecord[] : [];
++  return items.map((item) => ({ image: fieldMedia(item.image) || undefined, images: mediaSet(item.images) }));
++});
++
++/** Only published sections of the selected language affect the public homepage. */
++export const getNewSiteCmsHome = cache(async (locale: Locale): Promise<NewSiteCmsHome> => {
++  const page = await getPublishedHomepage(locale);
+   if (!page) return { published: false };
++  const payload = await getPayload({ config: configPromise });
+   const visible = ((page.sections || []) as unknown as SectionRecord[]).filter((section) => section.visible !== false);
+   const byType = (type: string) => visible.find((section) => section.blockType === type);
+   const opening = byType("newHomepageOpening");
+diff --git a/src/content/portfolioImages.ts b/src/content/portfolioImages.ts
+new file mode 100644
+index 0000000..ecfb3c4
+--- /dev/null
++++ b/src/content/portfolioImages.ts
+@@ -0,0 +1,18 @@
++import type { ViewportImages } from "@/components/ArtDirectedImage";
++
++export const portfolioImages = [
++  "/assets/portfolios/startime-government-portfolio.webp",
++  "/assets/portfolios/startime-business-portfolio.webp",
++  "/assets/portfolios/startime-community-portfolio.webp",
++] as const;
++
++export type PortfolioPhoto = { image?: string; images?: ViewportImages };
++
++/** A new default replaces all inherited crops; a device-only override does not. */
++export function resolvePortfolioPhoto(shared: PortfolioPhoto | undefined, own: PortfolioPhoto | undefined, index: number): PortfolioPhoto & { image: string } {
++  const image = own?.images?.default || own?.image || shared?.images?.default || shared?.image || portfolioImages[index % portfolioImages.length];
++  const images = own?.image || own?.images?.default
++    ? own.images
++    : { ...shared?.images, ...own?.images };
++  return { image, images };
++}
+diff --git a/src/payload/blocks/newSiteSections.ts b/src/payload/blocks/newSiteSections.ts
+index 07b8f7d..90e3f6b 100644
+--- a/src/payload/blocks/newSiteSections.ts
++++ b/src/payload/blocks/newSiteSections.ts
+@@ -247,12 +247,21 @@ const investmentItemsField = (section: "domains" | "portfolios" | "approach" | "
+   fields: [
+     { name: "title", type: "text", required: true },
+     { name: "body", type: "textarea", required: true },
++    ...(section === "portfolios" ? [
++      { name: "homepagePortfolio", label: "Shared homepage photograph", type: "select", options: [
++        { label: "Government portfolio", value: "government" },
++        { label: "Business portfolio", value: "business" },
++        { label: "Community portfolio", value: "community" },
++      ], admin: { description: "Optional: select the homepage portfolio artwork to reuse. Blank uses the corresponding card position. Only its images are shared—this page keeps its own title, description, colors and visibility. Choose explicitly before reordering cards to keep the same photograph." } } as Field,
++      fallbackImageField("image", "Optional Investment card photograph · blank shares homepage", "portfolio", false),
++      responsiveImagesField("images", "Optional Investment card photograph overrides by screen", "portfolio"),
++    ] : []),
+     ...(section === "impact" ? [
+       { name: "points", label: "Bullet points", type: "array", fields: [{ name: "value", type: "text" }] } as Field,
+       fallbackImageField("image", "Optional slide image · blank uses first slide", "investmentImpact", false),
+       responsiveImagesField("images", "Optional slide image crops by screen · blank uses first slide", "investmentImpact"),
+     ] : []),
+-    ...(["domains", "portfolios", "approach"].includes(section) ? [fallbackImageField("icon", `${labelFor(section)} icon · default on all screens`, section === "approach" ? "investmentApproachIcon" : "investmentDomainIcon", false), responsiveImagesField("icons", "Optional icon overrides by screen", section === "approach" ? "investmentApproachIcon" : "investmentDomainIcon")] : []),
++    ...(["domains", "portfolios", "approach"].includes(section) ? [fallbackImageField("icon", `${labelFor(section)} icon · default on all screens`, section === "approach" ? "investmentApproachIcon" : "investmentDomainIcon", false), responsiveImagesField("icons", "Optional icon overrides by screen", section === "approach" ? "investmentApproachIcon" : "investmentDomainIcon")].map((field): Field => section === "portfolios" ? { ...field, admin: { ...field.admin, condition: () => false } } as Field : field) : []),
+     { name: "visible", label: "Show this entry", type: "checkbox", defaultValue: true },
+     ...homepageItemVisualFields,
+   ],
+diff --git a/src/payload/fields/responsiveMedia.ts b/src/payload/fields/responsiveMedia.ts
+index b5b0569..a800d2a 100644
+--- a/src/payload/fields/responsiveMedia.ts
++++ b/src/payload/fields/responsiveMedia.ts
+@@ -53,7 +53,7 @@ const roleSizes: Record<MediaRole, MediaSizing> = {
+   hero: { sizes: ["780 × 1688", "1536 × 2048", "2732 × 1536", "3840 × 2160", "5120 × 2880"], note: "Measured homepage hero image frame: 390×844, 768×1024, 1366×768, 1920×1080, 2560×1440 CSS px at the corresponding reference viewports. Height changes on other devices." },
+   panorama: { sizes: ["6354 × 844", "7709 × 1024", "5782 × 768", "8131 × 1080", "10841 × 1440"], note: "Measured WHOLE moving panorama, not one visible screen. These are actual 1× frames at the five reference viewports; 2× files would be unnecessarily huge. The current approved optimized source is 7009×931 px and about 944 KB. Match the panoramic ratio and optimize aggressively." },
+   panoramaVideo: { sizes: ["780 × 1688", "1536 × 2048", "2732 × 1536", "3840 × 2160", "5120 × 2880"], note: "The optional panorama video occupies one visible sticky stage, NOT the extra-wide moving panorama image. Its measured player frames are 390×844, 768×1024, 1366×768, 1920×1080 and 2560×1440 CSS px." },
+-  portfolio: { sizes: ["700 × 424", "1456 × 882", "744 × 480", "732 × 472", "732 × 472"], note: "Measured portfolio photograph frames: 350×212, 728×441, 372×240, 366×236, 366×236 CSS px. English and Arabic share these frames. Photographs fill them with cover; the large-screen card width is capped." },
++  portfolio: { sizes: ["700 × 424", "1456 × 882", "746 × 482", "734 × 474", "734 × 474"], note: "Shared Home and Investment portfolio photograph frames, measured at 390, 768, 1366, 1920 and 2560 px viewports: approximately 350×212, 728×441, 373×241, 367×237 and 367×237 CSS px. English and Arabic share these frames. Recommendations are rounded 2× image-frame dimensions. Photographs fill with cover; the three-card grid is capped at 1180 px. Investment shares Home artwork unless an editor supplies an optional override." },
+   impact: { sizes: ["700 × 1040", "1456 × 1160", "1468 × 1120", "2060 × 1120", "2060 × 1120"], note: "Measured impact frames are 350×520 mobile, 728×580 tablet, 734×560 laptop, and 1030×560 desktop/iMac CSS px. The approved supplied pair is 701×1041 mobile portrait and 1549×1121 landscape for wider screens. Upload the landscape once as Default and the portrait once as Mobile; tablet/laptop/desktop/iMac inherit Default unless you deliberately supply another composition. The Impact frame fills edge-to-edge using cover, so a mismatched ratio crops the edges rather than leaving empty bands; use a separate composition for any screen where that crop hides important content." },
+   visionHero: { sizes: ["780 × 1688", "1536 × 2048", "2732 × 1536", "3840 × 1840", "5120 × 1840"], note: "Measured Vision hero backdrop at 390×844, 768×1024, 1366×768, 1920×920 and 2560×920 CSS px. It stays cover, with its approved overlay; nearby viewport heights can vary." },
+   visionPortrait: { sizes: ["760 × 980", "1496 × 1188", "1402 × 1400", "1832 × 1560", "2442 × 1560"], note: "Measured transparent Vision hero portrait element at 380×490, 748×594, 701×700, 916×780 and 1221×780 CSS px. Keep the whole person on a transparent canvas; the approved CSS uses contain. Prefer the existing high-resolution cutout when it is sharp enough." },

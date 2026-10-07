@@ -4,15 +4,15 @@ import { manageCmsContent } from "../access/cmsUsers";
 export const InsightCategories: CollectionConfig = {
   slug: "insight-categories",
   labels: {
-    singular: "Insight Category",
-    plural: "Insight Categories",
+    singular: "News / Article Category",
+    plural: "News / Article Categories",
   },
   admin: {
     group: "Insights and News",
     useAsTitle: "internalTitle",
-    defaultColumns: ["internalTitle", "title", "slug", "visible"],
+    defaultColumns: ["internalTitle", "contentType", "title", "slug", "visible"],
     description:
-      "Create reusable categories for Startime news and insight cards. Switch locale before editing the public label.",
+      "Create separate categories for News or Articles. The post editor only offers categories matching its selected content type. Translate each public label independently.",
   },
   access: {
     create: manageCmsContent,
@@ -36,6 +36,15 @@ export const InsightCategories: CollectionConfig = {
       admin: {
         description: "Stable English CMS label; never shown on the website.",
       },
+    },
+    {
+      name: "contentType",
+      label: "Category for",
+      type: "select",
+      required: true,
+      defaultValue: "news",
+      options: [{ label: "News", value: "news" }, { label: "Article", value: "article" }],
+      admin: { description: "Choose once. News and article categories are intentionally kept separate." },
     },
     {
       name: "title",

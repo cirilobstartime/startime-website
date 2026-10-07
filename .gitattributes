@@ -9,3 +9,8 @@
 *.png binary
 *.webp binary
 *.woff2 binary
+
+# Preserve upstream license text and SQL indentation emitted by Payload.
+public/assets/fonts/29lt-bukra/License.txt whitespace=-blank-at-eol
+src/migrations/*.ts whitespace=-space-before-tab
+*.patch whitespace=-blank-at-eol

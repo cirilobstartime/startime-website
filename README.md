@@ -27,7 +27,7 @@ npm ci
 npm run dev
 ```
 
-The public site runs at `http://localhost:3000`. Payload Content Studio is available at `http://localhost:3000/content-admin`.
+Set `NEXT_PUBLIC_APP_URL=http://localhost:3100` locally, then run `npm run dev -- --port 3100`. English is `/`, Arabic `/ar`; Content Studio is `/content-admin`. The browser origin must match the configured origin exactly.
 
 Create secure, unique values for every secret in `.env`. Never commit `.env`, database files, uploaded media, credentials, or private keys.
 
@@ -49,6 +49,8 @@ npm run start
 
 ## Content model
 
+The current frontend uses independently editable English and Arabic main pages, section blocks, media and global design controls. Repository publication does not imply that the latest local changes have been activated on production. See the release guide for verification and activation requirements.
+
 - English and Arabic page sections are stored independently.
 - Editing one locale does not overwrite the other locale.
 - Pages, sections, media, forms, redirects, insights, global navigation, footer content, SEO, and marketing settings are managed in Payload.
@@ -57,6 +59,9 @@ npm run start
 
 ## Documentation
 
+- [Start here: editing, deployment, patches and rollback](docs/CHANGE-AND-RELEASE-GUIDE.md)
+- [Repository and public-content handoff](docs/REPOSITORY-HANDOFF.md)
+- [Known handoff risks](docs/KNOWN-ISSUES.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Database setup and recovery](docs/DATABASE.md)
 - [Fresh server provisioning](docs/PROVISIONING.md)
@@ -73,4 +78,14 @@ npm run start
 - Back up the SQLite database, uploads, and environment file before every deployment.
 - Report security issues privately to the Startime technical team rather than opening a public issue.
 
-Raw production databases and uploads are never committed to Git. Use the documented bilingual seed for a clean development environment, or obtain an exact database-and-uploads recovery archive through Startime's approved private encrypted channel. See [Database and recovery](docs/DATABASE.md).
+Raw production databases and private uploads are never committed to Git. Use the sanitized content bootstrap for a clean development environment, or obtain an exact recovery archive through Startime's approved private encrypted channel. See [Database and recovery](docs/DATABASE.md).
+
+## Company content snapshot
+
+The handoff branch includes `database/content-snapshot` with current local CMS content and referenced public media, without accounts, sessions, submissions, private attachments or history. It is not a production backup. Use Node.js **22.13+** for this utility, and import only into a new empty local database:
+
+```bash
+CONTENT_BOOTSTRAP_CONFIRM=empty-local-only node scripts/content-snapshot.mjs import ./startime.db ./database/content-snapshot
+```
+
+Then create your own local administrator: set `ADMIN_EMAIL` and `ADMIN_PASSWORD` privately and run `node --env-file=.env --import tsx scripts/create-admin.ts`; unset both variables afterward. The current create-admin script reads environment variables; it is not an interactive prompt. Keep SMTP disabled locally unless intentionally testing notifications. Never import this snapshot over live state.

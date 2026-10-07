@@ -23,7 +23,7 @@ import {
   Sparkle,
   UsersThree,
 } from "@phosphor-icons/react/dist/ssr";
-import Link from "next/link";
+import Link from "./CmsLink";
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import type { CSSProperties, ReactNode } from "react";
 import type {

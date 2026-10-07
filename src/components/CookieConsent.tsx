@@ -39,7 +39,7 @@ export function CookieConsent({
     setVisible(false);
   }
 
-  if (!visible || isMaintenancePage) return null;
+  if (!settings.showConsentNotice || !visible || isMaintenancePage) return null;
 
   return (
     <aside

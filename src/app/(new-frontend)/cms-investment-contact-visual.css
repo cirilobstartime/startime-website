@@ -1,0 +1,172 @@
+/* Investment portfolio photographs mirror the approved Home card geometry.
+   Keep this section's own background, copy and all opt-in CMS overrides. */
+.investment-page-next.sharp-variation .investment-next-portfolios .investment-portfolio-grid {
+  width: min(1180px, 100%);
+  gap: clamp(.65rem, .9vw, 1rem);
+  align-items: stretch;
+}
+.investment-page-next.sharp-variation .investment-next-portfolios .investment-portfolio-photo-card,
+.investment-page-next.sharp-variation .investment-next-portfolios .investment-portfolio-photo-card:not(:first-child),
+.investment-page-next.sharp-variation .investment-next-portfolios .investment-portfolio-photo-card:last-child {
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  padding: 0 clamp(.65rem, .9vw, 1rem) 0 0;
+  padding-inline: 0 clamp(.65rem, .9vw, 1rem);
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.investment-portfolio-photo-media {
+  position: relative;
+  flex: 0 0 auto;
+  overflow: hidden;
+  aspect-ratio: 1.55;
+  background: #211a36;
+}
+.investment-portfolio-photo-media img { transition: transform 1s var(--ease); }
+.investment-portfolio-photo-card:hover .investment-portfolio-photo-media img { transform: scale(1.04); }
+.investment-portfolio-photo-copy {
+  flex: 1;
+  padding: 1.35rem clamp(.5rem, .75vw, 1rem) .5rem;
+  border-inline-start: 1px solid var(--cms-item-border, var(--cms-detail-line, rgba(91,66,128,.32)));
+  text-align: start;
+}
+.investment-page-next .investment-portfolio-photo-card h3 {
+  min-height: 2.65em;
+  margin: 0;
+  color: var(--ip-ink);
+  font-weight: 400;
+  line-height: 1.35;
+}
+.investment-page-next .investment-portfolio-photo-card p {
+  margin: .55rem 0 0;
+  color: var(--ip-muted);
+  font-size: clamp(.82rem, .88vw, .92rem);
+  line-height: 1.7;
+  text-align: start;
+  text-align-last: start;
+  text-justify: auto;
+  hyphens: none;
+}
+@media (max-width: 900px) {
+  .investment-page-next.sharp-variation .investment-next-portfolios { padding-inline: 1.25rem; }
+  .investment-page-next.sharp-variation .investment-next-portfolios .investment-portfolio-grid { gap: 2.7rem; }
+  .investment-page-next.sharp-variation .investment-next-portfolios .investment-portfolio-photo-card,
+  .investment-page-next.sharp-variation .investment-next-portfolios .investment-portfolio-photo-card:not(:first-child),
+  .investment-page-next.sharp-variation .investment-next-portfolios .investment-portfolio-photo-card:last-child { padding: 0; }
+  .investment-portfolio-photo-media { aspect-ratio: 1.65; }
+  .investment-portfolio-photo-copy { padding-inline: .75rem; }
+  .investment-page-next .investment-portfolio-photo-card p { max-width: 62ch; }
+}
+
+/* All overrides are opt-in; empty Payload fields preserve the approved CSS and animations. */
+.investment-cms-page, .contact-cms-page { display: flex; flex-direction: column; }
+.investment-cms-page > *, .contact-cms-page > * { flex-shrink: 0; }
+.investment-cms-page > .home2-footer, .contact-cms-page > .home2-footer { order: 99; }
+.investment-cms-page .investment-cms-section, .contact-cms-page .contact-cms-section { isolation: isolate; }
+.investment-cms-page .investment-cms-section[style*="--cms-section-background"],
+.contact-cms-page .contact-cms-section[style*="--cms-section-background"] { background-color: var(--cms-section-background) !important; }
+.investment-cms-page .investment-cms-section[style*="--cms-section-padding"],
+.contact-cms-page .contact-cms-section[style*="--cms-section-padding"] { padding-block: var(--cms-section-padding) !important; }
+.investment-cms-page .investment-cms-section:has(> .page-cms-backdrop),
+.contact-cms-page .contact-cms-section:has(> .page-cms-backdrop) { position: relative; }
+.page-cms-backdrop { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.page-cms-backdrop :is(img, video) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.contact-cms-page .contact-hero > .page-cms-backdrop { z-index: 0; }
+.contact-cms-page .contact-hero-image, .contact-cms-page .contact-map-art,
+.investment-cms-page .investment-impact-governance-media img,
+.investment-cms-page .investment-project-image img,
+.investment-cms-page .investment-closing .art-directed-fill { object-fit: cover; }
+.investment-cms-page .investment-closing .art-directed-fill { z-index: -2; }
+.investment-cms-page .investment-closing > .page-cms-backdrop { z-index: -2; }
+.investment-cms-page .investment-cms-icon-frame { display: block; flex: 0 0 auto; overflow: hidden; }
+.investment-cms-page .investment-cms-icon { display: block; width: 100%; height: 100%; object-fit: contain; transform: scale(3.2); }
+.investment-cms-page .investment-next-domain-heading .investment-cms-icon-frame { width: 52px; height: 52px; }
+.investment-cms-page .investment-next-portfolio-title .investment-cms-icon-frame { width: 44px; height: 44px; }
+@media (max-width: 900px) {
+  .investment-cms-page .investment-next-domain-heading .investment-cms-icon-frame { width: 40px; height: 40px; }
+}
+
+.investment-cms-page .investment-cms-section[style*="--cms-eyebrow-color"] .investment-label,
+.contact-cms-page .contact-cms-section[style*="--cms-eyebrow-color"] .contact-label { color: var(--cms-eyebrow-color) !important; }
+.investment-cms-page .investment-cms-section[style*="--cms-heading-color"] :is(h2, .investment-impact-governance-heading h2),
+.contact-cms-page .contact-cms-section[style*="--cms-heading-color"] :is(h1,h2) { color: var(--cms-heading-color) !important; }
+.investment-cms-page .investment-cms-section[style*="--cms-body-color"] :is(.investment-philosophy-copy > p:not(.investment-label), .investment-projects-heading > p:last-child, .investment-next-domain-panel p, .investment-closing p),
+.contact-cms-page .contact-cms-section[style*="--cms-body-color"] :is(.contact-hero-copy p, .contact-enquiry-intro > p:last-child, .contact-headquarters-heading p, .contact-location-copy p) { color: var(--cms-body-color) !important; }
+.investment-cms-page .investment-cms-section[style*="--cms-itemHeading-color"] :is(.investment-next-domain-heading h3, .investment-portfolio-item h3, .investment-approach-step h3, .investment-impact-governance-active h3, .investment-project-showcase h3),
+.contact-cms-page .contact-cms-section[style*="--cms-itemHeading-color"] .contact-fact strong { color: var(--cms-itemHeading-color) !important; }
+.investment-cms-page .investment-cms-section[style*="--cms-itemBody-color"] :is(.investment-portfolio-item p, .investment-approach-step p, .investment-impact-governance-active p, .investment-impact-governance-active li, .investment-project-showcase article p),
+.contact-cms-page .contact-cms-section[style*="--cms-itemBody-color"] .contact-fact small { color: var(--cms-itemBody-color) !important; }
+.investment-cms-page .investment-cms-section[style*="--cms-cta-color"] :is(.investment-project-showcase a, .investment-closing a),
+.contact-cms-page .contact-cms-section[style*="--cms-cta-color"] :is(.contact-submit, .contact-location-copy a) { color: var(--cms-cta-color) !important; }
+.investment-cms-page .investment-cms-section[style*="--cms-detail-ctaBackground"] :is(.investment-closing a, .investment-project-showcase a),
+.contact-cms-page .contact-cms-section[style*="--cms-detail-ctaBackground"] .contact-submit { background-color: var(--cms-detail-ctaBackground) !important; }
+.investment-cms-page .investment-cms-section[style*="--cms-detail-icon"] :is(svg, .investment-approach-marker),
+.contact-cms-page .contact-cms-section[style*="--cms-detail-icon"] :is(.contact-fact svg, .contact-submit svg) { color: var(--cms-detail-icon) !important; }
+.investment-cms-page [style*="--cms-item-title-color"] h3,
+.contact-cms-page [style*="--cms-item-title-color"] strong { color: var(--cms-item-title-color) !important; }
+.investment-cms-page [style*="--cms-item-body-color"] p,
+.contact-cms-page [style*="--cms-item-body-color"] small { color: var(--cms-item-body-color) !important; }
+.investment-cms-page .investment-cms-paragraph[style*="--cms-item-body-color"] { color: var(--cms-item-body-color) !important; }
+.investment-cms-page [style*="--cms-item-background"], .contact-cms-page .contact-fact[style*="--cms-item-background"] { background-color: var(--cms-item-background) !important; }
+.investment-cms-page [style*="--cms-item-border"], .contact-cms-page .contact-fact[style*="--cms-item-border"] { border-color: var(--cms-item-border) !important; }
+.investment-cms-page [style*="--cms-item-icon"] svg, .contact-cms-page .contact-fact[style*="--cms-item-icon"] svg { color: var(--cms-item-icon) !important; }
+
+@layer startime-editorial-type {
+@media (max-width: 640px) {
+  .investment-cms-page .investment-cms-paragraph[style*="--cms-item-body-mobile"] { font-size: var(--cms-item-body-mobile) !important; }
+  .investment-cms-page [style*="--cms-item-title-mobile"] h3, .contact-cms-page [style*="--cms-item-title-mobile"] strong { font-size: var(--cms-item-title-mobile) !important; }
+  .investment-cms-page [style*="--cms-item-body-mobile"] p, .contact-cms-page [style*="--cms-item-body-mobile"] small { font-size: var(--cms-item-body-mobile) !important; }
+  .investment-cms-page [style*="--cms-heading-mobile"] h2, .contact-cms-page [style*="--cms-heading-mobile"] :is(h1,h2) { font-size: var(--cms-heading-mobile) !important; }
+  .investment-cms-page [style*="--cms-eyebrow-mobile"] .investment-label, .contact-cms-page [style*="--cms-eyebrow-mobile"] .contact-label { font-size: var(--cms-eyebrow-mobile) !important; }
+  .investment-cms-page [style*="--cms-body-mobile"] p, .contact-cms-page [style*="--cms-body-mobile"] p { font-size: var(--cms-body-mobile) !important; }
+  .investment-cms-page [style*="--cms-itemHeading-mobile"] h3, .contact-cms-page [style*="--cms-itemHeading-mobile"] .contact-fact strong { font-size: var(--cms-itemHeading-mobile) !important; }
+  .investment-cms-page [style*="--cms-itemBody-mobile"] :is(.investment-portfolio-item p, .investment-approach-step p, .investment-impact-governance-active p), .contact-cms-page [style*="--cms-itemBody-mobile"] .contact-fact small { font-size: var(--cms-itemBody-mobile) !important; }
+  .investment-cms-page [style*="--cms-cta-mobile"] a, .contact-cms-page [style*="--cms-cta-mobile"] :is(a,button) { font-size: var(--cms-cta-mobile) !important; }
+}
+@media (min-width: 641px) and (max-width: 1023px) {
+  .investment-cms-page .investment-cms-paragraph[style*="--cms-item-body-tablet"] { font-size: var(--cms-item-body-tablet) !important; }
+  .investment-cms-page [style*="--cms-item-title-tablet"] h3, .contact-cms-page [style*="--cms-item-title-tablet"] strong { font-size: var(--cms-item-title-tablet) !important; }
+  .investment-cms-page [style*="--cms-item-body-tablet"] p, .contact-cms-page [style*="--cms-item-body-tablet"] small { font-size: var(--cms-item-body-tablet) !important; }
+  .investment-cms-page [style*="--cms-heading-tablet"] h2, .contact-cms-page [style*="--cms-heading-tablet"] :is(h1,h2) { font-size: var(--cms-heading-tablet) !important; }
+  .investment-cms-page [style*="--cms-eyebrow-tablet"] .investment-label, .contact-cms-page [style*="--cms-eyebrow-tablet"] .contact-label { font-size: var(--cms-eyebrow-tablet) !important; }
+  .investment-cms-page [style*="--cms-body-tablet"] p, .contact-cms-page [style*="--cms-body-tablet"] p { font-size: var(--cms-body-tablet) !important; }
+  .investment-cms-page [style*="--cms-itemHeading-tablet"] h3, .contact-cms-page [style*="--cms-itemHeading-tablet"] .contact-fact strong { font-size: var(--cms-itemHeading-tablet) !important; }
+  .investment-cms-page [style*="--cms-itemBody-tablet"] :is(.investment-portfolio-item p, .investment-approach-step p, .investment-impact-governance-active p), .contact-cms-page [style*="--cms-itemBody-tablet"] .contact-fact small { font-size: var(--cms-itemBody-tablet) !important; }
+  .investment-cms-page [style*="--cms-cta-tablet"] a, .contact-cms-page [style*="--cms-cta-tablet"] :is(a,button) { font-size: var(--cms-cta-tablet) !important; }
+}
+@media (min-width: 1024px) and (max-width: 1599px) {
+  .investment-cms-page .investment-cms-paragraph[style*="--cms-item-body-laptop"] { font-size: var(--cms-item-body-laptop) !important; }
+  .investment-cms-page [style*="--cms-item-title-laptop"] h3, .contact-cms-page [style*="--cms-item-title-laptop"] strong { font-size: var(--cms-item-title-laptop) !important; }
+  .investment-cms-page [style*="--cms-item-body-laptop"] p, .contact-cms-page [style*="--cms-item-body-laptop"] small { font-size: var(--cms-item-body-laptop) !important; }
+  .investment-cms-page [style*="--cms-heading-laptop"] h2, .contact-cms-page [style*="--cms-heading-laptop"] :is(h1,h2) { font-size: var(--cms-heading-laptop) !important; }
+  .investment-cms-page [style*="--cms-eyebrow-laptop"] .investment-label, .contact-cms-page [style*="--cms-eyebrow-laptop"] .contact-label { font-size: var(--cms-eyebrow-laptop) !important; }
+  .investment-cms-page [style*="--cms-body-laptop"] p, .contact-cms-page [style*="--cms-body-laptop"] p { font-size: var(--cms-body-laptop) !important; }
+  .investment-cms-page [style*="--cms-itemHeading-laptop"] h3, .contact-cms-page [style*="--cms-itemHeading-laptop"] .contact-fact strong { font-size: var(--cms-itemHeading-laptop) !important; }
+  .investment-cms-page [style*="--cms-itemBody-laptop"] :is(.investment-portfolio-item p, .investment-approach-step p, .investment-impact-governance-active p), .contact-cms-page [style*="--cms-itemBody-laptop"] .contact-fact small { font-size: var(--cms-itemBody-laptop) !important; }
+  .investment-cms-page [style*="--cms-cta-laptop"] a, .contact-cms-page [style*="--cms-cta-laptop"] :is(a,button) { font-size: var(--cms-cta-laptop) !important; }
+}
+@media (min-width: 1600px) and (max-width: 1999px) {
+  .investment-cms-page .investment-cms-paragraph[style*="--cms-item-body-desktop"] { font-size: var(--cms-item-body-desktop) !important; }
+  .investment-cms-page [style*="--cms-item-title-desktop"] h3, .contact-cms-page [style*="--cms-item-title-desktop"] strong { font-size: var(--cms-item-title-desktop) !important; }
+  .investment-cms-page [style*="--cms-item-body-desktop"] p, .contact-cms-page [style*="--cms-item-body-desktop"] small { font-size: var(--cms-item-body-desktop) !important; }
+  .investment-cms-page [style*="--cms-heading-desktop"] h2, .contact-cms-page [style*="--cms-heading-desktop"] :is(h1,h2) { font-size: var(--cms-heading-desktop) !important; }
+  .investment-cms-page [style*="--cms-eyebrow-desktop"] .investment-label, .contact-cms-page [style*="--cms-eyebrow-desktop"] .contact-label { font-size: var(--cms-eyebrow-desktop) !important; }
+  .investment-cms-page [style*="--cms-body-desktop"] p, .contact-cms-page [style*="--cms-body-desktop"] p { font-size: var(--cms-body-desktop) !important; }
+  .investment-cms-page [style*="--cms-itemHeading-desktop"] h3, .contact-cms-page [style*="--cms-itemHeading-desktop"] .contact-fact strong { font-size: var(--cms-itemHeading-desktop) !important; }
+  .investment-cms-page [style*="--cms-itemBody-desktop"] :is(.investment-portfolio-item p, .investment-approach-step p, .investment-impact-governance-active p), .contact-cms-page [style*="--cms-itemBody-desktop"] .contact-fact small { font-size: var(--cms-itemBody-desktop) !important; }
+  .investment-cms-page [style*="--cms-cta-desktop"] a, .contact-cms-page [style*="--cms-cta-desktop"] :is(a,button) { font-size: var(--cms-cta-desktop) !important; }
+}
+@media (min-width: 2000px) {
+  .investment-cms-page .investment-cms-paragraph[style*="--cms-item-body-imac"] { font-size: var(--cms-item-body-imac) !important; }
+  .investment-cms-page [style*="--cms-item-title-imac"] h3, .contact-cms-page [style*="--cms-item-title-imac"] strong { font-size: var(--cms-item-title-imac) !important; }
+  .investment-cms-page [style*="--cms-item-body-imac"] p, .contact-cms-page [style*="--cms-item-body-imac"] small { font-size: var(--cms-item-body-imac) !important; }
+  .investment-cms-page [style*="--cms-heading-imac"] h2, .contact-cms-page [style*="--cms-heading-imac"] :is(h1,h2) { font-size: var(--cms-heading-imac) !important; }
+  .investment-cms-page [style*="--cms-eyebrow-imac"] .investment-label, .contact-cms-page [style*="--cms-eyebrow-imac"] .contact-label { font-size: var(--cms-eyebrow-imac) !important; }
+  .investment-cms-page [style*="--cms-body-imac"] p, .contact-cms-page [style*="--cms-body-imac"] p { font-size: var(--cms-body-imac) !important; }
+  .investment-cms-page [style*="--cms-itemHeading-imac"] h3, .contact-cms-page [style*="--cms-itemHeading-imac"] .contact-fact strong { font-size: var(--cms-itemHeading-imac) !important; }
+  .investment-cms-page [style*="--cms-itemBody-imac"] :is(.investment-portfolio-item p, .investment-approach-step p, .investment-impact-governance-active p), .contact-cms-page [style*="--cms-itemBody-imac"] .contact-fact small { font-size: var(--cms-itemBody-imac) !important; }
+  .investment-cms-page [style*="--cms-cta-imac"] a, .contact-cms-page [style*="--cms-cta-imac"] :is(a,button) { font-size: var(--cms-cta-imac) !important; }
+}
+}

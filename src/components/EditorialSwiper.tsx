@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
-import Link from "next/link";
+import Link from "./CmsLink";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { CardGridSection, Locale } from "@/content/types";
 import { CmsImage } from "./CmsImage";
@@ -15,6 +15,7 @@ type EditorialSwiperProps = {
 export function EditorialSwiper({ cards, locale }: EditorialSwiperProps) {
   const railRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  const [atEnd, setAtEnd] = useState(false);
   const visibleCards = cards.filter((card) => card.visible !== false);
 
   useMobileCarouselAutoplay({
@@ -31,23 +32,27 @@ export function EditorialSwiper({ cards, locale }: EditorialSwiperProps) {
       rail.querySelectorAll<HTMLElement>(".editorial-slide"),
     );
     if (!slides.length) return;
-    const railStart = rail.getBoundingClientRect().left;
+    const railStart = locale === "ar" ? rail.getBoundingClientRect().right : rail.getBoundingClientRect().left;
+    const edge = (slide: HTMLElement) => locale === "ar" ? slide.getBoundingClientRect().right : slide.getBoundingClientRect().left;
     const index = slides.reduce(
       (nearest, slide, slideIndex) =>
-        Math.abs(slide.getBoundingClientRect().left - railStart) <
-        Math.abs(slides[nearest].getBoundingClientRect().left - railStart)
+        Math.abs(edge(slide) - railStart) <
+        Math.abs(edge(slides[nearest]) - railStart)
           ? slideIndex
           : nearest,
       0,
     );
     setActive(index);
-  }, []);
+    setAtEnd(Math.abs(rail.scrollLeft) >= rail.scrollWidth - rail.clientWidth - 2);
+  }, [locale]);
 
   useEffect(() => {
     const rail = railRef.current;
     if (!rail) return;
     rail.addEventListener("scroll", updateActive, { passive: true });
-    return () => rail.removeEventListener("scroll", updateActive);
+    window.addEventListener("resize", updateActive);
+    updateActive();
+    return () => { rail.removeEventListener("scroll", updateActive); window.removeEventListener("resize", updateActive); };
   }, [updateActive]);
 
   const move = (direction: -1 | 1) => {
@@ -82,7 +87,7 @@ export function EditorialSwiper({ cards, locale }: EditorialSwiperProps) {
       >
         {visibleCards.map((card, index) => (
           <article
-            className={`editorial-slide ${index === 0 ? "editorial-slide--featured" : ""}`}
+            className={`editorial-slide ${index === 0 ? "editorial-slide--featured" : ""} ${index === active ? "is-active" : ""}`}
             key={card.id || `${card.title}-${index}`}
           >
             <div className="editorial-slide__media">
@@ -131,17 +136,19 @@ export function EditorialSwiper({ cards, locale }: EditorialSwiperProps) {
         <div className="editorial-swiper__buttons">
           <button
             aria-label={locale === "ar" ? "العنصر السابق" : "Previous item"}
+            disabled={active === 0}
             onClick={() => move(-1)}
             type="button"
           >
-            <ArrowLeft aria-hidden />
+            <ArrowLeft weight="bold" aria-hidden />
           </button>
           <button
             aria-label={locale === "ar" ? "العنصر التالي" : "Next item"}
+            disabled={atEnd || active >= visibleCards.length - 1}
             onClick={() => move(1)}
             type="button"
           >
-            <ArrowRight aria-hidden />
+            <ArrowRight weight="bold" aria-hidden />
           </button>
         </div>
       </div>

@@ -1,0 +1,18 @@
+/* Shared slider affordances; preserve each section's CMS colors and sizing. */
+.sharp-variation .carousel-arrow-shape::before,
+.sharp-variation .carousel-arrow:focus-visible .carousel-arrow-shape::before { border-width: 3px !important; }
+button.carousel-arrow:disabled,
+.editorial-swiper__buttons button:disabled {
+  opacity: .25 !important;
+  cursor: not-allowed !important;
+}
+button.carousel-arrow:not(:disabled) { opacity: 1; }
+button.carousel-arrow:focus-visible { outline: 2px solid currentColor !important; outline-offset: 3px; }
+.slide-counter { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.slide-counter .slide-counter-current,
+.editorial-swiper__controls > p strong { font-weight: 700 !important; opacity: 1; }
+.slide-counter .slide-counter-total,
+.editorial-swiper__controls > p > span { font-weight: 500 !important; opacity: .45; }
+.editorial-slide__index { font-weight: 500; opacity: .45; }
+.editorial-slide.is-active .editorial-slide__index { font-weight: 700; opacity: 1; }
+main:not(.sharp-variation) .carousel-arrow-shape { filter: drop-shadow(.4px 0 currentColor) drop-shadow(-.4px 0 currentColor); }

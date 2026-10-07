@@ -436,6 +436,7 @@ export async function POST(request: Request) {
       submissionID: submission.id,
       submittedAt: new Date(),
       values,
+      notificationEmails: (form.notificationEmails || []).map((item) => item.email),
     });
   } catch (error) {
     console.error("Form submission notification failed", {

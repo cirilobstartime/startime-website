@@ -1,0 +1,65 @@
+/* Editorial overrides apply only when an editor fills a field. Empty settings retain the approved design. */
+.cms-editorial-page { display: flex; flex-direction: column; }
+.cms-editorial-page > section { position: relative; isolation: isolate; flex: none; }
+.cms-editorial-page > footer { order: 99; }
+.cms-editorial-page > section[style*="--cms-section-background"], .cms-editorial-page .insights-principle[style*="--cms-section-background"] { background-color: var(--cms-section-background) !important; }
+.cms-editorial-page > section:not(.insights-hero)[style*="--cms-section-padding"], .cms-editorial-page .insights-principle[style*="--cms-section-padding"] { padding-block: var(--cms-section-padding) !important; }
+.cms-editorial-page .editorial-section-background,
+.cms-editorial-page .editorial-section-video { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.cms-editorial-page [style*="--cms-eyebrow-color"] .insights-label { color: var(--cms-eyebrow-color) !important; }
+.cms-editorial-page [style*="--cms-heading-color"] :is(h1,h2) { color: var(--cms-heading-color) !important; }
+.cms-editorial-page [style*="--cms-body-color"] :is(.insights-hero-body,.insights-intro-copy p,.insights-principle-copy p,.insights-contribute-copy > p:last-child) { color: var(--cms-body-color) !important; }
+.cms-editorial-page [style*="--cms-itemHeading-color"] :is(.insights-post-card h3,.insights-area-card h3,.insights-metric h3) { color: var(--cms-itemHeading-color) !important; }
+.cms-editorial-page [style*="--cms-itemBody-color"] :is(.insights-post-card-copy p,.insights-area-card p,.insights-metric p) { color: var(--cms-itemBody-color) !important; }
+.cms-editorial-page [style*="--cms-cta-color"] :is(button,a) { color: var(--cms-cta-color) !important; }
+.cms-editorial-page :is(.insights-area-card,.insights-metric)[style*="--cms-item-background"] { background-color: var(--cms-item-background); }
+.cms-editorial-page :is(.insights-area-card,.insights-metric)[style*="--cms-item-border"] { border-color: var(--cms-item-border); }
+.cms-editorial-page .insights-area-card[style*="--cms-item-icon"] .insights-area-card-icon { color: var(--cms-item-icon); }
+.cms-editorial-page :is(.insights-area-card,.insights-metric)[style*="--cms-item-title-color"] h3 { color: var(--cms-item-title-color) !important; }
+.cms-editorial-page :is(.insights-area-card,.insights-metric)[style*="--cms-item-body-color"] p { color: var(--cms-item-body-color) !important; }
+
+@media (max-width: 640px) {
+  .cms-editorial-page [style*="--cms-eyebrow-mobile"] .insights-label { font-size: var(--cms-eyebrow-mobile) !important; }
+  .cms-editorial-page [style*="--cms-heading-mobile"] :is(h1,h2) { font-size: var(--cms-heading-mobile) !important; }
+  .cms-editorial-page [style*="--cms-body-mobile"] :is(.insights-hero-body,.insights-intro-copy p,.insights-principle-copy p,.insights-contribute-copy > p:last-child) { font-size: var(--cms-body-mobile) !important; }
+  .cms-editorial-page [style*="--cms-itemHeading-mobile"] :is(.insights-post-card h3,.insights-area-card h3,.insights-metric h3) { font-size: var(--cms-itemHeading-mobile) !important; }
+  .cms-editorial-page [style*="--cms-itemBody-mobile"] :is(.insights-post-card-copy p,.insights-area-card p,.insights-metric p) { font-size: var(--cms-itemBody-mobile) !important; }
+  .cms-editorial-page :is(.insights-area-card,.insights-metric)[style*="--cms-item-title-mobile"] h3 { font-size: var(--cms-item-title-mobile) !important; }
+  .cms-editorial-page :is(.insights-area-card,.insights-metric)[style*="--cms-item-body-mobile"] p { font-size: var(--cms-item-body-mobile) !important; }
+}
+@media (min-width: 641px) and (max-width: 1023px) {
+  .cms-editorial-page [style*="--cms-eyebrow-tablet"] .insights-label { font-size: var(--cms-eyebrow-tablet) !important; }
+  .cms-editorial-page [style*="--cms-heading-tablet"] :is(h1,h2) { font-size: var(--cms-heading-tablet) !important; }
+  .cms-editorial-page [style*="--cms-body-tablet"] :is(.insights-hero-body,.insights-intro-copy p,.insights-principle-copy p,.insights-contribute-copy > p:last-child) { font-size: var(--cms-body-tablet) !important; }
+  .cms-editorial-page [style*="--cms-itemHeading-tablet"] :is(.insights-post-card h3,.insights-area-card h3,.insights-metric h3) { font-size: var(--cms-itemHeading-tablet) !important; }
+  .cms-editorial-page [style*="--cms-itemBody-tablet"] :is(.insights-post-card-copy p,.insights-area-card p,.insights-metric p) { font-size: var(--cms-itemBody-tablet) !important; }
+  .cms-editorial-page :is(.insights-area-card,.insights-metric)[style*="--cms-item-title-tablet"] h3 { font-size: var(--cms-item-title-tablet) !important; }
+  .cms-editorial-page :is(.insights-area-card,.insights-metric)[style*="--cms-item-body-tablet"] p { font-size: var(--cms-item-body-tablet) !important; }
+}
+@media (min-width: 1024px) and (max-width: 1599px) {
+  .cms-editorial-page [style*="--cms-eyebrow-laptop"] .insights-label { font-size: var(--cms-eyebrow-laptop) !important; }
+  .cms-editorial-page [style*="--cms-heading-laptop"] :is(h1,h2) { font-size: var(--cms-heading-laptop) !important; }
+  .cms-editorial-page [style*="--cms-body-laptop"] :is(.insights-hero-body,.insights-intro-copy p,.insights-principle-copy p,.insights-contribute-copy > p:last-child) { font-size: var(--cms-body-laptop) !important; }
+  .cms-editorial-page [style*="--cms-itemHeading-laptop"] :is(.insights-post-card h3,.insights-area-card h3,.insights-metric h3) { font-size: var(--cms-itemHeading-laptop) !important; }
+  .cms-editorial-page [style*="--cms-itemBody-laptop"] :is(.insights-post-card-copy p,.insights-area-card p,.insights-metric p) { font-size: var(--cms-itemBody-laptop) !important; }
+  .cms-editorial-page :is(.insights-area-card,.insights-metric)[style*="--cms-item-title-laptop"] h3 { font-size: var(--cms-item-title-laptop) !important; }
+  .cms-editorial-page :is(.insights-area-card,.insights-metric)[style*="--cms-item-body-laptop"] p { font-size: var(--cms-item-body-laptop) !important; }
+}
+@media (min-width: 1600px) and (max-width: 1999px) {
+  .cms-editorial-page [style*="--cms-eyebrow-desktop"] .insights-label { font-size: var(--cms-eyebrow-desktop) !important; }
+  .cms-editorial-page [style*="--cms-heading-desktop"] :is(h1,h2) { font-size: var(--cms-heading-desktop) !important; }
+  .cms-editorial-page [style*="--cms-body-desktop"] :is(.insights-hero-body,.insights-intro-copy p,.insights-principle-copy p,.insights-contribute-copy > p:last-child) { font-size: var(--cms-body-desktop) !important; }
+  .cms-editorial-page [style*="--cms-itemHeading-desktop"] :is(.insights-post-card h3,.insights-area-card h3,.insights-metric h3) { font-size: var(--cms-itemHeading-desktop) !important; }
+  .cms-editorial-page [style*="--cms-itemBody-desktop"] :is(.insights-post-card-copy p,.insights-area-card p,.insights-metric p) { font-size: var(--cms-itemBody-desktop) !important; }
+  .cms-editorial-page :is(.insights-area-card,.insights-metric)[style*="--cms-item-title-desktop"] h3 { font-size: var(--cms-item-title-desktop) !important; }
+  .cms-editorial-page :is(.insights-area-card,.insights-metric)[style*="--cms-item-body-desktop"] p { font-size: var(--cms-item-body-desktop) !important; }
+}
+@media (min-width: 2000px) {
+  .cms-editorial-page [style*="--cms-eyebrow-imac"] .insights-label { font-size: var(--cms-eyebrow-imac) !important; }
+  .cms-editorial-page [style*="--cms-heading-imac"] :is(h1,h2) { font-size: var(--cms-heading-imac) !important; }
+  .cms-editorial-page [style*="--cms-body-imac"] :is(.insights-hero-body,.insights-intro-copy p,.insights-principle-copy p,.insights-contribute-copy > p:last-child) { font-size: var(--cms-body-imac) !important; }
+  .cms-editorial-page [style*="--cms-itemHeading-imac"] :is(.insights-post-card h3,.insights-area-card h3,.insights-metric h3) { font-size: var(--cms-itemHeading-imac) !important; }
+  .cms-editorial-page [style*="--cms-itemBody-imac"] :is(.insights-post-card-copy p,.insights-area-card p,.insights-metric p) { font-size: var(--cms-itemBody-imac) !important; }
+  .cms-editorial-page :is(.insights-area-card,.insights-metric)[style*="--cms-item-title-imac"] h3 { font-size: var(--cms-item-title-imac) !important; }
+  .cms-editorial-page :is(.insights-area-card,.insights-metric)[style*="--cms-item-body-imac"] p { font-size: var(--cms-item-body-imac) !important; }
+}

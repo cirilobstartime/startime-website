@@ -1,10 +1,12 @@
 import type { CollectionConfig } from "payload";
 import { pageBlocks } from "../blocks";
 import { manageCmsContent } from "../access/cmsUsers";
+import { validateMainPageSlug, capturePublishedPageSlug, redirectChangedMainPageSlug } from "../hooks/pageSlugs";
 
 export const Pages: CollectionConfig = {
   slug: "pages",
   disableDuplicate: false,
+  hooks: { beforeValidate: [validateMainPageSlug], beforeChange: [capturePublishedPageSlug], afterChange: [redirectChangedMainPageSlug] },
   admin: {
     group: "Content",
     useAsTitle: "internalTitle",
@@ -16,7 +18,7 @@ export const Pages: CollectionConfig = {
       "updatedAt",
     ],
     description:
-      "Switch locale before editing. Each language has its own slug, sections, visibility, SEO, draft and publish status. Use Duplicate in the document menu to make a complete copy.",
+      "Switch locale before editing. English and Arabic have independent content, section order, visibility, slugs and publish status. Publishing a changed main-page slug automatically adds an editable redirect from its old URL.",
   },
   access: {
     create: manageCmsContent,
@@ -56,7 +58,7 @@ export const Pages: CollectionConfig = {
               localized: true,
               admin: {
                 description:
-                  "This language owns a complete section set. Reorder, hide, add, or edit sections here without changing the other language.",
+                  "Drag connected page blocks to change public order. Open a block to edit its copy, media, colors, responsive type, links, and visibility. Investment hero intentionally exposes copy only; its globe/background are locked. English and Arabic have independent section sets.",
                 initCollapsed: true,
               },
             },
@@ -98,6 +100,7 @@ export const Pages: CollectionConfig = {
                   name: "canonicalURL",
                   type: "text",
                   localized: true,
+                  admin: { description: "Optional SEO override only; leave blank to use the page's current published URL. To change its actual address, edit Slug in Page settings and publish." },
                 },
                 {
                   name: "indexable",
@@ -169,6 +172,10 @@ export const Pages: CollectionConfig = {
               options: [
                 { label: "Home", value: "home" },
                 { label: "Discover", value: "discover" },
+                { label: "Vision", value: "vision" },
+                { label: "Investment", value: "investment" },
+                { label: "Careers", value: "careers" },
+                { label: "Latest News", value: "latest-news" },
                 { label: "Portfolio", value: "portfolio" },
                 { label: "Solutions", value: "solutions" },
                 { label: "Triple S Arena", value: "triple-s-arena" },
@@ -187,9 +194,11 @@ export const Pages: CollectionConfig = {
               type: "text",
               localized: true,
               required: true,
+              admin: { description: "Actual URL for this language. Use a single slug, e.g. news (English /news, Arabic /ar/news). Publish to apply; an editable redirect is automatically added from the previous URL. Homepage stays home (/ or /ar)." },
             },
             {
               name: "visible",
+              label: "Show this page in this language",
               type: "checkbox",
               localized: true,
               defaultValue: true,
@@ -197,6 +206,18 @@ export const Pages: CollectionConfig = {
                 description:
                   "Master visibility switch for this language. Hidden pages return 404 even when published.",
               },
+            },
+            {
+              name: "archiveSortMode",
+              label: "News / blog card order",
+              type: "select",
+              localized: true,
+              defaultValue: "latest",
+              options: [
+                { label: "Latest publication date first (default)", value: "latest" },
+                { label: "Manual card order from each post", value: "manual" },
+              ],
+              admin: { description: "Applies to Latest News and Insights/blog archives. Manual mode uses each post's Card order number." },
             },
             {
               name: "showInNavigation",

@@ -1,5 +1,5 @@
 import { ArrowLeft, ArrowRight, Compass } from "@phosphor-icons/react/dist/ssr";
-import Link from "next/link";
+import Link from "./CmsLink";
 import type { Locale, SiteChrome } from "@/content/types";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";

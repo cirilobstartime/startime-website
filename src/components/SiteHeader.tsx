@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowUpRight, List, X } from "@phosphor-icons/react";
-import Link from "next/link";
+import Link from "./CmsLink";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Locale, SiteChrome } from "@/content/types";

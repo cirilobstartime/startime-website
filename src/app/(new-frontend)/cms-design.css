@@ -1,0 +1,3740 @@
+.cms-page-design {
+  display: contents;
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-light-link-color"],
+      .cms-page-design[style*="--cms-page-light-link-color"]
+    )
+    main
+    :is(
+      .section-light,
+      .home2-value,
+      .home2-domains-scroll,
+      .home2-impact-scroll,
+      .home2-projects-scroll,
+      .home2-triple,
+      .home2-membership,
+      .home2-partners,
+      .home2-news,
+      .vision-path,
+      .vision-pillars-new,
+      .vision-commitment,
+      .investment-philosophy,
+      .investment-portfolios,
+      .investment-approach,
+      .investment-projects,
+      .contact-enquiry,
+      .contact-location,
+      .careers-investing,
+      .careers-workplace,
+      .careers-opportunities,
+      .insights-intro,
+      .insights-principles,
+      .insights-areas,
+      .insights-archive,
+      .insights-contribute,
+      .post-detail-hero,
+      .insight-related,
+      .insight-detail-body,
+      section:is(
+        [style*="--cms-background-tone:light"],
+        [style*="--cms-background-tone: light"]
+      )
+    )
+    :is(.text-link, .text-action, .investment-project-showcase article > a) {
+    color: var(--cms-detail-ctaText, var(--cms-surface-link-color)) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-dark-link-color"],
+      .cms-page-design[style*="--cms-page-dark-link-color"]
+    )
+    main
+    :is(
+      .section-dark,
+      .home4-hero,
+      .home2-portfolios,
+      .home2-team,
+      .cms-home-panorama-order,
+      .vision-hero-scroll,
+      .vision-statement,
+      .vision-programs-new,
+      .vision-roadmap,
+      .investment-hero-scroll,
+      .investment-next-hero,
+      .investment-next-domains,
+      .investment-domains-programs,
+      .investment-impact-governance,
+      .investment-closing,
+      .contact-hero,
+      .contact-headquarters,
+      .careers-hero,
+      .careers-talent,
+      .insights-ambition,
+      .insights-hero,
+      .insight-detail-hero:not(.post-detail-hero),
+      section:is(
+        [style*="--cms-background-tone:dark"],
+        [style*="--cms-background-tone: dark"]
+      )
+    )
+    :is(.text-link, .text-action, .investment-project-showcase article > a) {
+    color: var(--cms-detail-ctaText, var(--cms-surface-link-color)) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-light-buttonBackground-color"],
+      .cms-page-design[style*="--cms-page-light-buttonBackground-color"]
+    )
+    main
+    :is(
+      .section-light,
+      .home2-value,
+      .home2-domains-scroll,
+      .home2-impact-scroll,
+      .home2-projects-scroll,
+      .home2-triple,
+      .home2-membership,
+      .home2-partners,
+      .home2-news,
+      .vision-path,
+      .vision-pillars-new,
+      .vision-commitment,
+      .investment-philosophy,
+      .investment-portfolios,
+      .investment-approach,
+      .investment-projects,
+      .contact-enquiry,
+      .contact-location,
+      .careers-investing,
+      .careers-workplace,
+      .careers-opportunities,
+      .insights-intro,
+      .insights-principles,
+      .insights-areas,
+      .insights-archive,
+      .insights-contribute,
+      .post-detail-hero,
+      .insight-related,
+      .insight-detail-body,
+      section:is(
+        [style*="--cms-background-tone:light"],
+        [style*="--cms-background-tone: light"]
+      )
+    )
+    :is(.button, .careers-form button, .lead-form button[type="submit"]) {
+    background-color: var(
+      --cms-detail-ctaBackground,
+      var(--cms-surface-buttonBackground-color)
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-dark-buttonBackground-color"],
+      .cms-page-design[style*="--cms-page-dark-buttonBackground-color"]
+    )
+    main
+    :is(
+      .section-dark,
+      .home4-hero,
+      .home2-portfolios,
+      .home2-team,
+      .cms-home-panorama-order,
+      .vision-hero-scroll,
+      .vision-statement,
+      .vision-programs-new,
+      .vision-roadmap,
+      .investment-hero-scroll,
+      .investment-next-hero,
+      .investment-next-domains,
+      .investment-domains-programs,
+      .investment-impact-governance,
+      .investment-closing,
+      .contact-hero,
+      .contact-headquarters,
+      .careers-hero,
+      .careers-talent,
+      .insights-ambition,
+      .insights-hero,
+      .insight-detail-hero:not(.post-detail-hero),
+      section:is(
+        [style*="--cms-background-tone:dark"],
+        [style*="--cms-background-tone: dark"]
+      )
+    )
+    :is(.button, .careers-form button, .lead-form button[type="submit"]) {
+    background-color: var(
+      --cms-detail-ctaBackground,
+      var(--cms-surface-buttonBackground-color)
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-light-buttonBorder-color"],
+      .cms-page-design[style*="--cms-page-light-buttonBorder-color"]
+    )
+    main
+    :is(
+      .section-light,
+      .home2-value,
+      .home2-domains-scroll,
+      .home2-impact-scroll,
+      .home2-projects-scroll,
+      .home2-triple,
+      .home2-membership,
+      .home2-partners,
+      .home2-news,
+      .vision-path,
+      .vision-pillars-new,
+      .vision-commitment,
+      .investment-philosophy,
+      .investment-portfolios,
+      .investment-approach,
+      .investment-projects,
+      .contact-enquiry,
+      .contact-location,
+      .careers-investing,
+      .careers-workplace,
+      .careers-opportunities,
+      .insights-intro,
+      .insights-principles,
+      .insights-areas,
+      .insights-archive,
+      .insights-contribute,
+      .post-detail-hero,
+      .insight-related,
+      .insight-detail-body,
+      section:is(
+        [style*="--cms-background-tone:light"],
+        [style*="--cms-background-tone: light"]
+      )
+    )
+    :is(.button, .text-link, .text-action) {
+    border-color: var(
+      --cms-detail-line,
+      var(--cms-surface-buttonBorder-color)
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-dark-buttonBorder-color"],
+      .cms-page-design[style*="--cms-page-dark-buttonBorder-color"]
+    )
+    main
+    :is(
+      .section-dark,
+      .home4-hero,
+      .home2-portfolios,
+      .home2-team,
+      .cms-home-panorama-order,
+      .vision-hero-scroll,
+      .vision-statement,
+      .vision-programs-new,
+      .vision-roadmap,
+      .investment-hero-scroll,
+      .investment-next-hero,
+      .investment-next-domains,
+      .investment-domains-programs,
+      .investment-impact-governance,
+      .investment-closing,
+      .contact-hero,
+      .contact-headquarters,
+      .careers-hero,
+      .careers-talent,
+      .insights-ambition,
+      .insights-hero,
+      .insight-detail-hero:not(.post-detail-hero),
+      section:is(
+        [style*="--cms-background-tone:dark"],
+        [style*="--cms-background-tone: dark"]
+      )
+    )
+    :is(.button, .text-link, .text-action) {
+    border-color: var(
+      --cms-detail-line,
+      var(--cms-surface-buttonBorder-color)
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-light-divider-color"],
+      .cms-page-design[style*="--cms-page-light-divider-color"]
+    )
+    main
+    :is(
+      .section-light,
+      .home2-value,
+      .home2-domains-scroll,
+      .home2-impact-scroll,
+      .home2-projects-scroll,
+      .home2-triple,
+      .home2-membership,
+      .home2-partners,
+      .home2-news,
+      .vision-path,
+      .vision-pillars-new,
+      .vision-commitment,
+      .investment-philosophy,
+      .investment-portfolios,
+      .investment-approach,
+      .investment-projects,
+      .contact-enquiry,
+      .contact-location,
+      .careers-investing,
+      .careers-workplace,
+      .careers-opportunities,
+      .insights-intro,
+      .insights-principles,
+      .insights-areas,
+      .insights-archive,
+      .insights-contribute,
+      .post-detail-hero,
+      .insight-related,
+      .insight-detail-body,
+      section:is(
+        [style*="--cms-background-tone:light"],
+        [style*="--cms-background-tone: light"]
+      )
+    )
+    :is(
+      .home2-portfolio-card > div:last-child,
+      .home5-domain-icon-item,
+      .investment-portfolio-item,
+      .investment-projects-portfolios,
+      .contact-fact
+    ) {
+    border-color: var(
+      --cms-item-border,
+      var(--cms-detail-line, var(--cms-surface-divider-color))
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-dark-divider-color"],
+      .cms-page-design[style*="--cms-page-dark-divider-color"]
+    )
+    main
+    :is(
+      .section-dark,
+      .home4-hero,
+      .home2-portfolios,
+      .home2-team,
+      .cms-home-panorama-order,
+      .vision-hero-scroll,
+      .vision-statement,
+      .vision-programs-new,
+      .vision-roadmap,
+      .investment-hero-scroll,
+      .investment-next-hero,
+      .investment-next-domains,
+      .investment-domains-programs,
+      .investment-impact-governance,
+      .investment-closing,
+      .contact-hero,
+      .contact-headquarters,
+      .careers-hero,
+      .careers-talent,
+      .insights-ambition,
+      .insights-hero,
+      .insight-detail-hero:not(.post-detail-hero),
+      section:is(
+        [style*="--cms-background-tone:dark"],
+        [style*="--cms-background-tone: dark"]
+      )
+    )
+    :is(
+      .home2-portfolio-card > div:last-child,
+      .home5-domain-icon-item,
+      .investment-portfolio-item,
+      .investment-projects-portfolios,
+      .contact-fact
+    ) {
+    border-color: var(
+      --cms-item-border,
+      var(--cms-detail-line, var(--cms-surface-divider-color))
+    ) !important;
+  }
+}
+/* Global settings do not replace any saved CMS item/section override. */
+:is(
+  .section-light,
+  .home2-value,
+  .home2-domains-scroll,
+  .home2-impact-scroll,
+  .home2-projects-scroll,
+  .home2-triple,
+  .home2-membership,
+  .home2-partners,
+  .home2-news,
+  .vision-path,
+  .vision-pillars-new,
+  .vision-commitment,
+  .investment-philosophy,
+  .investment-portfolios,
+  .investment-approach,
+  .investment-projects,
+  .contact-enquiry,
+  .contact-location,
+  .careers-investing,
+  .careers-workplace,
+  .careers-opportunities,
+  .insights-intro,
+  .insights-principles,
+  .insights-areas,
+  .insights-archive,
+  .insights-contribute,
+  .post-detail-hero,
+  .insight-related,
+  .insight-detail-body
+) {
+  --cms-surface-heroHeading-color: var(
+    --cms-page-light-heroHeading-color,
+    var(
+      --cms-page-heroHeading-color,
+      var(
+        --cms-global-heroHeading-color,
+        var(--cms-global-light-heroHeading-color, inherit)
+      )
+    )
+  );
+  --cms-surface-heading-color: var(
+    --cms-page-light-heading-color,
+    var(
+      --cms-page-heading-color,
+      var(
+        --cms-global-heading-color,
+        var(--cms-global-light-heading-color, #2e2449)
+      )
+    )
+  );
+  --cms-surface-eyebrow-color: var(
+    --cms-page-light-eyebrow-color,
+    var(
+      --cms-page-eyebrow-color,
+      var(
+        --cms-global-eyebrow-color,
+        var(--cms-global-light-eyebrow-color, #614787)
+      )
+    )
+  );
+  --cms-surface-body-color: var(
+    --cms-page-light-body-color,
+    var(
+      --cms-page-body-color,
+      var(--cms-global-body-color, var(--cms-global-light-body-color, inherit))
+    )
+  );
+  --cms-surface-itemHeading-color: var(
+    --cms-page-light-itemHeading-color,
+    var(
+      --cms-page-itemHeading-color,
+      var(
+        --cms-global-itemHeading-color,
+        var(--cms-global-light-itemHeading-color, inherit)
+      )
+    )
+  );
+  --cms-surface-itemBody-color: var(
+    --cms-page-light-itemBody-color,
+    var(
+      --cms-page-itemBody-color,
+      var(
+        --cms-global-itemBody-color,
+        var(--cms-global-light-itemBody-color, inherit)
+      )
+    )
+  );
+  --cms-surface-cta-color: var(
+    --cms-page-light-cta-color,
+    var(
+      --cms-page-cta-color,
+      var(--cms-global-cta-color, var(--cms-global-light-cta-color, inherit))
+    )
+  );
+  --cms-surface-number-color: var(
+    --cms-page-light-number-color,
+    var(
+      --cms-page-number-color,
+      var(
+        --cms-global-number-color,
+        var(--cms-global-light-number-color, inherit)
+      )
+    )
+  );
+  --cms-surface-small-color: var(
+    --cms-page-light-small-color,
+    var(
+      --cms-page-small-color,
+      var(
+        --cms-global-small-color,
+        var(--cms-global-light-small-color, inherit)
+      )
+    )
+  );
+  --cms-surface-link-color: var(
+    --cms-page-light-link-color,
+    var(
+      --cms-page-link-color,
+      var(--cms-global-link-color, var(--cms-global-light-link-color, inherit))
+    )
+  );
+  --cms-surface-buttonBackground-color: var(
+    --cms-page-light-buttonBackground-color,
+    var(
+      --cms-page-buttonBackground-color,
+      var(
+        --cms-global-buttonBackground-color,
+        var(--cms-global-light-buttonBackground-color, inherit)
+      )
+    )
+  );
+  --cms-surface-buttonBorder-color: var(
+    --cms-page-light-buttonBorder-color,
+    var(
+      --cms-page-buttonBorder-color,
+      var(
+        --cms-global-buttonBorder-color,
+        var(--cms-global-light-buttonBorder-color, inherit)
+      )
+    )
+  );
+  --cms-surface-divider-color: var(
+    --cms-page-light-divider-color,
+    var(
+      --cms-page-divider-color,
+      var(
+        --cms-global-divider-color,
+        var(--cms-global-light-divider-color, inherit)
+      )
+    )
+  );
+}
+:is(
+  .section-dark,
+  .home4-hero,
+  .home2-portfolios,
+  .home2-team,
+  .cms-home-panorama-order,
+  .vision-hero-scroll,
+  .vision-statement,
+  .vision-programs-new,
+  .vision-roadmap,
+  .investment-hero-scroll,
+  .investment-next-hero,
+  .investment-next-domains,
+  .investment-domains-programs,
+  .investment-impact-governance,
+  .investment-closing,
+  .contact-hero,
+  .contact-headquarters,
+  .careers-hero,
+  .careers-talent,
+  .insights-ambition,
+  .insights-hero,
+  .insight-detail-hero:not(.post-detail-hero)
+) {
+  --cms-surface-heroHeading-color: var(
+    --cms-page-dark-heroHeading-color,
+    var(
+      --cms-page-heroHeading-color,
+      var(
+        --cms-global-heroHeading-color,
+        var(--cms-global-dark-heroHeading-color, inherit)
+      )
+    )
+  );
+  --cms-surface-heading-color: var(
+    --cms-page-dark-heading-color,
+    var(
+      --cms-page-heading-color,
+      var(
+        --cms-global-heading-color,
+        var(--cms-global-dark-heading-color, #ffffff)
+      )
+    )
+  );
+  --cms-surface-eyebrow-color: var(
+    --cms-page-dark-eyebrow-color,
+    var(
+      --cms-page-eyebrow-color,
+      var(
+        --cms-global-eyebrow-color,
+        var(--cms-global-dark-eyebrow-color, #d4bda3)
+      )
+    )
+  );
+  --cms-surface-body-color: var(
+    --cms-page-dark-body-color,
+    var(
+      --cms-page-body-color,
+      var(--cms-global-body-color, var(--cms-global-dark-body-color, inherit))
+    )
+  );
+  --cms-surface-itemHeading-color: var(
+    --cms-page-dark-itemHeading-color,
+    var(
+      --cms-page-itemHeading-color,
+      var(
+        --cms-global-itemHeading-color,
+        var(--cms-global-dark-itemHeading-color, inherit)
+      )
+    )
+  );
+  --cms-surface-itemBody-color: var(
+    --cms-page-dark-itemBody-color,
+    var(
+      --cms-page-itemBody-color,
+      var(
+        --cms-global-itemBody-color,
+        var(--cms-global-dark-itemBody-color, inherit)
+      )
+    )
+  );
+  --cms-surface-cta-color: var(
+    --cms-page-dark-cta-color,
+    var(
+      --cms-page-cta-color,
+      var(--cms-global-cta-color, var(--cms-global-dark-cta-color, inherit))
+    )
+  );
+  --cms-surface-number-color: var(
+    --cms-page-dark-number-color,
+    var(
+      --cms-page-number-color,
+      var(
+        --cms-global-number-color,
+        var(--cms-global-dark-number-color, inherit)
+      )
+    )
+  );
+  --cms-surface-small-color: var(
+    --cms-page-dark-small-color,
+    var(
+      --cms-page-small-color,
+      var(--cms-global-small-color, var(--cms-global-dark-small-color, inherit))
+    )
+  );
+  --cms-surface-link-color: var(
+    --cms-page-dark-link-color,
+    var(
+      --cms-page-link-color,
+      var(--cms-global-link-color, var(--cms-global-dark-link-color, inherit))
+    )
+  );
+  --cms-surface-buttonBackground-color: var(
+    --cms-page-dark-buttonBackground-color,
+    var(
+      --cms-page-buttonBackground-color,
+      var(
+        --cms-global-buttonBackground-color,
+        var(--cms-global-dark-buttonBackground-color, inherit)
+      )
+    )
+  );
+  --cms-surface-buttonBorder-color: var(
+    --cms-page-dark-buttonBorder-color,
+    var(
+      --cms-page-buttonBorder-color,
+      var(
+        --cms-global-buttonBorder-color,
+        var(--cms-global-dark-buttonBorder-color, inherit)
+      )
+    )
+  );
+  --cms-surface-divider-color: var(
+    --cms-page-dark-divider-color,
+    var(
+      --cms-page-divider-color,
+      var(
+        --cms-global-divider-color,
+        var(--cms-global-dark-divider-color, inherit)
+      )
+    )
+  );
+}
+@layer cms-design {
+  main
+    :is(
+      .section-light,
+      .home2-value,
+      .home2-domains-scroll,
+      .home2-impact-scroll,
+      .home2-projects-scroll,
+      .home2-triple,
+      .home2-membership,
+      .home2-partners,
+      .home2-news,
+      .vision-path,
+      .vision-pillars-new,
+      .vision-commitment,
+      .investment-philosophy,
+      .investment-portfolios,
+      .investment-approach,
+      .investment-projects,
+      .contact-enquiry,
+      .contact-location,
+      .careers-investing,
+      .careers-workplace,
+      .careers-opportunities,
+      .insights-intro,
+      .insights-principles,
+      .insights-areas,
+      .insights-archive,
+      .insights-contribute,
+      .post-detail-hero,
+      .insight-related,
+      .insight-detail-body
+    )
+    h2 {
+    color: var(
+      --cms-heading-color,
+      var(--cms-surface-heading-color)
+    ) !important;
+  }
+}
+@layer cms-design {
+  main
+    :is(
+      .section-light,
+      .home2-value,
+      .home2-domains-scroll,
+      .home2-impact-scroll,
+      .home2-projects-scroll,
+      .home2-triple,
+      .home2-membership,
+      .home2-partners,
+      .home2-news,
+      .vision-path,
+      .vision-pillars-new,
+      .vision-commitment,
+      .investment-philosophy,
+      .investment-portfolios,
+      .investment-approach,
+      .investment-projects,
+      .contact-enquiry,
+      .contact-location,
+      .careers-investing,
+      .careers-workplace,
+      .careers-opportunities,
+      .insights-intro,
+      .insights-principles,
+      .insights-areas,
+      .insights-archive,
+      .insights-contribute,
+      .post-detail-hero,
+      .insight-related,
+      .insight-detail-body
+    )
+    :is(
+      .label,
+      .vision-label,
+      .discover-label,
+      .investment-label,
+      .contact-label,
+      .careers-label,
+      .insights-label
+    ) {
+    color: var(
+      --cms-eyebrow-color,
+      var(--cms-surface-eyebrow-color)
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-heroHeading-color"],
+      .cms-page-design[style*="--cms-page-heroHeading-color"]
+    )
+    main
+    h1 {
+    color: var(
+      --cms-heading-color,
+      var(
+        --cms-surface-heroHeading-color,
+        var(
+          --cms-page-heroHeading-color,
+          var(--cms-global-heroHeading-color, inherit)
+        )
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-light-heroHeading-color"],
+      .cms-page-design[style*="--cms-page-light-heroHeading-color"]
+    )
+    main
+    h1 {
+    color: var(
+      --cms-heading-color,
+      var(
+        --cms-surface-heroHeading-color,
+        var(
+          --cms-page-heroHeading-color,
+          var(--cms-global-heroHeading-color, inherit)
+        )
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-dark-heroHeading-color"],
+      .cms-page-design[style*="--cms-page-dark-heroHeading-color"]
+    )
+    main
+    h1 {
+    color: var(
+      --cms-heading-color,
+      var(
+        --cms-surface-heroHeading-color,
+        var(
+          --cms-page-heroHeading-color,
+          var(--cms-global-heroHeading-color, inherit)
+        )
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-heroHeading-weight"],
+      .cms-page-design[style*="--cms-page-heroHeading-weight"]
+    )
+    main
+    h1 {
+    font-weight: var(
+      --cms-heading-weight,
+      var(--cms-page-heroHeading-weight, var(--cms-global-heroHeading-weight))
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-heroHeading-lineHeight"],
+      .cms-page-design[style*="--cms-page-heroHeading-lineHeight"]
+    )
+    main
+    h1 {
+    line-height: var(
+      --cms-heading-lineHeight,
+      var(
+        --cms-page-heroHeading-lineHeight,
+        var(--cms-global-heroHeading-lineHeight)
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-heading-color"],
+      .cms-page-design[style*="--cms-page-heading-color"]
+    )
+    main
+    :is(section:not(:where(footer *)), .insight-detail-body)
+    h2 {
+    color: var(
+      --cms-heading-color,
+      var(
+        --cms-surface-heading-color,
+        var(--cms-page-heading-color, var(--cms-global-heading-color, inherit))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-light-heading-color"],
+      .cms-page-design[style*="--cms-page-light-heading-color"]
+    )
+    main
+    :is(
+      .section-light,
+      .home2-value,
+      .home2-domains-scroll,
+      .home2-impact-scroll,
+      .home2-projects-scroll,
+      .home2-triple,
+      .home2-membership,
+      .home2-partners,
+      .home2-news,
+      .vision-path,
+      .vision-pillars-new,
+      .vision-commitment,
+      .investment-philosophy,
+      .investment-portfolios,
+      .investment-approach,
+      .investment-projects,
+      .contact-enquiry,
+      .contact-location,
+      .careers-investing,
+      .careers-workplace,
+      .careers-opportunities,
+      .insights-intro,
+      .insights-principles,
+      .insights-areas,
+      .insights-archive,
+      .insights-contribute,
+      .post-detail-hero,
+      .insight-related,
+      .insight-detail-body,
+      section:is(
+        [style*="--cms-background-tone:light"],
+        [style*="--cms-background-tone: light"]
+      )
+    )
+    h2 {
+    color: var(
+      --cms-heading-color,
+      var(
+        --cms-surface-heading-color,
+        var(--cms-page-heading-color, var(--cms-global-heading-color, inherit))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-dark-heading-color"],
+      .cms-page-design[style*="--cms-page-dark-heading-color"]
+    )
+    main
+    :is(
+      .section-dark,
+      .home4-hero,
+      .home2-portfolios,
+      .home2-team,
+      .cms-home-panorama-order,
+      .vision-hero-scroll,
+      .vision-statement,
+      .vision-programs-new,
+      .vision-roadmap,
+      .investment-hero-scroll,
+      .investment-next-hero,
+      .investment-next-domains,
+      .investment-domains-programs,
+      .investment-impact-governance,
+      .investment-closing,
+      .contact-hero,
+      .contact-headquarters,
+      .careers-hero,
+      .careers-talent,
+      .insights-ambition,
+      .insights-hero,
+      .insight-detail-hero:not(.post-detail-hero),
+      section:is(
+        [style*="--cms-background-tone:dark"],
+        [style*="--cms-background-tone: dark"]
+      )
+    )
+    h2 {
+    color: var(
+      --cms-heading-color,
+      var(
+        --cms-surface-heading-color,
+        var(--cms-page-heading-color, var(--cms-global-heading-color, inherit))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-heading-weight"],
+      .cms-page-design[style*="--cms-page-heading-weight"]
+    )
+    main
+    :is(section:not(:where(footer *)), .insight-detail-body)
+    h2 {
+    font-weight: var(
+      --cms-heading-weight,
+      var(--cms-page-heading-weight, var(--cms-global-heading-weight))
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-heading-lineHeight"],
+      .cms-page-design[style*="--cms-page-heading-lineHeight"]
+    )
+    main
+    :is(section:not(:where(footer *)), .insight-detail-body)
+    h2 {
+    line-height: var(
+      --cms-heading-lineHeight,
+      var(--cms-page-heading-lineHeight, var(--cms-global-heading-lineHeight))
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-eyebrow-color"],
+      .cms-page-design[style*="--cms-page-eyebrow-color"]
+    )
+    main
+    section:not(:where(footer *))
+    :is(
+      .label,
+      .vision-label,
+      .discover-label,
+      .investment-label,
+      .contact-label,
+      .careers-label,
+      .insights-label,
+      .home5-hero-forum > span
+    ) {
+    color: var(
+      --cms-eyebrow-color,
+      var(
+        --cms-surface-eyebrow-color,
+        var(--cms-page-eyebrow-color, var(--cms-global-eyebrow-color, inherit))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-light-eyebrow-color"],
+      .cms-page-design[style*="--cms-page-light-eyebrow-color"]
+    )
+    main
+    :is(
+      .section-light,
+      .home2-value,
+      .home2-domains-scroll,
+      .home2-impact-scroll,
+      .home2-projects-scroll,
+      .home2-triple,
+      .home2-membership,
+      .home2-partners,
+      .home2-news,
+      .vision-path,
+      .vision-pillars-new,
+      .vision-commitment,
+      .investment-philosophy,
+      .investment-portfolios,
+      .investment-approach,
+      .investment-projects,
+      .contact-enquiry,
+      .contact-location,
+      .careers-investing,
+      .careers-workplace,
+      .careers-opportunities,
+      .insights-intro,
+      .insights-principles,
+      .insights-areas,
+      .insights-archive,
+      .insights-contribute,
+      .post-detail-hero,
+      .insight-related,
+      .insight-detail-body,
+      section:is(
+        [style*="--cms-background-tone:light"],
+        [style*="--cms-background-tone: light"]
+      )
+    )
+    :is(
+      .label,
+      .vision-label,
+      .discover-label,
+      .investment-label,
+      .contact-label,
+      .careers-label,
+      .insights-label,
+      .home5-hero-forum > span
+    ) {
+    color: var(
+      --cms-eyebrow-color,
+      var(
+        --cms-surface-eyebrow-color,
+        var(--cms-page-eyebrow-color, var(--cms-global-eyebrow-color, inherit))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-dark-eyebrow-color"],
+      .cms-page-design[style*="--cms-page-dark-eyebrow-color"]
+    )
+    main
+    :is(
+      .section-dark,
+      .home4-hero,
+      .home2-portfolios,
+      .home2-team,
+      .cms-home-panorama-order,
+      .vision-hero-scroll,
+      .vision-statement,
+      .vision-programs-new,
+      .vision-roadmap,
+      .investment-hero-scroll,
+      .investment-next-hero,
+      .investment-next-domains,
+      .investment-domains-programs,
+      .investment-impact-governance,
+      .investment-closing,
+      .contact-hero,
+      .contact-headquarters,
+      .careers-hero,
+      .careers-talent,
+      .insights-ambition,
+      .insights-hero,
+      .insight-detail-hero:not(.post-detail-hero),
+      section:is(
+        [style*="--cms-background-tone:dark"],
+        [style*="--cms-background-tone: dark"]
+      )
+    )
+    :is(
+      .label,
+      .vision-label,
+      .discover-label,
+      .investment-label,
+      .contact-label,
+      .careers-label,
+      .insights-label,
+      .home5-hero-forum > span
+    ) {
+    color: var(
+      --cms-eyebrow-color,
+      var(
+        --cms-surface-eyebrow-color,
+        var(--cms-page-eyebrow-color, var(--cms-global-eyebrow-color, inherit))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-eyebrow-weight"],
+      .cms-page-design[style*="--cms-page-eyebrow-weight"]
+    )
+    main
+    section:not(:where(footer *))
+    :is(
+      .label,
+      .vision-label,
+      .discover-label,
+      .investment-label,
+      .contact-label,
+      .careers-label,
+      .insights-label,
+      .home5-hero-forum > span
+    ) {
+    font-weight: var(
+      --cms-eyebrow-weight,
+      var(--cms-page-eyebrow-weight, var(--cms-global-eyebrow-weight))
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-eyebrow-lineHeight"],
+      .cms-page-design[style*="--cms-page-eyebrow-lineHeight"]
+    )
+    main
+    section:not(:where(footer *))
+    :is(
+      .label,
+      .vision-label,
+      .discover-label,
+      .investment-label,
+      .contact-label,
+      .careers-label,
+      .insights-label,
+      .home5-hero-forum > span
+    ) {
+    line-height: var(
+      --cms-eyebrow-lineHeight,
+      var(--cms-page-eyebrow-lineHeight, var(--cms-global-eyebrow-lineHeight))
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-body-color"],
+      .cms-page-design[style*="--cms-page-body-color"]
+    )
+    main
+    :is(section:not(:where(footer *)), .insight-detail-body)
+    p:not(
+      :is(
+        .label,
+        .vision-label,
+        .discover-label,
+        .investment-label,
+        .contact-label,
+        .careers-label,
+        .insights-label
+      )
+    ) {
+    color: var(
+      --cms-effective-body-color,
+      var(
+        --cms-body-color,
+        var(
+          --cms-surface-body-color,
+          var(--cms-page-body-color, var(--cms-global-body-color, inherit))
+        )
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-light-body-color"],
+      .cms-page-design[style*="--cms-page-light-body-color"]
+    )
+    main
+    :is(
+      .section-light,
+      .home2-value,
+      .home2-domains-scroll,
+      .home2-impact-scroll,
+      .home2-projects-scroll,
+      .home2-triple,
+      .home2-membership,
+      .home2-partners,
+      .home2-news,
+      .vision-path,
+      .vision-pillars-new,
+      .vision-commitment,
+      .investment-philosophy,
+      .investment-portfolios,
+      .investment-approach,
+      .investment-projects,
+      .contact-enquiry,
+      .contact-location,
+      .careers-investing,
+      .careers-workplace,
+      .careers-opportunities,
+      .insights-intro,
+      .insights-principles,
+      .insights-areas,
+      .insights-archive,
+      .insights-contribute,
+      .post-detail-hero,
+      .insight-related,
+      .insight-detail-body,
+      section:is(
+        [style*="--cms-background-tone:light"],
+        [style*="--cms-background-tone: light"]
+      )
+    )
+    p:not(
+      :is(
+        .label,
+        .vision-label,
+        .discover-label,
+        .investment-label,
+        .contact-label,
+        .careers-label,
+        .insights-label
+      )
+    ) {
+    color: var(
+      --cms-effective-body-color,
+      var(
+        --cms-body-color,
+        var(
+          --cms-surface-body-color,
+          var(--cms-page-body-color, var(--cms-global-body-color, inherit))
+        )
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-dark-body-color"],
+      .cms-page-design[style*="--cms-page-dark-body-color"]
+    )
+    main
+    :is(
+      .section-dark,
+      .home4-hero,
+      .home2-portfolios,
+      .home2-team,
+      .cms-home-panorama-order,
+      .vision-hero-scroll,
+      .vision-statement,
+      .vision-programs-new,
+      .vision-roadmap,
+      .investment-hero-scroll,
+      .investment-next-hero,
+      .investment-next-domains,
+      .investment-domains-programs,
+      .investment-impact-governance,
+      .investment-closing,
+      .contact-hero,
+      .contact-headquarters,
+      .careers-hero,
+      .careers-talent,
+      .insights-ambition,
+      .insights-hero,
+      .insight-detail-hero:not(.post-detail-hero),
+      section:is(
+        [style*="--cms-background-tone:dark"],
+        [style*="--cms-background-tone: dark"]
+      )
+    )
+    p:not(
+      :is(
+        .label,
+        .vision-label,
+        .discover-label,
+        .investment-label,
+        .contact-label,
+        .careers-label,
+        .insights-label
+      )
+    ) {
+    color: var(
+      --cms-effective-body-color,
+      var(
+        --cms-body-color,
+        var(
+          --cms-surface-body-color,
+          var(--cms-page-body-color, var(--cms-global-body-color, inherit))
+        )
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-body-weight"],
+      .cms-page-design[style*="--cms-page-body-weight"]
+    )
+    main
+    :is(section:not(:where(footer *)), .insight-detail-body)
+    p:not(
+      :is(
+        .label,
+        .vision-label,
+        .discover-label,
+        .investment-label,
+        .contact-label,
+        .careers-label,
+        .insights-label
+      )
+    ) {
+    font-weight: var(
+      --cms-body-weight,
+      var(--cms-page-body-weight, var(--cms-global-body-weight))
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-body-lineHeight"],
+      .cms-page-design[style*="--cms-page-body-lineHeight"]
+    )
+    main
+    :is(section:not(:where(footer *)), .insight-detail-body)
+    p:not(
+      :is(
+        .label,
+        .vision-label,
+        .discover-label,
+        .investment-label,
+        .contact-label,
+        .careers-label,
+        .insights-label
+      )
+    ) {
+    line-height: var(
+      --cms-body-lineHeight,
+      var(--cms-page-body-lineHeight, var(--cms-global-body-lineHeight))
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-itemHeading-color"],
+      .cms-page-design[style*="--cms-page-itemHeading-color"]
+    )
+    main
+    section:not(:where(footer *))
+    :is(h3, .contact-fact strong) {
+    color: var(
+      --cms-item-title-color,
+      var(
+        --cms-itemHeading-color,
+        var(
+          --cms-surface-itemHeading-color,
+          var(
+            --cms-page-itemHeading-color,
+            var(--cms-global-itemHeading-color, inherit)
+          )
+        )
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-light-itemHeading-color"],
+      .cms-page-design[style*="--cms-page-light-itemHeading-color"]
+    )
+    main
+    :is(
+      .section-light,
+      .home2-value,
+      .home2-domains-scroll,
+      .home2-impact-scroll,
+      .home2-projects-scroll,
+      .home2-triple,
+      .home2-membership,
+      .home2-partners,
+      .home2-news,
+      .vision-path,
+      .vision-pillars-new,
+      .vision-commitment,
+      .investment-philosophy,
+      .investment-portfolios,
+      .investment-approach,
+      .investment-projects,
+      .contact-enquiry,
+      .contact-location,
+      .careers-investing,
+      .careers-workplace,
+      .careers-opportunities,
+      .insights-intro,
+      .insights-principles,
+      .insights-areas,
+      .insights-archive,
+      .insights-contribute,
+      .post-detail-hero,
+      .insight-related,
+      .insight-detail-body,
+      section:is(
+        [style*="--cms-background-tone:light"],
+        [style*="--cms-background-tone: light"]
+      )
+    )
+    :is(h3, .contact-fact strong) {
+    color: var(
+      --cms-item-title-color,
+      var(
+        --cms-itemHeading-color,
+        var(
+          --cms-surface-itemHeading-color,
+          var(
+            --cms-page-itemHeading-color,
+            var(--cms-global-itemHeading-color, inherit)
+          )
+        )
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-dark-itemHeading-color"],
+      .cms-page-design[style*="--cms-page-dark-itemHeading-color"]
+    )
+    main
+    :is(
+      .section-dark,
+      .home4-hero,
+      .home2-portfolios,
+      .home2-team,
+      .cms-home-panorama-order,
+      .vision-hero-scroll,
+      .vision-statement,
+      .vision-programs-new,
+      .vision-roadmap,
+      .investment-hero-scroll,
+      .investment-next-hero,
+      .investment-next-domains,
+      .investment-domains-programs,
+      .investment-impact-governance,
+      .investment-closing,
+      .contact-hero,
+      .contact-headquarters,
+      .careers-hero,
+      .careers-talent,
+      .insights-ambition,
+      .insights-hero,
+      .insight-detail-hero:not(.post-detail-hero),
+      section:is(
+        [style*="--cms-background-tone:dark"],
+        [style*="--cms-background-tone: dark"]
+      )
+    )
+    :is(h3, .contact-fact strong) {
+    color: var(
+      --cms-item-title-color,
+      var(
+        --cms-itemHeading-color,
+        var(
+          --cms-surface-itemHeading-color,
+          var(
+            --cms-page-itemHeading-color,
+            var(--cms-global-itemHeading-color, inherit)
+          )
+        )
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-itemHeading-weight"],
+      .cms-page-design[style*="--cms-page-itemHeading-weight"]
+    )
+    main
+    section:not(:where(footer *))
+    :is(h3, .contact-fact strong) {
+    font-weight: var(
+      --cms-item-title-weight,
+      var(
+        --cms-itemHeading-weight,
+        var(--cms-page-itemHeading-weight, var(--cms-global-itemHeading-weight))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-itemHeading-lineHeight"],
+      .cms-page-design[style*="--cms-page-itemHeading-lineHeight"]
+    )
+    main
+    section:not(:where(footer *))
+    :is(h3, .contact-fact strong) {
+    line-height: var(
+      --cms-item-title-lineHeight,
+      var(
+        --cms-itemHeading-lineHeight,
+        var(
+          --cms-page-itemHeading-lineHeight,
+          var(--cms-global-itemHeading-lineHeight)
+        )
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-itemBody-color"],
+      .cms-page-design[style*="--cms-page-itemBody-color"]
+    )
+    main
+    section:not(:where(footer *))
+    :is(
+      article p,
+      .home2-portfolio-card p,
+      .home5-domain-icon-item p,
+      .contact-fact small
+    ) {
+    color: var(
+      --cms-item-body-color,
+      var(
+        --cms-itemBody-color,
+        var(
+          --cms-surface-itemBody-color,
+          var(
+            --cms-page-itemBody-color,
+            var(--cms-global-itemBody-color, inherit)
+          )
+        )
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-light-itemBody-color"],
+      .cms-page-design[style*="--cms-page-light-itemBody-color"]
+    )
+    main
+    :is(
+      .section-light,
+      .home2-value,
+      .home2-domains-scroll,
+      .home2-impact-scroll,
+      .home2-projects-scroll,
+      .home2-triple,
+      .home2-membership,
+      .home2-partners,
+      .home2-news,
+      .vision-path,
+      .vision-pillars-new,
+      .vision-commitment,
+      .investment-philosophy,
+      .investment-portfolios,
+      .investment-approach,
+      .investment-projects,
+      .contact-enquiry,
+      .contact-location,
+      .careers-investing,
+      .careers-workplace,
+      .careers-opportunities,
+      .insights-intro,
+      .insights-principles,
+      .insights-areas,
+      .insights-archive,
+      .insights-contribute,
+      .post-detail-hero,
+      .insight-related,
+      .insight-detail-body,
+      section:is(
+        [style*="--cms-background-tone:light"],
+        [style*="--cms-background-tone: light"]
+      )
+    )
+    :is(
+      article p,
+      .home2-portfolio-card p,
+      .home5-domain-icon-item p,
+      .contact-fact small
+    ) {
+    color: var(
+      --cms-item-body-color,
+      var(
+        --cms-itemBody-color,
+        var(
+          --cms-surface-itemBody-color,
+          var(
+            --cms-page-itemBody-color,
+            var(--cms-global-itemBody-color, inherit)
+          )
+        )
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-dark-itemBody-color"],
+      .cms-page-design[style*="--cms-page-dark-itemBody-color"]
+    )
+    main
+    :is(
+      .section-dark,
+      .home4-hero,
+      .home2-portfolios,
+      .home2-team,
+      .cms-home-panorama-order,
+      .vision-hero-scroll,
+      .vision-statement,
+      .vision-programs-new,
+      .vision-roadmap,
+      .investment-hero-scroll,
+      .investment-next-hero,
+      .investment-next-domains,
+      .investment-domains-programs,
+      .investment-impact-governance,
+      .investment-closing,
+      .contact-hero,
+      .contact-headquarters,
+      .careers-hero,
+      .careers-talent,
+      .insights-ambition,
+      .insights-hero,
+      .insight-detail-hero:not(.post-detail-hero),
+      section:is(
+        [style*="--cms-background-tone:dark"],
+        [style*="--cms-background-tone: dark"]
+      )
+    )
+    :is(
+      article p,
+      .home2-portfolio-card p,
+      .home5-domain-icon-item p,
+      .contact-fact small
+    ) {
+    color: var(
+      --cms-item-body-color,
+      var(
+        --cms-itemBody-color,
+        var(
+          --cms-surface-itemBody-color,
+          var(
+            --cms-page-itemBody-color,
+            var(--cms-global-itemBody-color, inherit)
+          )
+        )
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-itemBody-weight"],
+      .cms-page-design[style*="--cms-page-itemBody-weight"]
+    )
+    main
+    section:not(:where(footer *))
+    :is(
+      article p,
+      .home2-portfolio-card p,
+      .home5-domain-icon-item p,
+      .contact-fact small
+    ) {
+    font-weight: var(
+      --cms-item-body-weight,
+      var(
+        --cms-itemBody-weight,
+        var(--cms-page-itemBody-weight, var(--cms-global-itemBody-weight))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-itemBody-lineHeight"],
+      .cms-page-design[style*="--cms-page-itemBody-lineHeight"]
+    )
+    main
+    section:not(:where(footer *))
+    :is(
+      article p,
+      .home2-portfolio-card p,
+      .home5-domain-icon-item p,
+      .contact-fact small
+    ) {
+    line-height: var(
+      --cms-item-body-lineHeight,
+      var(
+        --cms-itemBody-lineHeight,
+        var(
+          --cms-page-itemBody-lineHeight,
+          var(--cms-global-itemBody-lineHeight)
+        )
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-cta-color"],
+      .cms-page-design[style*="--cms-page-cta-color"]
+    )
+    main
+    section:not(:where(footer *))
+    :is(
+      .button,
+      .text-action,
+      .text-link,
+      .animation-skip,
+      .home5-presentation-skip,
+      .lead-form button[type="submit"],
+      .careers-form button[type="submit"],
+      .contact-form-shell button[type="submit"],
+      .investment-project-showcase article > a
+    ) {
+    color: var(
+      --cms-cta-color,
+      var(
+        --cms-surface-cta-color,
+        var(--cms-page-cta-color, var(--cms-global-cta-color, inherit))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-light-cta-color"],
+      .cms-page-design[style*="--cms-page-light-cta-color"]
+    )
+    main
+    :is(
+      .section-light,
+      .home2-value,
+      .home2-domains-scroll,
+      .home2-impact-scroll,
+      .home2-projects-scroll,
+      .home2-triple,
+      .home2-membership,
+      .home2-partners,
+      .home2-news,
+      .vision-path,
+      .vision-pillars-new,
+      .vision-commitment,
+      .investment-philosophy,
+      .investment-portfolios,
+      .investment-approach,
+      .investment-projects,
+      .contact-enquiry,
+      .contact-location,
+      .careers-investing,
+      .careers-workplace,
+      .careers-opportunities,
+      .insights-intro,
+      .insights-principles,
+      .insights-areas,
+      .insights-archive,
+      .insights-contribute,
+      .post-detail-hero,
+      .insight-related,
+      .insight-detail-body,
+      section:is(
+        [style*="--cms-background-tone:light"],
+        [style*="--cms-background-tone: light"]
+      )
+    )
+    :is(
+      .button,
+      .text-action,
+      .text-link,
+      .animation-skip,
+      .home5-presentation-skip,
+      .lead-form button[type="submit"],
+      .careers-form button[type="submit"],
+      .contact-form-shell button[type="submit"],
+      .investment-project-showcase article > a
+    ) {
+    color: var(
+      --cms-cta-color,
+      var(
+        --cms-surface-cta-color,
+        var(--cms-page-cta-color, var(--cms-global-cta-color, inherit))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-dark-cta-color"],
+      .cms-page-design[style*="--cms-page-dark-cta-color"]
+    )
+    main
+    :is(
+      .section-dark,
+      .home4-hero,
+      .home2-portfolios,
+      .home2-team,
+      .cms-home-panorama-order,
+      .vision-hero-scroll,
+      .vision-statement,
+      .vision-programs-new,
+      .vision-roadmap,
+      .investment-hero-scroll,
+      .investment-next-hero,
+      .investment-next-domains,
+      .investment-domains-programs,
+      .investment-impact-governance,
+      .investment-closing,
+      .contact-hero,
+      .contact-headquarters,
+      .careers-hero,
+      .careers-talent,
+      .insights-ambition,
+      .insights-hero,
+      .insight-detail-hero:not(.post-detail-hero),
+      section:is(
+        [style*="--cms-background-tone:dark"],
+        [style*="--cms-background-tone: dark"]
+      )
+    )
+    :is(
+      .button,
+      .text-action,
+      .text-link,
+      .animation-skip,
+      .home5-presentation-skip,
+      .lead-form button[type="submit"],
+      .careers-form button[type="submit"],
+      .contact-form-shell button[type="submit"],
+      .investment-project-showcase article > a
+    ) {
+    color: var(
+      --cms-cta-color,
+      var(
+        --cms-surface-cta-color,
+        var(--cms-page-cta-color, var(--cms-global-cta-color, inherit))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-cta-weight"],
+      .cms-page-design[style*="--cms-page-cta-weight"]
+    )
+    main
+    section:not(:where(footer *))
+    :is(
+      .button,
+      .text-action,
+      .text-link,
+      .animation-skip,
+      .home5-presentation-skip,
+      .lead-form button[type="submit"],
+      .careers-form button[type="submit"],
+      .contact-form-shell button[type="submit"],
+      .investment-project-showcase article > a
+    ) {
+    font-weight: var(
+      --cms-cta-weight,
+      var(--cms-page-cta-weight, var(--cms-global-cta-weight))
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-cta-lineHeight"],
+      .cms-page-design[style*="--cms-page-cta-lineHeight"]
+    )
+    main
+    section:not(:where(footer *))
+    :is(
+      .button,
+      .text-action,
+      .text-link,
+      .animation-skip,
+      .home5-presentation-skip,
+      .lead-form button[type="submit"],
+      .careers-form button[type="submit"],
+      .contact-form-shell button[type="submit"],
+      .investment-project-showcase article > a
+    ) {
+    line-height: var(
+      --cms-cta-lineHeight,
+      var(--cms-page-cta-lineHeight, var(--cms-global-cta-lineHeight))
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-number-color"],
+      .cms-page-design[style*="--cms-page-number-color"]
+    )
+    main
+    section:not(:where(footer *))
+    :is(.home2-stat strong, .home2-stat-number, .vision-roadmap-active strong) {
+    color: var(
+      --cms-number-color,
+      var(
+        --cms-surface-number-color,
+        var(--cms-page-number-color, var(--cms-global-number-color, inherit))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-light-number-color"],
+      .cms-page-design[style*="--cms-page-light-number-color"]
+    )
+    main
+    :is(
+      .section-light,
+      .home2-value,
+      .home2-domains-scroll,
+      .home2-impact-scroll,
+      .home2-projects-scroll,
+      .home2-triple,
+      .home2-membership,
+      .home2-partners,
+      .home2-news,
+      .vision-path,
+      .vision-pillars-new,
+      .vision-commitment,
+      .investment-philosophy,
+      .investment-portfolios,
+      .investment-approach,
+      .investment-projects,
+      .contact-enquiry,
+      .contact-location,
+      .careers-investing,
+      .careers-workplace,
+      .careers-opportunities,
+      .insights-intro,
+      .insights-principles,
+      .insights-areas,
+      .insights-archive,
+      .insights-contribute,
+      .post-detail-hero,
+      .insight-related,
+      .insight-detail-body,
+      section:is(
+        [style*="--cms-background-tone:light"],
+        [style*="--cms-background-tone: light"]
+      )
+    )
+    :is(.home2-stat strong, .home2-stat-number, .vision-roadmap-active strong) {
+    color: var(
+      --cms-number-color,
+      var(
+        --cms-surface-number-color,
+        var(--cms-page-number-color, var(--cms-global-number-color, inherit))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-dark-number-color"],
+      .cms-page-design[style*="--cms-page-dark-number-color"]
+    )
+    main
+    :is(
+      .section-dark,
+      .home4-hero,
+      .home2-portfolios,
+      .home2-team,
+      .cms-home-panorama-order,
+      .vision-hero-scroll,
+      .vision-statement,
+      .vision-programs-new,
+      .vision-roadmap,
+      .investment-hero-scroll,
+      .investment-next-hero,
+      .investment-next-domains,
+      .investment-domains-programs,
+      .investment-impact-governance,
+      .investment-closing,
+      .contact-hero,
+      .contact-headquarters,
+      .careers-hero,
+      .careers-talent,
+      .insights-ambition,
+      .insights-hero,
+      .insight-detail-hero:not(.post-detail-hero),
+      section:is(
+        [style*="--cms-background-tone:dark"],
+        [style*="--cms-background-tone: dark"]
+      )
+    )
+    :is(.home2-stat strong, .home2-stat-number, .vision-roadmap-active strong) {
+    color: var(
+      --cms-number-color,
+      var(
+        --cms-surface-number-color,
+        var(--cms-page-number-color, var(--cms-global-number-color, inherit))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-number-weight"],
+      .cms-page-design[style*="--cms-page-number-weight"]
+    )
+    main
+    section:not(:where(footer *))
+    :is(.home2-stat strong, .home2-stat-number, .vision-roadmap-active strong) {
+    font-weight: var(
+      --cms-number-weight,
+      var(--cms-page-number-weight, var(--cms-global-number-weight))
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-number-lineHeight"],
+      .cms-page-design[style*="--cms-page-number-lineHeight"]
+    )
+    main
+    section:not(:where(footer *))
+    :is(.home2-stat strong, .home2-stat-number, .vision-roadmap-active strong) {
+    line-height: var(
+      --cms-number-lineHeight,
+      var(--cms-page-number-lineHeight, var(--cms-global-number-lineHeight))
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-small-color"],
+      .cms-page-design[style*="--cms-page-small-color"]
+    )
+    main
+    section:not(:where(footer *))
+    small {
+    color: var(
+      --cms-small-color,
+      var(
+        --cms-surface-small-color,
+        var(--cms-page-small-color, var(--cms-global-small-color, inherit))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-light-small-color"],
+      .cms-page-design[style*="--cms-page-light-small-color"]
+    )
+    main
+    :is(
+      .section-light,
+      .home2-value,
+      .home2-domains-scroll,
+      .home2-impact-scroll,
+      .home2-projects-scroll,
+      .home2-triple,
+      .home2-membership,
+      .home2-partners,
+      .home2-news,
+      .vision-path,
+      .vision-pillars-new,
+      .vision-commitment,
+      .investment-philosophy,
+      .investment-portfolios,
+      .investment-approach,
+      .investment-projects,
+      .contact-enquiry,
+      .contact-location,
+      .careers-investing,
+      .careers-workplace,
+      .careers-opportunities,
+      .insights-intro,
+      .insights-principles,
+      .insights-areas,
+      .insights-archive,
+      .insights-contribute,
+      .post-detail-hero,
+      .insight-related,
+      .insight-detail-body,
+      section:is(
+        [style*="--cms-background-tone:light"],
+        [style*="--cms-background-tone: light"]
+      )
+    )
+    small {
+    color: var(
+      --cms-small-color,
+      var(
+        --cms-surface-small-color,
+        var(--cms-page-small-color, var(--cms-global-small-color, inherit))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-dark-small-color"],
+      .cms-page-design[style*="--cms-page-dark-small-color"]
+    )
+    main
+    :is(
+      .section-dark,
+      .home4-hero,
+      .home2-portfolios,
+      .home2-team,
+      .cms-home-panorama-order,
+      .vision-hero-scroll,
+      .vision-statement,
+      .vision-programs-new,
+      .vision-roadmap,
+      .investment-hero-scroll,
+      .investment-next-hero,
+      .investment-next-domains,
+      .investment-domains-programs,
+      .investment-impact-governance,
+      .investment-closing,
+      .contact-hero,
+      .contact-headquarters,
+      .careers-hero,
+      .careers-talent,
+      .insights-ambition,
+      .insights-hero,
+      .insight-detail-hero:not(.post-detail-hero),
+      section:is(
+        [style*="--cms-background-tone:dark"],
+        [style*="--cms-background-tone: dark"]
+      )
+    )
+    small {
+    color: var(
+      --cms-small-color,
+      var(
+        --cms-surface-small-color,
+        var(--cms-page-small-color, var(--cms-global-small-color, inherit))
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-small-weight"],
+      .cms-page-design[style*="--cms-page-small-weight"]
+    )
+    main
+    section:not(:where(footer *))
+    small {
+    font-weight: var(
+      --cms-small-weight,
+      var(--cms-page-small-weight, var(--cms-global-small-weight))
+    ) !important;
+  }
+}
+@layer cms-design {
+  :is(
+      body[style*="--cms-global-small-lineHeight"],
+      .cms-page-design[style*="--cms-page-small-lineHeight"]
+    )
+    main
+    section:not(:where(footer *))
+    small {
+    line-height: var(
+      --cms-small-lineHeight,
+      var(--cms-page-small-lineHeight, var(--cms-global-small-lineHeight))
+    ) !important;
+  }
+}
+@media (max-width: 640px) {
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-heroHeading-mobile"],
+        .cms-page-design[style*="--cms-page-heroHeading-mobile"]
+      )
+      main
+      h1 {
+      font-size: var(
+        --cms-heading-mobile,
+        var(--cms-page-heroHeading-mobile, var(--cms-global-heroHeading-mobile))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-heading-mobile"],
+        .cms-page-design[style*="--cms-page-heading-mobile"]
+      )
+      main
+      :is(section:not(:where(footer *)), .insight-detail-body)
+      h2 {
+      font-size: var(
+        --cms-heading-mobile,
+        var(--cms-page-heading-mobile, var(--cms-global-heading-mobile))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-eyebrow-mobile"],
+        .cms-page-design[style*="--cms-page-eyebrow-mobile"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        .label,
+        .vision-label,
+        .discover-label,
+        .investment-label,
+        .contact-label,
+        .careers-label,
+        .insights-label,
+        .home5-hero-forum > span
+      ) {
+      font-size: var(
+        --cms-eyebrow-mobile,
+        var(--cms-page-eyebrow-mobile, var(--cms-global-eyebrow-mobile))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-body-mobile"],
+        .cms-page-design[style*="--cms-page-body-mobile"]
+      )
+      main
+      :is(section:not(:where(footer *)), .insight-detail-body)
+      p:not(
+        :is(
+          .label,
+          .vision-label,
+          .discover-label,
+          .investment-label,
+          .contact-label,
+          .careers-label,
+          .insights-label
+        )
+      ) {
+      font-size: var(
+        --cms-effective-body-mobile,
+        var(
+          --cms-item-body-mobile,
+          var(
+            --cms-body-mobile,
+            var(--cms-page-body-mobile, var(--cms-global-body-mobile))
+          )
+        )
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-itemHeading-mobile"],
+        .cms-page-design[style*="--cms-page-itemHeading-mobile"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(h3, .contact-fact strong) {
+      font-size: var(
+        --cms-item-title-mobile,
+        var(
+          --cms-itemHeading-mobile,
+          var(
+            --cms-page-itemHeading-mobile,
+            var(--cms-global-itemHeading-mobile)
+          )
+        )
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-itemBody-mobile"],
+        .cms-page-design[style*="--cms-page-itemBody-mobile"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        article p,
+        .home2-portfolio-card p,
+        .home5-domain-icon-item p,
+        .contact-fact small
+      ) {
+      font-size: var(
+        --cms-item-body-mobile,
+        var(
+          --cms-itemBody-mobile,
+          var(--cms-page-itemBody-mobile, var(--cms-global-itemBody-mobile))
+        )
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-cta-mobile"],
+        .cms-page-design[style*="--cms-page-cta-mobile"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        .button,
+        .text-action,
+        .text-link,
+        .home5-hero-discover,
+        .animation-skip,
+        .home5-presentation-skip,
+        .lead-form button[type="submit"],
+        .careers-form button[type="submit"],
+        .contact-form-shell button[type="submit"],
+        .investment-project-showcase article > a
+      ) {
+      font-size: var(
+        --cms-cta-mobile,
+        var(--cms-page-cta-mobile, var(--cms-global-cta-mobile))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-number-mobile"],
+        .cms-page-design[style*="--cms-page-number-mobile"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        .home2-stat strong,
+        .home2-stat-number,
+        .vision-roadmap-active strong
+      ) {
+      font-size: var(
+        --cms-number-mobile,
+        var(--cms-page-number-mobile, var(--cms-global-number-mobile))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-small-mobile"],
+        .cms-page-design[style*="--cms-page-small-mobile"]
+      )
+      main
+      section:not(:where(footer *))
+      small {
+      font-size: var(
+        --cms-small-mobile,
+        var(--cms-page-small-mobile, var(--cms-global-small-mobile))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-spacing-mobile"],
+        .cms-page-design[style*="--cms-page-spacing-mobile"]
+      )
+      main
+      :is(
+        .section-light,
+        .home2-value,
+        .home2-domains-scroll,
+        .home2-impact-scroll,
+        .home2-projects-scroll,
+        .home2-triple,
+        .home2-membership,
+        .home2-partners,
+        .home2-news,
+        .vision-path,
+        .vision-pillars-new,
+        .vision-commitment,
+        .investment-philosophy,
+        .investment-portfolios,
+        .investment-approach,
+        .investment-projects,
+        .contact-enquiry,
+        .contact-location,
+        .careers-investing,
+        .careers-workplace,
+        .careers-opportunities,
+        .insights-intro,
+        .insights-principles,
+        .insights-areas,
+        .insights-archive,
+        .insights-contribute,
+        .post-detail-hero,
+        .insight-related,
+        .insight-detail-body
+      ) {
+      padding-block: var(
+        --cms-section-padding,
+        var(--cms-page-spacing-mobile, var(--cms-global-spacing-mobile))
+      ) !important;
+    }
+  }
+}
+@media (min-width: 641px) and (max-width: 1023px) {
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-heroHeading-tablet"],
+        .cms-page-design[style*="--cms-page-heroHeading-tablet"]
+      )
+      main
+      h1 {
+      font-size: var(
+        --cms-heading-tablet,
+        var(--cms-page-heroHeading-tablet, var(--cms-global-heroHeading-tablet))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-heading-tablet"],
+        .cms-page-design[style*="--cms-page-heading-tablet"]
+      )
+      main
+      :is(section:not(:where(footer *)), .insight-detail-body)
+      h2 {
+      font-size: var(
+        --cms-heading-tablet,
+        var(--cms-page-heading-tablet, var(--cms-global-heading-tablet))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-eyebrow-tablet"],
+        .cms-page-design[style*="--cms-page-eyebrow-tablet"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        .label,
+        .vision-label,
+        .discover-label,
+        .investment-label,
+        .contact-label,
+        .careers-label,
+        .insights-label,
+        .home5-hero-forum > span
+      ) {
+      font-size: var(
+        --cms-eyebrow-tablet,
+        var(--cms-page-eyebrow-tablet, var(--cms-global-eyebrow-tablet))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-body-tablet"],
+        .cms-page-design[style*="--cms-page-body-tablet"]
+      )
+      main
+      :is(section:not(:where(footer *)), .insight-detail-body)
+      p:not(
+        :is(
+          .label,
+          .vision-label,
+          .discover-label,
+          .investment-label,
+          .contact-label,
+          .careers-label,
+          .insights-label
+        )
+      ) {
+      font-size: var(
+        --cms-effective-body-tablet,
+        var(
+          --cms-item-body-tablet,
+          var(
+            --cms-body-tablet,
+            var(--cms-page-body-tablet, var(--cms-global-body-tablet))
+          )
+        )
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-itemHeading-tablet"],
+        .cms-page-design[style*="--cms-page-itemHeading-tablet"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(h3, .contact-fact strong) {
+      font-size: var(
+        --cms-item-title-tablet,
+        var(
+          --cms-itemHeading-tablet,
+          var(
+            --cms-page-itemHeading-tablet,
+            var(--cms-global-itemHeading-tablet)
+          )
+        )
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-itemBody-tablet"],
+        .cms-page-design[style*="--cms-page-itemBody-tablet"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        article p,
+        .home2-portfolio-card p,
+        .home5-domain-icon-item p,
+        .contact-fact small
+      ) {
+      font-size: var(
+        --cms-item-body-tablet,
+        var(
+          --cms-itemBody-tablet,
+          var(--cms-page-itemBody-tablet, var(--cms-global-itemBody-tablet))
+        )
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-cta-tablet"],
+        .cms-page-design[style*="--cms-page-cta-tablet"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        .button,
+        .text-action,
+        .text-link,
+        .home5-hero-discover,
+        .animation-skip,
+        .home5-presentation-skip,
+        .lead-form button[type="submit"],
+        .careers-form button[type="submit"],
+        .contact-form-shell button[type="submit"],
+        .investment-project-showcase article > a
+      ) {
+      font-size: var(
+        --cms-cta-tablet,
+        var(--cms-page-cta-tablet, var(--cms-global-cta-tablet))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-number-tablet"],
+        .cms-page-design[style*="--cms-page-number-tablet"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        .home2-stat strong,
+        .home2-stat-number,
+        .vision-roadmap-active strong
+      ) {
+      font-size: var(
+        --cms-number-tablet,
+        var(--cms-page-number-tablet, var(--cms-global-number-tablet))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-small-tablet"],
+        .cms-page-design[style*="--cms-page-small-tablet"]
+      )
+      main
+      section:not(:where(footer *))
+      small {
+      font-size: var(
+        --cms-small-tablet,
+        var(--cms-page-small-tablet, var(--cms-global-small-tablet))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-spacing-tablet"],
+        .cms-page-design[style*="--cms-page-spacing-tablet"]
+      )
+      main
+      :is(
+        .section-light,
+        .home2-value,
+        .home2-domains-scroll,
+        .home2-impact-scroll,
+        .home2-projects-scroll,
+        .home2-triple,
+        .home2-membership,
+        .home2-partners,
+        .home2-news,
+        .vision-path,
+        .vision-pillars-new,
+        .vision-commitment,
+        .investment-philosophy,
+        .investment-portfolios,
+        .investment-approach,
+        .investment-projects,
+        .contact-enquiry,
+        .contact-location,
+        .careers-investing,
+        .careers-workplace,
+        .careers-opportunities,
+        .insights-intro,
+        .insights-principles,
+        .insights-areas,
+        .insights-archive,
+        .insights-contribute,
+        .post-detail-hero,
+        .insight-related,
+        .insight-detail-body
+      ) {
+      padding-block: var(
+        --cms-section-padding,
+        var(--cms-page-spacing-tablet, var(--cms-global-spacing-tablet))
+      ) !important;
+    }
+  }
+}
+@media (min-width: 1024px) and (max-width: 1599px) {
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-heroHeading-laptop"],
+        .cms-page-design[style*="--cms-page-heroHeading-laptop"]
+      )
+      main
+      h1 {
+      font-size: var(
+        --cms-heading-laptop,
+        var(--cms-page-heroHeading-laptop, var(--cms-global-heroHeading-laptop))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-heading-laptop"],
+        .cms-page-design[style*="--cms-page-heading-laptop"]
+      )
+      main
+      :is(section:not(:where(footer *)), .insight-detail-body)
+      h2 {
+      font-size: var(
+        --cms-heading-laptop,
+        var(--cms-page-heading-laptop, var(--cms-global-heading-laptop))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-eyebrow-laptop"],
+        .cms-page-design[style*="--cms-page-eyebrow-laptop"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        .label,
+        .vision-label,
+        .discover-label,
+        .investment-label,
+        .contact-label,
+        .careers-label,
+        .insights-label,
+        .home5-hero-forum > span
+      ) {
+      font-size: var(
+        --cms-eyebrow-laptop,
+        var(--cms-page-eyebrow-laptop, var(--cms-global-eyebrow-laptop))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-body-laptop"],
+        .cms-page-design[style*="--cms-page-body-laptop"]
+      )
+      main
+      :is(section:not(:where(footer *)), .insight-detail-body)
+      p:not(
+        :is(
+          .label,
+          .vision-label,
+          .discover-label,
+          .investment-label,
+          .contact-label,
+          .careers-label,
+          .insights-label
+        )
+      ) {
+      font-size: var(
+        --cms-effective-body-laptop,
+        var(
+          --cms-item-body-laptop,
+          var(
+            --cms-body-laptop,
+            var(--cms-page-body-laptop, var(--cms-global-body-laptop))
+          )
+        )
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-itemHeading-laptop"],
+        .cms-page-design[style*="--cms-page-itemHeading-laptop"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(h3, .contact-fact strong) {
+      font-size: var(
+        --cms-item-title-laptop,
+        var(
+          --cms-itemHeading-laptop,
+          var(
+            --cms-page-itemHeading-laptop,
+            var(--cms-global-itemHeading-laptop)
+          )
+        )
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-itemBody-laptop"],
+        .cms-page-design[style*="--cms-page-itemBody-laptop"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        article p,
+        .home2-portfolio-card p,
+        .home5-domain-icon-item p,
+        .contact-fact small
+      ) {
+      font-size: var(
+        --cms-item-body-laptop,
+        var(
+          --cms-itemBody-laptop,
+          var(--cms-page-itemBody-laptop, var(--cms-global-itemBody-laptop))
+        )
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-cta-laptop"],
+        .cms-page-design[style*="--cms-page-cta-laptop"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        .button,
+        .text-action,
+        .text-link,
+        .home5-hero-discover,
+        .animation-skip,
+        .home5-presentation-skip,
+        .lead-form button[type="submit"],
+        .careers-form button[type="submit"],
+        .contact-form-shell button[type="submit"],
+        .investment-project-showcase article > a
+      ) {
+      font-size: var(
+        --cms-cta-laptop,
+        var(--cms-page-cta-laptop, var(--cms-global-cta-laptop))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-number-laptop"],
+        .cms-page-design[style*="--cms-page-number-laptop"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        .home2-stat strong,
+        .home2-stat-number,
+        .vision-roadmap-active strong
+      ) {
+      font-size: var(
+        --cms-number-laptop,
+        var(--cms-page-number-laptop, var(--cms-global-number-laptop))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-small-laptop"],
+        .cms-page-design[style*="--cms-page-small-laptop"]
+      )
+      main
+      section:not(:where(footer *))
+      small {
+      font-size: var(
+        --cms-small-laptop,
+        var(--cms-page-small-laptop, var(--cms-global-small-laptop))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-spacing-laptop"],
+        .cms-page-design[style*="--cms-page-spacing-laptop"]
+      )
+      main
+      :is(
+        .section-light,
+        .home2-value,
+        .home2-domains-scroll,
+        .home2-impact-scroll,
+        .home2-projects-scroll,
+        .home2-triple,
+        .home2-membership,
+        .home2-partners,
+        .home2-news,
+        .vision-path,
+        .vision-pillars-new,
+        .vision-commitment,
+        .investment-philosophy,
+        .investment-portfolios,
+        .investment-approach,
+        .investment-projects,
+        .contact-enquiry,
+        .contact-location,
+        .careers-investing,
+        .careers-workplace,
+        .careers-opportunities,
+        .insights-intro,
+        .insights-principles,
+        .insights-areas,
+        .insights-archive,
+        .insights-contribute,
+        .post-detail-hero,
+        .insight-related,
+        .insight-detail-body
+      ) {
+      padding-block: var(
+        --cms-section-padding,
+        var(--cms-page-spacing-laptop, var(--cms-global-spacing-laptop))
+      ) !important;
+    }
+  }
+}
+@media (min-width: 1600px) and (max-width: 1999px) {
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-heroHeading-desktop"],
+        .cms-page-design[style*="--cms-page-heroHeading-desktop"]
+      )
+      main
+      h1 {
+      font-size: var(
+        --cms-heading-desktop,
+        var(
+          --cms-page-heroHeading-desktop,
+          var(--cms-global-heroHeading-desktop)
+        )
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-heading-desktop"],
+        .cms-page-design[style*="--cms-page-heading-desktop"]
+      )
+      main
+      :is(section:not(:where(footer *)), .insight-detail-body)
+      h2 {
+      font-size: var(
+        --cms-heading-desktop,
+        var(--cms-page-heading-desktop, var(--cms-global-heading-desktop))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-eyebrow-desktop"],
+        .cms-page-design[style*="--cms-page-eyebrow-desktop"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        .label,
+        .vision-label,
+        .discover-label,
+        .investment-label,
+        .contact-label,
+        .careers-label,
+        .insights-label,
+        .home5-hero-forum > span
+      ) {
+      font-size: var(
+        --cms-eyebrow-desktop,
+        var(--cms-page-eyebrow-desktop, var(--cms-global-eyebrow-desktop))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-body-desktop"],
+        .cms-page-design[style*="--cms-page-body-desktop"]
+      )
+      main
+      :is(section:not(:where(footer *)), .insight-detail-body)
+      p:not(
+        :is(
+          .label,
+          .vision-label,
+          .discover-label,
+          .investment-label,
+          .contact-label,
+          .careers-label,
+          .insights-label
+        )
+      ) {
+      font-size: var(
+        --cms-effective-body-desktop,
+        var(
+          --cms-item-body-desktop,
+          var(
+            --cms-body-desktop,
+            var(--cms-page-body-desktop, var(--cms-global-body-desktop))
+          )
+        )
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-itemHeading-desktop"],
+        .cms-page-design[style*="--cms-page-itemHeading-desktop"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(h3, .contact-fact strong) {
+      font-size: var(
+        --cms-item-title-desktop,
+        var(
+          --cms-itemHeading-desktop,
+          var(
+            --cms-page-itemHeading-desktop,
+            var(--cms-global-itemHeading-desktop)
+          )
+        )
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-itemBody-desktop"],
+        .cms-page-design[style*="--cms-page-itemBody-desktop"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        article p,
+        .home2-portfolio-card p,
+        .home5-domain-icon-item p,
+        .contact-fact small
+      ) {
+      font-size: var(
+        --cms-item-body-desktop,
+        var(
+          --cms-itemBody-desktop,
+          var(--cms-page-itemBody-desktop, var(--cms-global-itemBody-desktop))
+        )
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-cta-desktop"],
+        .cms-page-design[style*="--cms-page-cta-desktop"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        .button,
+        .text-action,
+        .text-link,
+        .home5-hero-discover,
+        .animation-skip,
+        .home5-presentation-skip,
+        .lead-form button[type="submit"],
+        .careers-form button[type="submit"],
+        .contact-form-shell button[type="submit"],
+        .investment-project-showcase article > a
+      ) {
+      font-size: var(
+        --cms-cta-desktop,
+        var(--cms-page-cta-desktop, var(--cms-global-cta-desktop))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-number-desktop"],
+        .cms-page-design[style*="--cms-page-number-desktop"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        .home2-stat strong,
+        .home2-stat-number,
+        .vision-roadmap-active strong
+      ) {
+      font-size: var(
+        --cms-number-desktop,
+        var(--cms-page-number-desktop, var(--cms-global-number-desktop))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-small-desktop"],
+        .cms-page-design[style*="--cms-page-small-desktop"]
+      )
+      main
+      section:not(:where(footer *))
+      small {
+      font-size: var(
+        --cms-small-desktop,
+        var(--cms-page-small-desktop, var(--cms-global-small-desktop))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-spacing-desktop"],
+        .cms-page-design[style*="--cms-page-spacing-desktop"]
+      )
+      main
+      :is(
+        .section-light,
+        .home2-value,
+        .home2-domains-scroll,
+        .home2-impact-scroll,
+        .home2-projects-scroll,
+        .home2-triple,
+        .home2-membership,
+        .home2-partners,
+        .home2-news,
+        .vision-path,
+        .vision-pillars-new,
+        .vision-commitment,
+        .investment-philosophy,
+        .investment-portfolios,
+        .investment-approach,
+        .investment-projects,
+        .contact-enquiry,
+        .contact-location,
+        .careers-investing,
+        .careers-workplace,
+        .careers-opportunities,
+        .insights-intro,
+        .insights-principles,
+        .insights-areas,
+        .insights-archive,
+        .insights-contribute,
+        .post-detail-hero,
+        .insight-related,
+        .insight-detail-body
+      ) {
+      padding-block: var(
+        --cms-section-padding,
+        var(--cms-page-spacing-desktop, var(--cms-global-spacing-desktop))
+      ) !important;
+    }
+  }
+}
+@media (min-width: 2000px) {
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-heroHeading-imac"],
+        .cms-page-design[style*="--cms-page-heroHeading-imac"]
+      )
+      main
+      h1 {
+      font-size: var(
+        --cms-heading-imac,
+        var(--cms-page-heroHeading-imac, var(--cms-global-heroHeading-imac))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-heading-imac"],
+        .cms-page-design[style*="--cms-page-heading-imac"]
+      )
+      main
+      :is(section:not(:where(footer *)), .insight-detail-body)
+      h2 {
+      font-size: var(
+        --cms-heading-imac,
+        var(--cms-page-heading-imac, var(--cms-global-heading-imac))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-eyebrow-imac"],
+        .cms-page-design[style*="--cms-page-eyebrow-imac"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        .label,
+        .vision-label,
+        .discover-label,
+        .investment-label,
+        .contact-label,
+        .careers-label,
+        .insights-label,
+        .home5-hero-forum > span
+      ) {
+      font-size: var(
+        --cms-eyebrow-imac,
+        var(--cms-page-eyebrow-imac, var(--cms-global-eyebrow-imac))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-body-imac"],
+        .cms-page-design[style*="--cms-page-body-imac"]
+      )
+      main
+      :is(section:not(:where(footer *)), .insight-detail-body)
+      p:not(
+        :is(
+          .label,
+          .vision-label,
+          .discover-label,
+          .investment-label,
+          .contact-label,
+          .careers-label,
+          .insights-label
+        )
+      ) {
+      font-size: var(
+        --cms-effective-body-imac,
+        var(
+          --cms-item-body-imac,
+          var(
+            --cms-body-imac,
+            var(--cms-page-body-imac, var(--cms-global-body-imac))
+          )
+        )
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-itemHeading-imac"],
+        .cms-page-design[style*="--cms-page-itemHeading-imac"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(h3, .contact-fact strong) {
+      font-size: var(
+        --cms-item-title-imac,
+        var(
+          --cms-itemHeading-imac,
+          var(--cms-page-itemHeading-imac, var(--cms-global-itemHeading-imac))
+        )
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-itemBody-imac"],
+        .cms-page-design[style*="--cms-page-itemBody-imac"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        article p,
+        .home2-portfolio-card p,
+        .home5-domain-icon-item p,
+        .contact-fact small
+      ) {
+      font-size: var(
+        --cms-item-body-imac,
+        var(
+          --cms-itemBody-imac,
+          var(--cms-page-itemBody-imac, var(--cms-global-itemBody-imac))
+        )
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-cta-imac"],
+        .cms-page-design[style*="--cms-page-cta-imac"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        .button,
+        .text-action,
+        .text-link,
+        .home5-hero-discover,
+        .animation-skip,
+        .home5-presentation-skip,
+        .lead-form button[type="submit"],
+        .careers-form button[type="submit"],
+        .contact-form-shell button[type="submit"],
+        .investment-project-showcase article > a
+      ) {
+      font-size: var(
+        --cms-cta-imac,
+        var(--cms-page-cta-imac, var(--cms-global-cta-imac))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-number-imac"],
+        .cms-page-design[style*="--cms-page-number-imac"]
+      )
+      main
+      section:not(:where(footer *))
+      :is(
+        .home2-stat strong,
+        .home2-stat-number,
+        .vision-roadmap-active strong
+      ) {
+      font-size: var(
+        --cms-number-imac,
+        var(--cms-page-number-imac, var(--cms-global-number-imac))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-small-imac"],
+        .cms-page-design[style*="--cms-page-small-imac"]
+      )
+      main
+      section:not(:where(footer *))
+      small {
+      font-size: var(
+        --cms-small-imac,
+        var(--cms-page-small-imac, var(--cms-global-small-imac))
+      ) !important;
+    }
+  }
+  @layer cms-design {
+    :is(
+        body[style*="--cms-global-spacing-imac"],
+        .cms-page-design[style*="--cms-page-spacing-imac"]
+      )
+      main
+      :is(
+        .section-light,
+        .home2-value,
+        .home2-domains-scroll,
+        .home2-impact-scroll,
+        .home2-projects-scroll,
+        .home2-triple,
+        .home2-membership,
+        .home2-partners,
+        .home2-news,
+        .vision-path,
+        .vision-pillars-new,
+        .vision-commitment,
+        .investment-philosophy,
+        .investment-portfolios,
+        .investment-approach,
+        .investment-projects,
+        .contact-enquiry,
+        .contact-location,
+        .careers-investing,
+        .careers-workplace,
+        .careers-opportunities,
+        .insights-intro,
+        .insights-principles,
+        .insights-areas,
+        .insights-archive,
+        .insights-contribute,
+        .post-detail-hero,
+        .insight-related,
+        .insight-detail-body
+      ) {
+      padding-block: var(
+        --cms-section-padding,
+        var(--cms-page-spacing-imac, var(--cms-global-spacing-imac))
+      ) !important;
+    }
+  }
+}
+/* No background boxes, and white pixels blend into the section without altering uploaded artwork. */
+.investment-page-next.sharp-variation .investment-project-logo {
+  width: 198px;
+  height: 100.32px;
+  max-width: 100%;
+  background: transparent;
+  mix-blend-mode: multiply;
+}
+.investment-page-next.sharp-variation
+  :is(.investment-project-logo img, .investment-project-rail img) {
+  background: transparent;
+  mix-blend-mode: normal;
+}
+.investment-page-next.sharp-variation .investment-project-rail button,
+.investment-page-next.sharp-variation .investment-project-rail button.active {
+  background: transparent;
+  mix-blend-mode: multiply;
+}
+.trimmed-project-logo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.investment-page-next.sharp-variation .investment-project-rail button {
+  width: clamp(150px, 11vw, 178px);
+  height: 84px;
+  padding: .5rem .65rem;
+}
+@media (max-width: 640px) {
+  .investment-page-next.sharp-variation .investment-project-rail button {
+    width: 146px;
+  }
+}
+.investment-page-next.sharp-variation .investment-project-showcase article {
+  /* Same visible canvas as before; gives blending a backdrop inside the animated card. */
+  background: inherit;
+}
+
+@layer cms-design {
+  .post-detail-hero h1 {
+    color: var(
+      --cms-heading-color,
+      var(
+        --cms-page-heroHeading-color,
+        var(
+          --cms-global-heroHeading-color,
+          var(
+            --cms-page-light-heading-color,
+            var(--cms-global-light-heading-color, #2e2449)
+          )
+        )
+      )
+    ) !important;
+  }
+}
+@layer cms-design {
+  .post-detail-intro > p,
+  .insight-related-heading > p {
+    color: var(
+      --cms-eyebrow-color,
+      var(
+        --cms-page-light-eyebrow-color,
+        var(--cms-global-light-eyebrow-color, #614787)
+      )
+    ) !important;
+  }
+}
+
+/* Preserve card/slide description overrides even when the global body role changes. */
+main
+  :is(
+    article p,
+    [style*="--cms-item-body-"] p,
+    .investment-portfolio-item p,
+    .investment-approach-step p,
+    .investment-impact-governance-active p,
+    .careers-workplace-point p,
+    .home2-portfolio-card p,
+    .home5-domain-icon-item p,
+    .contact-fact small
+  ) {
+  --cms-effective-body-color: var(
+    --cms-item-body-color,
+    var(
+      --cms-itemBody-color,
+      var(
+        --cms-body-color,
+        var(
+          --cms-page-itemBody-color,
+          var(
+            --cms-global-itemBody-color,
+            var(--cms-surface-body-color, inherit)
+          )
+        )
+      )
+    )
+  );
+  --cms-effective-body-mobile: var(
+    --cms-item-body-mobile,
+    var(
+      --cms-itemBody-mobile,
+      var(
+        --cms-body-mobile,
+        var(
+          --cms-page-itemBody-mobile,
+          var(
+            --cms-page-body-mobile,
+            var(--cms-global-itemBody-mobile, var(--cms-global-body-mobile))
+          )
+        )
+      )
+    )
+  );
+  --cms-effective-body-tablet: var(
+    --cms-item-body-tablet,
+    var(
+      --cms-itemBody-tablet,
+      var(
+        --cms-body-tablet,
+        var(
+          --cms-page-itemBody-tablet,
+          var(
+            --cms-page-body-tablet,
+            var(--cms-global-itemBody-tablet, var(--cms-global-body-tablet))
+          )
+        )
+      )
+    )
+  );
+  --cms-effective-body-laptop: var(
+    --cms-item-body-laptop,
+    var(
+      --cms-itemBody-laptop,
+      var(
+        --cms-body-laptop,
+        var(
+          --cms-page-itemBody-laptop,
+          var(
+            --cms-page-body-laptop,
+            var(--cms-global-itemBody-laptop, var(--cms-global-body-laptop))
+          )
+        )
+      )
+    )
+  );
+  --cms-effective-body-desktop: var(
+    --cms-item-body-desktop,
+    var(
+      --cms-itemBody-desktop,
+      var(
+        --cms-body-desktop,
+        var(
+          --cms-page-itemBody-desktop,
+          var(
+            --cms-page-body-desktop,
+            var(--cms-global-itemBody-desktop, var(--cms-global-body-desktop))
+          )
+        )
+      )
+    )
+  );
+  --cms-effective-body-imac: var(
+    --cms-item-body-imac,
+    var(
+      --cms-itemBody-imac,
+      var(
+        --cms-body-imac,
+        var(
+          --cms-page-itemBody-imac,
+          var(
+            --cms-page-body-imac,
+            var(--cms-global-itemBody-imac, var(--cms-global-body-imac))
+          )
+        )
+      )
+    )
+  );
+}
+
+/* CMS solid backgrounds switch theme slots without repeating these values in page HTML. */
+:is(
+  [style*="--cms-background-tone:light"],
+  [style*="--cms-background-tone: light"]
+) {
+  --cms-surface-heroHeading-color: var(
+    --cms-page-light-heroHeading-color,
+    var(
+      --cms-page-heroHeading-color,
+      var(
+        --cms-global-heroHeading-color,
+        var(--cms-global-light-heroHeading-color, inherit)
+      )
+    )
+  );
+  --cms-surface-heading-color: var(
+    --cms-page-light-heading-color,
+    var(
+      --cms-page-heading-color,
+      var(
+        --cms-global-heading-color,
+        var(--cms-global-light-heading-color, #2e2449)
+      )
+    )
+  );
+  --cms-surface-eyebrow-color: var(
+    --cms-page-light-eyebrow-color,
+    var(
+      --cms-page-eyebrow-color,
+      var(
+        --cms-global-eyebrow-color,
+        var(--cms-global-light-eyebrow-color, #614787)
+      )
+    )
+  );
+  --cms-surface-body-color: var(
+    --cms-page-light-body-color,
+    var(
+      --cms-page-body-color,
+      var(--cms-global-body-color, var(--cms-global-light-body-color, inherit))
+    )
+  );
+  --cms-surface-itemHeading-color: var(
+    --cms-page-light-itemHeading-color,
+    var(
+      --cms-page-itemHeading-color,
+      var(
+        --cms-global-itemHeading-color,
+        var(--cms-global-light-itemHeading-color, inherit)
+      )
+    )
+  );
+  --cms-surface-itemBody-color: var(
+    --cms-page-light-itemBody-color,
+    var(
+      --cms-page-itemBody-color,
+      var(
+        --cms-global-itemBody-color,
+        var(--cms-global-light-itemBody-color, inherit)
+      )
+    )
+  );
+  --cms-surface-cta-color: var(
+    --cms-page-light-cta-color,
+    var(
+      --cms-page-cta-color,
+      var(--cms-global-cta-color, var(--cms-global-light-cta-color, inherit))
+    )
+  );
+  --cms-surface-number-color: var(
+    --cms-page-light-number-color,
+    var(
+      --cms-page-number-color,
+      var(
+        --cms-global-number-color,
+        var(--cms-global-light-number-color, inherit)
+      )
+    )
+  );
+  --cms-surface-small-color: var(
+    --cms-page-light-small-color,
+    var(
+      --cms-page-small-color,
+      var(
+        --cms-global-small-color,
+        var(--cms-global-light-small-color, inherit)
+      )
+    )
+  );
+  --cms-surface-link-color: var(
+    --cms-page-light-link-color,
+    var(
+      --cms-page-link-color,
+      var(--cms-global-link-color, var(--cms-global-light-link-color, inherit))
+    )
+  );
+  --cms-surface-buttonBackground-color: var(
+    --cms-page-light-buttonBackground-color,
+    var(
+      --cms-page-buttonBackground-color,
+      var(
+        --cms-global-buttonBackground-color,
+        var(--cms-global-light-buttonBackground-color, inherit)
+      )
+    )
+  );
+  --cms-surface-buttonBorder-color: var(
+    --cms-page-light-buttonBorder-color,
+    var(
+      --cms-page-buttonBorder-color,
+      var(
+        --cms-global-buttonBorder-color,
+        var(--cms-global-light-buttonBorder-color, inherit)
+      )
+    )
+  );
+  --cms-surface-divider-color: var(
+    --cms-page-light-divider-color,
+    var(
+      --cms-page-divider-color,
+      var(
+        --cms-global-divider-color,
+        var(--cms-global-light-divider-color, inherit)
+      )
+    )
+  );
+}
+:is(
+  [style*="--cms-background-tone:dark"],
+  [style*="--cms-background-tone: dark"]
+) {
+  --cms-surface-heroHeading-color: var(
+    --cms-page-dark-heroHeading-color,
+    var(
+      --cms-page-heroHeading-color,
+      var(
+        --cms-global-heroHeading-color,
+        var(--cms-global-dark-heroHeading-color, inherit)
+      )
+    )
+  );
+  --cms-surface-heading-color: var(
+    --cms-page-dark-heading-color,
+    var(
+      --cms-page-heading-color,
+      var(
+        --cms-global-heading-color,
+        var(--cms-global-dark-heading-color, #ffffff)
+      )
+    )
+  );
+  --cms-surface-eyebrow-color: var(
+    --cms-page-dark-eyebrow-color,
+    var(
+      --cms-page-eyebrow-color,
+      var(
+        --cms-global-eyebrow-color,
+        var(--cms-global-dark-eyebrow-color, #d4bda3)
+      )
+    )
+  );
+  --cms-surface-body-color: var(
+    --cms-page-dark-body-color,
+    var(
+      --cms-page-body-color,
+      var(--cms-global-body-color, var(--cms-global-dark-body-color, inherit))
+    )
+  );
+  --cms-surface-itemHeading-color: var(
+    --cms-page-dark-itemHeading-color,
+    var(
+      --cms-page-itemHeading-color,
+      var(
+        --cms-global-itemHeading-color,
+        var(--cms-global-dark-itemHeading-color, inherit)
+      )
+    )
+  );
+  --cms-surface-itemBody-color: var(
+    --cms-page-dark-itemBody-color,
+    var(
+      --cms-page-itemBody-color,
+      var(
+        --cms-global-itemBody-color,
+        var(--cms-global-dark-itemBody-color, inherit)
+      )
+    )
+  );
+  --cms-surface-cta-color: var(
+    --cms-page-dark-cta-color,
+    var(
+      --cms-page-cta-color,
+      var(--cms-global-cta-color, var(--cms-global-dark-cta-color, inherit))
+    )
+  );
+  --cms-surface-number-color: var(
+    --cms-page-dark-number-color,
+    var(
+      --cms-page-number-color,
+      var(
+        --cms-global-number-color,
+        var(--cms-global-dark-number-color, inherit)
+      )
+    )
+  );
+  --cms-surface-small-color: var(
+    --cms-page-dark-small-color,
+    var(
+      --cms-page-small-color,
+      var(--cms-global-small-color, var(--cms-global-dark-small-color, inherit))
+    )
+  );
+  --cms-surface-link-color: var(
+    --cms-page-dark-link-color,
+    var(
+      --cms-page-link-color,
+      var(--cms-global-link-color, var(--cms-global-dark-link-color, inherit))
+    )
+  );
+  --cms-surface-buttonBackground-color: var(
+    --cms-page-dark-buttonBackground-color,
+    var(
+      --cms-page-buttonBackground-color,
+      var(
+        --cms-global-buttonBackground-color,
+        var(--cms-global-dark-buttonBackground-color, inherit)
+      )
+    )
+  );
+  --cms-surface-buttonBorder-color: var(
+    --cms-page-dark-buttonBorder-color,
+    var(
+      --cms-page-buttonBorder-color,
+      var(
+        --cms-global-buttonBorder-color,
+        var(--cms-global-dark-buttonBorder-color, inherit)
+      )
+    )
+  );
+  --cms-surface-divider-color: var(
+    --cms-page-dark-divider-color,
+    var(
+      --cms-page-divider-color,
+      var(
+        --cms-global-divider-color,
+        var(--cms-global-dark-divider-color, inherit)
+      )
+    )
+  );
+}

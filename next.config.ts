@@ -2,6 +2,8 @@ import { withPayload } from "@payloadcms/next/withPayload";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Keep verification builds separate from the active local preview's .next output.
+  distDir: process.env.STARTIME_NEXT_DIST_DIR || ".next",
   poweredByHeader: false,
   async headers() {
     const securityHeaders = [

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "./CmsLink";
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import type { Locale, PublicInsight } from "@/content/types";
